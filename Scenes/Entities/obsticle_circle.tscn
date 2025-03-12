@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dycacgj1uslmq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_totu2"]
+radius = 8.88889
+
+[sub_resource type="SphereMesh" id="SphereMesh_yun18"]
+
+[node name="ObsticleCircle" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(4.5, 4.5)
+shape = SubResource("CircleShape2D_totu2")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+scale = Vector2(80, 80)
+mesh = SubResource("SphereMesh_yun18")

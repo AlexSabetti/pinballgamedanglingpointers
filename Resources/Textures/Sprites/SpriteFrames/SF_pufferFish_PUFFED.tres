@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://bk8h60wsfarc2"]
+
+[ext_resource type="Texture2D" uid="uid://cqswgean5cg3w" path="res://Resources/Textures/Sprites/PufferFish1_b2.png" id="1_4dpbe"]
+[ext_resource type="Texture2D" uid="uid://d1bqroydpsrf5" path="res://Resources/Textures/Sprites/PufferFish1_b1.png" id="1_uicx7"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4dpbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_uicx7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
