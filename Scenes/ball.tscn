@@ -1,9 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://ci547dyrld7jq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rp2tb"]
-radius = 0.5
+radius = 20.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_soj6j"]
+radius = 20.0
+height = 40.0
 
 [node name="Ball" type="RigidBody2D"]
 
