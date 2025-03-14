@@ -13,14 +13,13 @@ var endgame_sinking: bool = false
 
 var in_water: bool = false
 var current_water_density: float
-	
+var gravity = 9.8
 
 
 
 func launch_downwards(vel: Vector2):
 	linear_velocity = vel
 
-<<<<<<< HEAD
 func _physics_process(delta):
 	if endgame_sinking:
 		linear_velocity.y -= 0.1 * delta
@@ -32,8 +31,8 @@ func _physics_process(delta):
 
 # recieve signal for when something collides with the ball
 func _on_body_entered(body: Node) -> void:
-	if body is Bumper:
-		(body as Bumper).bumper_hit() 
+	if body is Bumpers:
+		(body as Bumpers).bumper_hit() 
 	
 	# play sound:
 	var volMod = ( (abs(linear_velocity.x) + abs(linear_velocity.y) ) / 2.0 ) / 20.0

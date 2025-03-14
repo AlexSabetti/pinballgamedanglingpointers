@@ -18,7 +18,7 @@ var rot_direction:int
 var paddle_btn_pressed:bool = false
 var isRotating:bool = false
 
-var signal_manager: SignalBus = SignalManager
+var signal_manager: SigBus = Manager
 
 @onready var RotationAxis := $Origin/RigidBody2D
 @onready var CollisionShape := $Origin/RigidBody2D/CollisionShape2D

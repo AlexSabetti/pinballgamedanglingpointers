@@ -104,15 +104,19 @@ isRightPaddle = true
 
 [node name="Bumper" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(460, 407)
+script = null
 
 [node name="Bumper2" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(557, 477)
+script = null
 
 [node name="Bumper3" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(637, 873)
+script = null
 
 [node name="Bumper4" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(514, 211)
+script = null
 
 [node name="Ball" parent="Entities" instance=ExtResource("6_qjxb5")]
 position = Vector2(518, 64)

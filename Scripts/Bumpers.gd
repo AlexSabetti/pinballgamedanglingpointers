@@ -1,17 +1,18 @@
-class_name Bumper
+class_name Bumpers
 extends StaticBody2D
 
 @export var idleSpriteFrames:SpriteFrames = load("res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_UNPUFFED.tres")
 @export var bumpedSpriteFrames:SpriteFrames = load("res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_PUFFED.tres")
+@export var point_value:int = 10
+
 var bumperActivated:bool = false
-var signal_manager: SignalBus = SignalManager
+var signal_manager: SigBus = Manager
 
 @onready var Collider:CollisionShape2D = $CollisionShape2D
 @onready var Sprite:AnimatedSprite2D = $AnimatedSprite2D
 @onready var puffTimer:Timer = $Timer
 
 func _ready() -> void:
-	
 	signal_manager.connect("bumper_hit", bumper_hit)
 	
 
@@ -23,6 +24,7 @@ func bumper_hit() -> void:
 	puffTimer.start()
 	print("PUFF!")
 	SoundManager2D.PlaySoundQueue2D("SQ_boink")
+	signal_manager.emit_signal("update_points", point_value)
 
 
 func _on_timer_timeout() -> void:

@@ -1,14 +1,16 @@
 class_name GameLogic
 extends Node2D
 
-<<<<<<< HEAD
+var signal_manager: SigBus = Manager 
 
-=======
-var signal_manager: SignalBus = SignalManager
+var cur_points = 0
+@export var num_balls: int = 3
+
 
 func _ready() -> void:
 	Global.gameLogic = self
 	print("GameLogic Ready!")
+	signal_manager.connect("update_points", update_points)
 
 
 func _process(_delta: float) -> void:
@@ -43,4 +45,6 @@ func checkInput() -> void:
 		signal_manager.emit_signal("move_ball_right", true)
 	else: if Input.is_action_just_released("move_right"):
 		signal_manager.emit_signal("move_ball_right", false)
->>>>>>> 4bbcc18611881f6901c610aff45e16c364b01332
+
+func update_points(points: int):
+	cur_points += points

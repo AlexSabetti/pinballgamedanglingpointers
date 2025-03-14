@@ -11,15 +11,16 @@ config_version=5
 [application]
 
 config/name="PinballGameDanglingPointers"
-run/main_scene="uid://dy2xtfmqqdllt"
+run/main_scene="res://Scenes/Levels/dev_level.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Scripts/Global.gd"
-SignalManager="*res://Systems/SignalManagement/SignalBus.gd"
+SignalManager="res://Systems/SignalManagement/SignalBus.gd"
 SoundManager2D="*res://Systems/SoundManagement/SoundManager2D.tscn"
+Manager="*res://Scripts/SigBus.gd"
 
 [display]
 
