@@ -24,7 +24,7 @@ func bumper_hit() -> void:
 	puffTimer.start()
 	print("PUFF!")
 	SoundManager2D.PlaySoundQueue2D("SQ_boink")
-	signal_manager.emit_signal("update_points", point_value)
+	Global.gameLogic.update_points(point_value)
 
 
 func _on_timer_timeout() -> void:

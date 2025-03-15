@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=21 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
 [ext_resource type="PackedScene" uid="uid://ci547dyrld7jq" path="res://Scenes/Entities/ball.tscn" id="6_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
+[ext_resource type="Script" path="res://Scripts/WaterArea.gd" id="8_udtls"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
 
@@ -34,6 +35,9 @@ size = Vector2(8.88889, 44)
 [sub_resource type="QuadMesh" id="QuadMesh_pl0og"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_w50ga"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qf1h2"]
+size = Vector2(970, 1023)
 
 [node name="Dev_Level" type="Node2D"]
 
@@ -119,7 +123,7 @@ position = Vector2(514, 211)
 script = null
 
 [node name="Ball" parent="Entities" instance=ExtResource("6_qjxb5")]
-position = Vector2(518, 64)
+position = Vector2(250, 188)
 
 [node name="Geometry" type="Node2D" parent="."]
 
@@ -239,6 +243,13 @@ polygon = PackedVector2Array(409, 653, 585, 653, 497, 734)
 position = Vector2(497.125, 693.625)
 scale = Vector2(175.75, 80.75)
 mesh = SubResource("PrismMesh_w50ga")
+
+[node name="WaterArea" type="Area2D" parent="."]
+position = Vector2(485, 655.5)
+script = ExtResource("8_udtls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
+shape = SubResource("RectangleShape2D_qf1h2")
 
 [editable path="Geometry/ObsticleBox2"]
 [editable path="Geometry/ObsticleBox3"]

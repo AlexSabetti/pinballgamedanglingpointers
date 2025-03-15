@@ -31,7 +31,7 @@ func _ready() -> void:
 	if isRightPaddle:
 		signal_manager.connect("right_paddle", _paddle_signal)
 		CollisionShape.rotation_degrees = 0.0
-	
+	  
 	# set starting position
 	RotationAxis.rotation_degrees = resting_rotation
 	# figure out what direction this flipper will be rotating

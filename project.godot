@@ -17,10 +17,10 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Manager="*res://Scripts/SigBus.gd"
 Global="*res://Scripts/Global.gd"
 SignalManager="res://Systems/SignalManagement/SignalBus.gd"
 SoundManager2D="*res://Systems/SoundManagement/SoundManager2D.tscn"
-Manager="*res://Scripts/SigBus.gd"
 
 [display]
 

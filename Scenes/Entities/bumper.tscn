@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dydf8crpits10"]
 
-[ext_resource type="Script" uid="uid://bopffytu148qb" path="res://Scripts/bumper.gd" id="1_vdtve"]
+[ext_resource type="Script" path="res://Scripts/Bumpers.gd" id="1_lm8a7"]
 [ext_resource type="SpriteFrames" uid="uid://dvx67jk2jqup4" path="res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_UNPUFFED.tres" id="2_vdtve"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdtve"]
@@ -11,7 +11,7 @@ radius = 5.11111
 
 [node name="Bumper" type="StaticBody2D"]
 physics_material_override = SubResource("PhysicsMaterial_vdtve")
-script = ExtResource("1_vdtve")
+script = ExtResource("1_lm8a7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.8147e-06)

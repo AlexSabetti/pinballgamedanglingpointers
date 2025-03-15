@@ -1,8 +1,8 @@
 class_name Ball
 extends RigidBody2D
 
-@export var def_mass: float
-@export var def_radius: float
+@export var def_mass: float = 10
+@export var def_radius: float = 8
 
 @export var def_color: Color
 
@@ -12,8 +12,14 @@ extends RigidBody2D
 var endgame_sinking: bool = false
 
 var in_water: bool = false
-var current_water_density: float
-var gravity = 9.8
+var volume: float
+
+var density: float
+
+var cur_water_level: float
+
+var radius: float
+
 
 
 
@@ -22,12 +28,18 @@ func launch_downwards(vel: Vector2):
 
 func _physics_process(delta):
 	if endgame_sinking:
-		linear_velocity.y -= 0.1 * delta
-		linear_velocity.y = max(linear_velocity.y, -10)
-	else:
-		linear_velocity.y = gravity.y * mass * delta
+		linear_velocity.y -=  Global.standard_gravity * delta
+		linear_velocity.y = max(linear_velocity.y, -30)
 	
+	
+func _integrate_forces(state):
+	if in_water:
+		var aprox_submerged = max(cur_water_level - global_position.y, 2 * radius) / (2 * radius)
+		var buoyant_force = Global.water_density * aprox_submerged * volume * Global.standard_gravity
+		state.add_central_force(Vector2(0, -buoyant_force))
+		print("Buoyant Force: " + str(buoyant_force))
 
+		
 
 # recieve signal for when something collides with the ball
 func _on_body_entered(body: Node) -> void:
@@ -62,11 +74,20 @@ func load_specifics(given_mass: float, given_radius: float, given_color: Color, 
 		self.color = def_color
 	else:
 		self.color = given_color
+
+	volume = PI * radius * radius
+	density = mass / volume
+
+	col.shape.radius = radius
+	obj_mesh.mesh.radius = radius
+	obj_mesh.mesh.height = radius * 2
 	
 func transfer_out_of_water():
 	in_water = false
 
-func transfer_into_water(water_density: float):
+func transfer_into_water(water_level: float):
 	in_water = true
-	current_water_density = water_density
+	cur_water_level = water_level
+	print("in water")
+	
 
