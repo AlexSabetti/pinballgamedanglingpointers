@@ -30,6 +30,21 @@ func _physics_process(delta):
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity * delta
 		linear_velocity.y = max(linear_velocity.y, -30)
+	else:
+			# check left ball control input
+		if Input.is_action_pressed("move_left"):
+			linear_velocity.x += -0.5
+			linear_velocity.x = max(linear_velocity.x, -20) 
+		# else: if Input.is_action_just_released("move_left"):
+		# 	linear_velocity.x += 0.5
+		# 	linear_velocity.x = min(linear_velocity.x, 20)
+		
+	# check right ball control input
+		if Input.is_action_pressed("move_right"):
+			linear_velocity.x += 0.5
+			linear_velocity.x = min(linear_velocity.x, 20)
+	# else: if Input.is_action_just_released("move_right"):
+	# 	signal_manager.emit_signal("move_ball_right", false)
 	
 	
 func _integrate_forces(state):

@@ -6,6 +6,9 @@ var signal_manager: SigBus = Manager
 var cur_points = 0
 @export var num_balls: int = 3
 
+var current_ball_mass: float = 10.0
+var current_ball_radius: float = 8
+var cur_strafe_mod = 1.0
 
 func _ready() -> void:
 	Global.gameLogic = self
@@ -34,17 +37,39 @@ func checkInput() -> void:
 		#print("paddle right btn released")
 		signal_manager.emit_signal("right_paddle", false)
 	
-	# check left ball control input
-	if Input.is_action_pressed("move_left"):
-		signal_manager.emit_signal("move_ball_left", true)
-	else: if Input.is_action_just_released("move_left"):
-		signal_manager.emit_signal("move_ball_left", false)
-		
-	# check right ball control input
-	if Input.is_action_pressed("move_right"):
-		signal_manager.emit_signal("move_ball_right", true)
-	else: if Input.is_action_just_released("move_right"):
-		signal_manager.emit_signal("move_ball_right", false)
 
 func update_points(points: int):
 	cur_points += points
+
+func redeem_points(points: int):
+	if cur_points >= points:
+		cur_points -= points
+		return true
+	else:
+		return false
+
+func _on_ball_lost():
+	num_balls -= 1
+	if num_balls <= 0:
+		print("Game Over")
+	else:
+		var main_node = get_tree().get_root().get_node("Main/Balls")
+		var ball_scene = load("res://Scenes/Ball.tscn")
+		var inst = ball_scene.instantiate()
+		inst.load_specifics(current_ball_mass, current_ball_radius, Color.BROWN, cur_strafe_mod)
+		main_node.add_child(inst)
+		inst.launch_downwards(Vector2(0, -100))
+
+func _on_mass_update(mass: float):
+	current_ball_mass = mass
+
+func _on_radius_update(radius: float):
+	current_ball_radius = radius
+
+func _on_ball_purchase():
+	if redeem_points(100):
+		num_balls += 1
+		print("ball +1")
+	else:
+		print("Not enough points")
+		# Either put a pop-up or a sound effect
