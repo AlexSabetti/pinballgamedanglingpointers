@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=24 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
@@ -7,12 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
 [ext_resource type="PackedScene" uid="uid://ci547dyrld7jq" path="res://Scenes/Entities/ball.tscn" id="6_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
-[ext_resource type="Script" path="res://Scripts/WaterArea.gd" id="8_udtls"]
+[ext_resource type="Script" uid="uid://vddjttd0f7y" path="res://Scripts/WaterArea.gd" id="8_udtls"]
+[ext_resource type="PackedScene" uid="uid://c54lx2rcg7udm" path="res://Scenes/Entities/water2D.tscn" id="9_w50ga"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0phcs"]
 size = Vector2(76.4444, 42.6667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjxb5"]
+size = Vector2(42.6666, 2.66632)
+
+[sub_resource type="QuadMesh" id="QuadMesh_h8dmb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w50ga"]
 size = Vector2(8.88889, 55.1111)
@@ -55,6 +61,7 @@ scale = Vector2(1.16607, 1.09971)
 texture = ExtResource("2_qjxb5")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 modulate = Color(0.552941, 0.678431, 0.65098, 0.741176)
 position = Vector2(485.875, 654.5)
 scale = Vector2(972.25, 1019)
@@ -62,6 +69,15 @@ mesh = SubResource("QuadMesh_w50ga")
 metadata/_edit_lock_ = true
 
 [node name="GameLogic" parent="." instance=ExtResource("7_5de3p")]
+
+[node name="Water2d" parent="." instance=ExtResource("9_w50ga")]
+position = Vector2(-32, 144)
+surface_color = Color(0.750595, 0.776841, 0.633247, 1)
+water_color = Color(0.375433, 0.382974, 0.299373, 0.785)
+
+[node name="CollisionPolygon2D" parent="Water2d/WaterArea" index="0"]
+visible = false
+polygon = PackedVector2Array(0, 0, 1037, 0, 1037, 1280, 0, 1280)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(640, 482)
@@ -71,19 +87,19 @@ position = Vector2(640, 482)
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="FlipperL" parent="Entities" instance=ExtResource("6_bnqav")]
-position = Vector2(338, 244)
+position = Vector2(285, 287)
 resting_rotation = 320.0
 max_rotation = 400.0
 isLeftPaddle = true
 
 [node name="FlipperL2" parent="Entities" instance=ExtResource("6_bnqav")]
-position = Vector2(283, 667)
+position = Vector2(230, 710)
 resting_rotation = 320.0
 max_rotation = 400.0
 isLeftPaddle = true
 
 [node name="FlipperL3" parent="Entities" instance=ExtResource("6_bnqav")]
-position = Vector2(562, 663)
+position = Vector2(533, 663)
 resting_rotation = 320.0
 max_rotation = 400.0
 isLeftPaddle = true
@@ -101,35 +117,31 @@ max_rotation = 140.0
 isRightPaddle = true
 
 [node name="FlipperR3" parent="Entities" instance=ExtResource("6_bnqav")]
-position = Vector2(438, 667)
+position = Vector2(409, 667)
 resting_rotation = 220.0
 max_rotation = 140.0
 isRightPaddle = true
 
 [node name="Bumper" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(460, 407)
-script = null
+position = Vector2(431, 408)
 
 [node name="Bumper2" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(557, 477)
-script = null
 
 [node name="Bumper3" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(637, 873)
-script = null
 
 [node name="Bumper4" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(514, 211)
-script = null
+position = Vector2(494, 247)
 
 [node name="Ball" parent="Entities" instance=ExtResource("6_qjxb5")]
-position = Vector2(250, 188)
+position = Vector2(493, 61)
 
 [node name="Geometry" type="Node2D" parent="."]
+position = Vector2(0, 1)
 
 [node name="ObsticleBox2" parent="Geometry" instance=ExtResource("4_x6hwe")]
-position = Vector2(240, 200)
-metadata/_edit_lock_ = true
+position = Vector2(187, 243)
 
 [node name="CollisionShape2D" parent="Geometry/ObsticleBox2" index="0"]
 position = Vector2(-68, 128)
@@ -151,9 +163,21 @@ shape = SubResource("RectangleShape2D_0phcs")
 position = Vector2(-31, -7.99997)
 scale = Vector2(282, 192)
 
+[node name="ObsticleBox10" parent="Geometry" instance=ExtResource("4_x6hwe")]
+position = Vector2(945, 117)
+rotation = 0.167798
+
+[node name="CollisionShape2D" parent="Geometry/ObsticleBox10" index="0"]
+position = Vector2(0.000183105, 0.902451)
+shape = SubResource("RectangleShape2D_qjxb5")
+
+[node name="MeshInstance2D" parent="Geometry/ObsticleBox10" index="1"]
+position = Vector2(-2.28882e-05, 0.764737)
+scale = Vector2(192, 11.8486)
+mesh = SubResource("QuadMesh_h8dmb")
+
 [node name="ObsticleBox4" parent="Geometry" instance=ExtResource("4_x6hwe")]
-position = Vector2(264, 544)
-metadata/_edit_lock_ = true
+position = Vector2(211, 587)
 
 [node name="CollisionShape2D" parent="Geometry/ObsticleBox4" index="0"]
 position = Vector2(3.99998, 4)
@@ -178,10 +202,9 @@ scale = Vector2(39.9999, 248)
 mesh = SubResource("QuadMesh_6nybb")
 
 [node name="ObsticleBox6" parent="Geometry" instance=ExtResource("4_x6hwe")]
-position = Vector2(297, 458)
+position = Vector2(244, 501)
 rotation = 0.523598
 scale = Vector2(1, 1.67818)
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="Geometry/ObsticleBox6" index="0"]
 position = Vector2(4, 4)
@@ -193,9 +216,8 @@ scale = Vector2(39.9999, 71.9999)
 mesh = SubResource("QuadMesh_2yaf2")
 
 [node name="ObsticleBox7" parent="Geometry" instance=ExtResource("4_x6hwe")]
-position = Vector2(224, 704)
+position = Vector2(171, 747)
 rotation = 0.785397
-metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" parent="Geometry/ObsticleBox7" index="0"]
 position = Vector2(4, 2.82837)
@@ -234,25 +256,30 @@ scale = Vector2(39.9999, 198)
 mesh = SubResource("QuadMesh_pl0og")
 
 [node name="Triangle" type="StaticBody2D" parent="Geometry"]
-metadata/_edit_lock_ = true
+position = Vector2(-29, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/Triangle"]
 polygon = PackedVector2Array(409, 653, 585, 653, 497, 734)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Geometry/Triangle"]
+modulate = Color(0.776471, 0.776471, 0.776471, 1)
 position = Vector2(497.125, 693.625)
 scale = Vector2(175.75, 80.75)
 mesh = SubResource("PrismMesh_w50ga")
 
 [node name="WaterArea" type="Area2D" parent="."]
-position = Vector2(485, 655.5)
+position = Vector2(1816, 654)
+collision_mask = 2
 script = ExtResource("8_udtls")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
 shape = SubResource("RectangleShape2D_qf1h2")
+debug_color = Color(0, 0.6, 0.701961, 0.211765)
 
+[editable path="Water2d"]
 [editable path="Geometry/ObsticleBox2"]
 [editable path="Geometry/ObsticleBox3"]
+[editable path="Geometry/ObsticleBox10"]
 [editable path="Geometry/ObsticleBox4"]
 [editable path="Geometry/ObsticleBox9"]
 [editable path="Geometry/ObsticleBox6"]

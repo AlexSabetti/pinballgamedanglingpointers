@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci547dyrld7jq"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cith272whnw8y" path="res://Resources/Materials/PM_ballPhysics.tres" id="1_bds8w"]
-[ext_resource type="Script" path="res://Scripts/Ball.gd" id="1_bihuk"]
+[ext_resource type="Script" uid="uid://cddjye1eef8nd" path="res://Scripts/Ball.gd" id="1_bihuk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rp2tb"]
 radius = 8.0
@@ -14,7 +14,7 @@ height = 16.0
 collision_layer = 2
 physics_material_override = ExtResource("1_bds8w")
 contact_monitor = true
-max_contacts_reported = 3
+max_contacts_reported = 5
 script = ExtResource("1_bihuk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,5 +23,9 @@ shape = SubResource("CircleShape2D_rp2tb")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(0.00453043, 1.90735e-06)
 mesh = SubResource("SphereMesh_soj6j")
+
+[node name="FishingLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

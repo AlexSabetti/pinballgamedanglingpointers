@@ -1,4 +1,4 @@
-class_name Bumpers
+class_name Bumper
 extends StaticBody2D
 
 @export var idleSpriteFrames:SpriteFrames = load("res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_UNPUFFED.tres")
@@ -13,10 +13,11 @@ var signal_manager: SigBus = Manager
 @onready var puffTimer:Timer = $Timer
 
 func _ready() -> void:
-	signal_manager.connect("bumper_hit", bumper_hit)
+	#signal_manager.connect("bumper_hit", bumper_hit)
+	pass
 	
 
-
+# function for when the bumper gets hit
 func bumper_hit() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1.75,1.75), 0.2).from(Vector2(1.0,1.0)).set_trans(Tween.TRANS_ELASTIC)

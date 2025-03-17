@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dt717xlm4kygx"]
+[gd_scene load_steps=4 format=3 uid="uid://dt717xlm4kygx"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_top5d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iy807"]
 
@@ -7,11 +9,13 @@
 [node name="ObsticleBox" type="StaticBody2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+material = SubResource("CanvasItemMaterial_top5d")
 position = Vector2(0, -3.8147e-06)
 scale = Vector2(4.5, 4.5)
 shape = SubResource("RectangleShape2D_iy807")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0.775063, 0.775063, 0.775063, 1)
 texture_filter = 1
 texture_repeat = 2
 scale = Vector2(90, 90)

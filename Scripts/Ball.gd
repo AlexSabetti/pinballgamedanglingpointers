@@ -8,6 +8,7 @@ extends RigidBody2D
 
 @onready var col: CollisionShape2D = $CollisionShape2D
 @onready var obj_mesh: MeshInstance2D = $MeshInstance2D
+@onready var fishing_line: Line2D = $FishingLine
 
 var endgame_sinking: bool = false
 
@@ -20,8 +21,9 @@ var cur_water_level: float
 
 var radius: float
 
-
-
+func _ready() -> void:
+	#connect("body_entered", _on_body_entered)
+	pass
 
 func launch_downwards(vel: Vector2):
 	linear_velocity = vel
@@ -31,7 +33,7 @@ func _physics_process(delta):
 		linear_velocity.y -=  Global.standard_gravity * delta
 		linear_velocity.y = max(linear_velocity.y, -30)
 	else:
-			# check left ball control input
+		# check left ball control input
 		if Input.is_action_pressed("move_left"):
 			linear_velocity.x += -0.5
 			linear_velocity.x = max(linear_velocity.x, -20) 
@@ -39,32 +41,34 @@ func _physics_process(delta):
 		# 	linear_velocity.x += 0.5
 		# 	linear_velocity.x = min(linear_velocity.x, 20)
 		
-	# check right ball control input
+		# check right ball control input
 		if Input.is_action_pressed("move_right"):
 			linear_velocity.x += 0.5
 			linear_velocity.x = min(linear_velocity.x, 20)
 	# else: if Input.is_action_just_released("move_right"):
 	# 	signal_manager.emit_signal("move_ball_right", false)
-	
-	
+
+
 func _integrate_forces(state):
 	if in_water:
 		var aprox_submerged = max(cur_water_level - global_position.y, 2 * radius) / (2 * radius)
 		var buoyant_force = Global.water_density * aprox_submerged * volume * Global.standard_gravity
-		state.add_central_force(Vector2(0, -buoyant_force))
-		print("Buoyant Force: " + str(buoyant_force))
-
-		
+		#state.add_central_force(Vector2(0, -buoyant_force))
+		#print("Buoyant Force: " + str(buoyant_force))
 
 # recieve signal for when something collides with the ball
 func _on_body_entered(body: Node) -> void:
-	if body is Bumpers:
-		(body as Bumpers).bumper_hit() 
+	# if the ball collides with a bumper
+	if body is Bumper:
+		(body as Bumper).bumper_hit() 
+		print("bumper hit!")
+	else:
+		print("nope")
 	
 	# play sound:
 	var volMod = ( (abs(linear_velocity.x) + abs(linear_velocity.y) ) / 2.0 ) / 20.0
 	volMod = clamp(volMod - 30.0, -50.0, 5.0)
-	print("HIT " + str(volMod))
+	print("HIT " + str(body))
 	SoundManager2D.SetSoundPoolVolume("SP_hit", volMod)
 	SoundManager2D.PlaySoundPool2D("SP_hit")
 	
@@ -99,10 +103,10 @@ func load_specifics(given_mass: float, given_radius: float, given_color: Color, 
 	
 func transfer_out_of_water():
 	in_water = false
+	print("out of water")
 
 func transfer_into_water(water_level: float):
 	in_water = true
 	cur_water_level = water_level
 	print("in water")
 	
-

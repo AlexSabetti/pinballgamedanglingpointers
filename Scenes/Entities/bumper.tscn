@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dydf8crpits10"]
+[gd_scene load_steps=6 format=3 uid="uid://dydf8crpits10"]
 
-[ext_resource type="Script" path="res://Scripts/Bumpers.gd" id="1_lm8a7"]
+[ext_resource type="Script" uid="uid://ckw1orir0tclo" path="res://Scripts/Bumper.gd" id="1_lm8a7"]
 [ext_resource type="SpriteFrames" uid="uid://dvx67jk2jqup4" path="res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_UNPUFFED.tres" id="2_vdtve"]
+[ext_resource type="SpriteFrames" uid="uid://bk8h60wsfarc2" path="res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_PUFFED.tres" id="3_b0xc7"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vdtve"]
 bounce = 2.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdtve"]
-radius = 5.11111
+radius = 3.78431
 
 [node name="Bumper" type="StaticBody2D"]
+collision_mask = 2
 physics_material_override = SubResource("PhysicsMaterial_vdtve")
 script = ExtResource("1_lm8a7")
+idleSpriteFrames = ExtResource("2_vdtve")
+bumpedSpriteFrames = ExtResource("3_b0xc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.8147e-06)
@@ -19,7 +23,7 @@ scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_vdtve")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("2_vdtve")
 offset = Vector2(3, -4)
 

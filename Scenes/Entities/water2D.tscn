@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c54lx2rcg7udm"]
+
+[ext_resource type="Script" uid="uid://bcdi3mji2y0gr" path="res://Scripts/Water_2d.gd" id="1_ja75l"]
+[ext_resource type="Script" uid="uid://vddjttd0f7y" path="res://Scripts/WaterArea.gd" id="2_cesdt"]
+
+[node name="Water2d" type="Node2D"]
+script = ExtResource("1_ja75l")
+
+[node name="WaterArea" type="Area2D" parent="." node_paths=PackedStringArray("waterSurfaceRef")]
+collision_mask = 2
+script = ExtResource("2_cesdt")
+waterSurfaceRef = NodePath("..")
+metadata/_custom_type_script = "uid://vddjttd0f7y"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+polygon = PackedVector2Array(0, 0, 128, 0, 128, 128, 0, 128)

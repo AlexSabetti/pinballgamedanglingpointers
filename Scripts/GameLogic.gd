@@ -10,6 +10,9 @@ var current_ball_mass: float = 10.0
 var current_ball_radius: float = 8
 var cur_strafe_mod = 1.0
 
+# whether or not there is a ball in play on the board
+var is_ball_in_play:bool = false
+
 func _ready() -> void:
 	Global.gameLogic = self
 	print("GameLogic Ready!")
@@ -38,6 +41,7 @@ func checkInput() -> void:
 		signal_manager.emit_signal("right_paddle", false)
 	
 
+# updates the current points by the given amount
 func update_points(points: int):
 	cur_points += points
 
@@ -60,12 +64,15 @@ func _on_ball_lost():
 		main_node.add_child(inst)
 		inst.launch_downwards(Vector2(0, -100))
 
+# sets the current ball mass to the given value
 func _on_mass_update(mass: float):
 	current_ball_mass = mass
 
+# sets the current ball radius to the given value
 func _on_radius_update(radius: float):
 	current_ball_radius = radius
 
+# tries to purchases a ball
 func _on_ball_purchase():
 	if redeem_points(100):
 		num_balls += 1
