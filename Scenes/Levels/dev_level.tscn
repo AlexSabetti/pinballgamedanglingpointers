@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dydf8crpits10" path="res://Scenes/Entities/bumper.tscn" id="3_5de3p"]
 [ext_resource type="PackedScene" uid="uid://dt717xlm4kygx" path="res://Scenes/Entities/obsticle_box.tscn" id="4_x6hwe"]
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
-[ext_resource type="PackedScene" uid="uid://ci547dyrld7jq" path="res://Scenes/Entities/ball.tscn" id="6_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
+[ext_resource type="PackedScene" uid="uid://doja10tjwix3v" path="res://Ball2.tscn" id="7_ef5lw"]
 [ext_resource type="Script" path="res://Scripts/WaterArea.gd" id="8_udtls"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
@@ -122,8 +122,9 @@ script = null
 position = Vector2(514, 211)
 script = null
 
-[node name="Ball" parent="Entities" instance=ExtResource("6_qjxb5")]
-position = Vector2(250, 188)
+[node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
+position = Vector2(428, 125)
+def_mass = 1.0
 
 [node name="Geometry" type="Node2D" parent="."]
 

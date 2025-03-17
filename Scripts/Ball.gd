@@ -18,15 +18,19 @@ var density: float
 
 var cur_water_level: float
 
-var radius: float
-
-
+func _ready():
+	if volume == null or volume == 0:
+		volume = PI * def_radius * def_radius
+		print("Volume: " + str(volume))
+	if density == null or density == 0:
+		density = def_mass / volume
 
 
 func launch_downwards(vel: Vector2):
 	linear_velocity = vel
 
 func _physics_process(delta):
+	print("Ball: " + str(global_position))
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity * delta
 		linear_velocity.y = max(linear_velocity.y, -30)
@@ -49,9 +53,12 @@ func _physics_process(delta):
 	
 func _integrate_forces(state):
 	if in_water:
-		var aprox_submerged = max(cur_water_level - global_position.y, 2 * radius) / (2 * radius)
-		var buoyant_force = Global.water_density * aprox_submerged * volume * Global.standard_gravity
-		state.add_central_force(Vector2(0, -buoyant_force))
+		print(minf(cur_water_level - (global_position.y + def_radius), 2 * def_radius))
+		var aprox_submerged = minf(cur_water_level - (global_position.y + def_radius), 2 * def_radius) / (2 * def_radius)
+		print("submerged by: " + str(aprox_submerged))
+		print("volume: " + str(volume))
+		var buoyant_force =  (Global.water_density * aprox_submerged * Global.standard_gravity) - (density * volume * Global.standard_gravity)
+		state.apply_central_force(Vector2(0, buoyant_force))
 		print("Buoyant Force: " + str(buoyant_force))
 
 		
@@ -75,27 +82,23 @@ func destroy_ball():
 
 
 func load_specifics(given_mass: float, given_radius: float, given_color: Color, strafe_mod: float):
-	if given_mass <= 0:
-		self.mass = def_mass
-	else:
-		self.mass = given_mass
+	if given_mass > 0:
+		self.def_mass = given_mass
 
-	if given_radius <= 0:
-		self.radius = def_radius
-	else:
-		self.radius = given_radius
+	if given_radius > 0:
+		self.def_radius = given_radius
 	
 	if given_color == null:
 		self.color = def_color
 	else:
 		self.color = given_color
 
-	volume = PI * radius * radius
-	density = mass / volume
+	volume = PI * def_radius * def_radius
+	density = def_mass / volume
 
-	col.shape.radius = radius
-	obj_mesh.mesh.radius = radius
-	obj_mesh.mesh.height = radius * 2
+	col.shape.radius = def_radius
+	obj_mesh.mesh.radius = def_radius
+	obj_mesh.mesh.height = def_radius * 2
 	
 func transfer_out_of_water():
 	in_water = false
@@ -105,4 +108,3 @@ func transfer_into_water(water_level: float):
 	cur_water_level = water_level
 	print("in water")
 	
-
