@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://dydf8crpits10" path="res://Scenes/Entities/bumper.tscn" id="3_5de3p"]
 [ext_resource type="PackedScene" uid="uid://dt717xlm4kygx" path="res://Scenes/Entities/obsticle_box.tscn" id="4_x6hwe"]
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
-[ext_resource type="PackedScene" uid="uid://ci547dyrld7jq" path="res://Scenes/Entities/ball.tscn" id="6_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
 [ext_resource type="Script" uid="uid://vddjttd0f7y" path="res://Scripts/WaterArea.gd" id="8_udtls"]
 [ext_resource type="PackedScene" uid="uid://c54lx2rcg7udm" path="res://Scenes/Entities/water2D.tscn" id="9_w50ga"]
+
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
 
@@ -134,8 +134,9 @@ position = Vector2(637, 873)
 [node name="Bumper4" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(494, 247)
 
-[node name="Ball" parent="Entities" instance=ExtResource("6_qjxb5")]
-position = Vector2(493, 61)
+[node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
+position = Vector2(428, 125)
+def_mass = 1.0
 
 [node name="Geometry" type="Node2D" parent="."]
 position = Vector2(0, 1)

@@ -35,3 +35,4 @@ func _on_body_exited(body):
 			print("splash!")
 			# add force to water surface
 			waterSurfaceRef.apply_force(ball.global_position, 128 * Vector2.UP, ball.radius * 12)
+
