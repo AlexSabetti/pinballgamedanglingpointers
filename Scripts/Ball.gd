@@ -8,7 +8,6 @@ extends RigidBody2D
 
 @onready var col: CollisionShape2D = $CollisionShape2D
 @onready var obj_mesh: MeshInstance2D = $MeshInstance2D
-@onready var fishing_line: Line2D = $FishingLine
 
 var endgame_sinking: bool = false
 
@@ -18,9 +17,6 @@ var volume: float
 var density: float
 
 var cur_water_level: float
-
-
-var radius: float
 
 func _ready():
 	if volume == null or volume == 0:
@@ -33,7 +29,7 @@ func launch_downwards(vel: Vector2):
 	linear_velocity = vel
 
 func _physics_process(delta):
-	print("Ball: " + str(global_position))
+	#print("Ball: " + str(global_position))
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity * delta
 		linear_velocity.y = max(linear_velocity.y, -30)
@@ -70,8 +66,6 @@ func _on_body_entered(body: Node) -> void:
 	if body is Bumper:
 		(body as Bumper).bumper_hit() 
 		print("bumper hit!")
-	else:
-		print("nope")
 	
 	# play sound:
 	var volMod = ( (abs(linear_velocity.x) + abs(linear_velocity.y) ) / 2.0 ) / 20.0

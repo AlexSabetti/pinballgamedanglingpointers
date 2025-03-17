@@ -7,10 +7,6 @@ extends Area2D
 func _ready():
 	connect("body_entered", _on_body_entered)
 	connect("body_exited", _on_body_exited)
-	
-	# check if water has a surface
-	if get_parent().get_class() == "Water2D":
-		waterSurfaceRef = get_parent()
 
 func _on_body_entered(body):
 	print("entered " + body.name)
@@ -21,7 +17,7 @@ func _on_body_entered(body):
 		if waterSurfaceRef != null:
 			print("splish!")
 			# add force to water surface
-			waterSurfaceRef.apply_force(ball.global_position, 256 * Vector2.DOWN, ball.radius * 12)
+			waterSurfaceRef.apply_force(ball.global_position, 256 * Vector2.DOWN, ball.def_radius * 12)
 		
 	
 
@@ -34,5 +30,4 @@ func _on_body_exited(body):
 		if waterSurfaceRef != null:
 			print("splash!")
 			# add force to water surface
-			waterSurfaceRef.apply_force(ball.global_position, 128 * Vector2.UP, ball.radius * 12)
-
+			waterSurfaceRef.apply_force(ball.global_position, 128 * Vector2.UP, ball.def_radius * 12)

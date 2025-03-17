@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=22 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
@@ -6,9 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dt717xlm4kygx" path="res://Scenes/Entities/obsticle_box.tscn" id="4_x6hwe"]
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
-[ext_resource type="Script" uid="uid://vddjttd0f7y" path="res://Scripts/WaterArea.gd" id="8_udtls"]
+[ext_resource type="PackedScene" uid="uid://doja10tjwix3v" path="res://Ball2.tscn" id="7_ef5lw"]
 [ext_resource type="PackedScene" uid="uid://c54lx2rcg7udm" path="res://Scenes/Entities/water2D.tscn" id="9_w50ga"]
-
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
 
@@ -41,9 +40,6 @@ size = Vector2(8.88889, 44)
 [sub_resource type="QuadMesh" id="QuadMesh_pl0og"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_w50ga"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qf1h2"]
-size = Vector2(970, 1023)
 
 [node name="Dev_Level" type="Node2D"]
 
@@ -135,8 +131,7 @@ position = Vector2(637, 873)
 position = Vector2(494, 247)
 
 [node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
-position = Vector2(428, 125)
-def_mass = 1.0
+position = Vector2(439, 26)
 
 [node name="Geometry" type="Node2D" parent="."]
 position = Vector2(0, 1)
@@ -267,15 +262,6 @@ modulate = Color(0.776471, 0.776471, 0.776471, 1)
 position = Vector2(497.125, 693.625)
 scale = Vector2(175.75, 80.75)
 mesh = SubResource("PrismMesh_w50ga")
-
-[node name="WaterArea" type="Area2D" parent="."]
-position = Vector2(1816, 654)
-collision_mask = 2
-script = ExtResource("8_udtls")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WaterArea"]
-shape = SubResource("RectangleShape2D_qf1h2")
-debug_color = Color(0, 0.6, 0.701961, 0.211765)
 
 [editable path="Water2d"]
 [editable path="Geometry/ObsticleBox2"]

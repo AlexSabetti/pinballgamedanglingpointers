@@ -12,6 +12,7 @@ height = 16.0
 
 [node name="Ball" type="RigidBody2D"]
 collision_layer = 2
+collision_mask = 5
 physics_material_override = ExtResource("1_bds8w")
 contact_monitor = true
 max_contacts_reported = 5
@@ -23,9 +24,5 @@ shape = SubResource("CircleShape2D_rp2tb")
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 position = Vector2(0.00453043, 1.90735e-06)
 mesh = SubResource("SphereMesh_soj6j")
-
-[node name="FishingLine" type="Line2D" parent="."]
-points = PackedVector2Array(0, 0, 0, 0)
-width = 2.5
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
