@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://dptuwkou7rtwb"]
+[gd_scene load_steps=3 format=3 uid="uid://dptuwkou7rtwb"]
+
+[ext_resource type="Script" uid="uid://bsa1a2whccynt" path="res://Scripts/ui_game.gd" id="1_l7wrt"]
+[ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="1_xriyr"]
 
 [node name="UI_game" type="CanvasLayer"]
+script = ExtResource("1_l7wrt")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -12,7 +16,19 @@ theme_override_constants/margin_left = 970
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.911222, 0.874539, 0.851146, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xriyr")
+text = "Points: 0"

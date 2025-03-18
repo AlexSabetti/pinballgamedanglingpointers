@@ -3,7 +3,9 @@ extends Node2D
 
 var signal_manager: SigBus = Manager
 
-var cur_points = 0
+@export var cur_camera:Camera2D
+
+@export var cur_points := 0
 @export var num_balls: int = 3
 
 var current_ball_mass: float = 10.0

@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://btpgrd6o8qnw5"]
+
+[ext_resource type="Texture2D" uid="uid://dljbv3p2e4kyr" path="res://Resources/Textures/Sprites/GreyFish1_a1.png" id="1_u07q1"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u07q1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

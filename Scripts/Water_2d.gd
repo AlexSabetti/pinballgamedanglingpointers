@@ -6,6 +6,7 @@ extends Node2D
 
 @export_category("draw settings")
 @export var draw_water:bool = true
+@export var draw_water_overlay:bool = true
 @export var draw_points:bool = false
 @export var draw_neighbouring_springs:bool = false
 @export var draw_area:bool = false
@@ -13,8 +14,9 @@ extends Node2D
 @export var draw_points_size:float = 5.0
 @export var draw_spring_size:float = 3.0
 @export var draw_spring_distance:float = 32.0
-@export var surface_color:Color = Color(0.9, 0.95, 1.0, 1.0)
-@export var water_color:Color = Color(0.032, 0.549, 0.637, 0.569)
+@export var surface_color:Color = Color(0.751, 0.777, 0.633, 1.0)
+@export var water_color:Color = Color(0.375, 0.383, 0.299, 0.785)
+@export var deep_water_color:Color = Color(0.332, 0.331, 0.256, 1.0)
 @export var surface_width:float = 5.0 # how thick the surface line should be
 
 @export_category("wave settings")
@@ -182,12 +184,13 @@ func _draw() -> void:
 			polygon.append(endPoint)
 			colors.append(water_color)
 			polygon.append(collision_polygon.polygon[2])
-			colors.append(water_color)
+			colors.append(deep_water_color)
 			polygon.append(collision_polygon.polygon[3])
-			colors.append(water_color)
+			colors.append(deep_water_color)
 			
 			draw_polygon(polygon, colors)
 			draw_polyline(surface, surface_color, surface_width)
+		
 		
 		if draw_points:
 			var target_y = startPoint.y

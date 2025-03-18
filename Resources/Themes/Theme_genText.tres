@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cfr4cfecy82wt"]
+
+[ext_resource type="FontFile" uid="uid://cit61e4n1rx24" path="res://Resources/Themes/Fonts/Quenda-Medium.otf" id="1_nftgk"]
+
+[resource]
+Label/colors/font_color = Color(0, 0, 0, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/font_sizes/font_size = 32
+Label/fonts/font = ExtResource("1_nftgk")

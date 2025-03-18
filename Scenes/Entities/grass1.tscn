@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://4isin4p7or4b"]
+
+[ext_resource type="Shader" uid="uid://b617y5hgv63qg" path="res://Resources/Shaders/GrassShader2D.tres" id="1_7n7tx"]
+[ext_resource type="Texture2D" uid="uid://h5xaii5b01rn" path="res://Resources/Textures/Sprites/Reeds2_b1.png" id="2_7n7tx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2b2f"]
+resource_local_to_scene = true
+shader = ExtResource("1_7n7tx")
+shader_parameter/sway_amount = 0.1
+shader_parameter/sway_speed = 1.0
+shader_parameter/Texture2D = ExtResource("2_7n7tx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7n7tx"]
+
+[node name="Grass1" type="Node2D"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_g2b2f")
+position = Vector2(0, -64)
+rotation = -3.14159
+scale = Vector2(96, 128)
+mesh = SubResource("QuadMesh_7n7tx")
