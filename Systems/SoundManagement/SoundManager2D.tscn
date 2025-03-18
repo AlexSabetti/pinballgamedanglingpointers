@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://colwigqlnjn"]
+[gd_scene load_steps=9 format=3 uid="uid://colwigqlnjn"]
 
 [ext_resource type="Script" uid="uid://quro5q0yvao" path="res://Systems/SoundManagement/soundManager2D.gd" id="1_uoj5c"]
 [ext_resource type="PackedScene" uid="uid://cjqcu4itr61v" path="res://Systems/SoundManagement/SoundPool2D.tscn" id="2_tu5l5"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://d1ths0knixva8" path="res://Resources/Sounds/Boink.wav" id="4_olbb8"]
 [ext_resource type="AudioStream" uid="uid://fwbenjw4e47e" path="res://Resources/Sounds/cbar_hitbod2.wav" id="5_4xbfn"]
 [ext_resource type="AudioStream" uid="uid://ca8dmxppafqfi" path="res://Resources/Sounds/cbar_hitbod3.wav" id="6_bpljn"]
+[ext_resource type="AudioStream" uid="uid://b05pdl4hqosvj" path="res://Resources/Sounds/SplashSFX.wav" id="8_4xbfn"]
 
 [node name="SoundManager2D" type="Node2D"]
 script = ExtResource("1_uoj5c")
@@ -48,3 +49,13 @@ maxPitch = 1.2
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SQ_boink"]
 stream = ExtResource("4_olbb8")
 volume_db = 1.0
+
+[node name="SQ_splash" parent="." instance=ExtResource("3_q1dqv")]
+count = 2
+volumeDBModifier = 0.4
+minPitch = 0.85
+maxPitch = 1.15
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SQ_splash"]
+stream = ExtResource("8_4xbfn")
+volume_db = -8.0

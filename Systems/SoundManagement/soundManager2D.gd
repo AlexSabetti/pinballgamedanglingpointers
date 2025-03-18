@@ -6,7 +6,8 @@ var SoundPoolsByName := {}
 
 func _ready() -> void:
 	SoundQueuesByName = {
-		"SQ_boink" : $SQ_boink
+		"SQ_boink" : $SQ_boink,
+		"SQ_splash" : $SQ_splash,
 	}
 	SoundPoolsByName = {
 		"SP_hit" : $SP_hit
