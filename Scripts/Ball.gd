@@ -24,6 +24,7 @@ func _ready():
 		print("Volume: " + str(volume))
 	if density == null or density == 0:
 		density = def_mass / volume
+	mass = def_mass
 
 func launch_downwards(vel: Vector2):
 	linear_velocity = vel
@@ -55,14 +56,12 @@ func _integrate_forces(state):
 	if in_water:
 		print("y pos: " + str(global_position.y))
 		print(minf((global_position.y + def_radius) - cur_water_level, 2 * def_radius))
-		var aprox_submerged = global_position.y + def_radius - cur_water_level
+		var aprox_submerged = global_position.y - cur_water_level
 		if(aprox_submerged < 0):
 			aprox_submerged = 0
-		elif aprox_submerged > 2 * def_radius:
-			aprox_submerged = 2 * def_radius
 		print("submerged by: " + str(aprox_submerged))
 		print("volume: " + str(volume))
-		var buoyant_force =  (Global.water_density * aprox_submerged * Global.standard_gravity) - (density * volume * Global.standard_gravity)
+		var buoyant_force =  (Global.water_density * aprox_submerged * Global.standard_gravity)
 		state.apply_central_force(Vector2(0, buoyant_force))
 		print("Buoyant Force: " + str(buoyant_force))
 

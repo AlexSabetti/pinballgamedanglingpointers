@@ -131,7 +131,8 @@ position = Vector2(637, 873)
 position = Vector2(494, 247)
 
 [node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
-position = Vector2(439, 26)
+position = Vector2(367, 453)
+def_mass = 1.0
 
 [node name="Geometry" type="Node2D" parent="."]
 position = Vector2(0, 1)
