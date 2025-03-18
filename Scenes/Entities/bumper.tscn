@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dydf8crpits10"]
 
-[ext_resource type="Script" uid="uid://ckw1orir0tclo" path="res://Scripts/Bumper.gd" id="1_lm8a7"]
+[ext_resource type="Script" path="res://Scripts/Bumper.gd" id="1_lm8a7"]
 [ext_resource type="SpriteFrames" uid="uid://dvx67jk2jqup4" path="res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_UNPUFFED.tres" id="2_vdtve"]
 [ext_resource type="SpriteFrames" uid="uid://bk8h60wsfarc2" path="res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_PUFFED.tres" id="3_b0xc7"]
 

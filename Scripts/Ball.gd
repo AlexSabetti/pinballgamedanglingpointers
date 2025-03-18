@@ -46,14 +46,20 @@ func _physics_process(delta):
 		if Input.is_action_pressed("move_right"):
 			linear_velocity.x += 0.5
 			linear_velocity.x = min(linear_velocity.x, 20)
+		
 	# else: if Input.is_action_just_released("move_right"):
 	# 	signal_manager.emit_signal("move_ball_right", false)
 
 
 func _integrate_forces(state):
 	if in_water:
-		print(minf(cur_water_level - (global_position.y + def_radius), 2 * def_radius))
-		var aprox_submerged = minf(cur_water_level - (global_position.y + def_radius), 2 * def_radius) / (2 * def_radius)
+		print("y pos: " + str(global_position.y))
+		print(minf((global_position.y + def_radius) - cur_water_level, 2 * def_radius))
+		var aprox_submerged = global_position.y + def_radius - cur_water_level
+		if(aprox_submerged < 0):
+			aprox_submerged = 0
+		elif aprox_submerged > 2 * def_radius:
+			aprox_submerged = 2 * def_radius
 		print("submerged by: " + str(aprox_submerged))
 		print("volume: " + str(volume))
 		var buoyant_force =  (Global.water_density * aprox_submerged * Global.standard_gravity) - (density * volume * Global.standard_gravity)
