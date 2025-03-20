@@ -4,6 +4,7 @@ extends Node2D
 var signal_manager: SigBus = Manager
 
 @export var cur_camera:Camera2D
+@export var free_cam:bool = false
 
 @export var cur_points := 0
 @export var num_balls: int = 3
@@ -14,6 +15,7 @@ var cur_strafe_mod = 1.0
 
 # whether or not there is a ball in play on the board
 var is_ball_in_play:bool = false
+var is_ball_launch_prep:bool = false
 
 func _ready() -> void:
 	Global.gameLogic = self
@@ -24,6 +26,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	checkInput()
 
+# checks for user input
 func checkInput() -> void:
 	
 	# check left paddle input
@@ -41,6 +44,24 @@ func checkInput() -> void:
 	else: if Input.is_action_just_released("paddle_right"):
 		#print("paddle right btn released")
 		signal_manager.emit_signal("right_paddle", false)
+	
+	if is_ball_in_play:
+		if Input.is_action_just_pressed("return_ball"):
+			pass
+	else:
+		# checks if user has pressed the button to begin launching the ball
+		# only alowed if a ball is not already in play & the player has at least 1 ball avaiable for use
+		if Input.is_action_just_pressed("launch_ball") and !is_ball_launch_prep and num_balls >= 1:
+			is_ball_launch_prep = true
+			signal_manager.emit_signal("start_ball_launch")
+		
+		# checks for when player releases the launch ball button
+		if Input.is_action_just_released("launch_ball") and is_ball_launch_prep:
+			is_ball_launch_prep = false
+			is_ball_in_play = true
+			signal_manager.emit_signal("finish_ball_launch")
+		
+	
 	
 
 # updates the current points by the given amount

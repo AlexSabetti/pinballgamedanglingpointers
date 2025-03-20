@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4r1olpwnewxr"]
+
+[ext_resource type="Script" uid="uid://by1m8c0e7a5vy" path="res://Scripts/ball_launcher.gd" id="1_wvl6c"]
+[ext_resource type="Texture2D" uid="uid://b8pwrbfjay1mg" path="res://Resources/Textures/Sprites/PlaceHolderGuy.png" id="2_wvl6c"]
+[ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="3_pdpbn"]
+
+[node name="BallCaster" type="Node2D"]
+script = ExtResource("1_wvl6c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -27)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_wvl6c")
+
+[node name="LaunchPosition" type="Node2D" parent="."]
+position = Vector2(0, -45)
+
+[node name="Label" type="Label" parent="."]
+offset_top = -76.0
+offset_right = 54.0
+offset_bottom = -53.0
+theme = ExtResource("3_pdpbn")
+text = "0"

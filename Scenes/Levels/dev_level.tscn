@@ -1,9 +1,10 @@
-[gd_scene load_steps=57 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=25 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://dydf8crpits10" path="res://Scenes/Entities/bumper.tscn" id="3_5de3p"]
 [ext_resource type="PackedScene" uid="uid://dt717xlm4kygx" path="res://Scenes/Entities/obsticle_box.tscn" id="4_x6hwe"]
+[ext_resource type="PackedScene" uid="uid://785u5c1jkney" path="res://Scenes/Entities/deathVolume.tscn" id="5_qxfwy"]
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
 [ext_resource type="PackedScene" uid="uid://doja10tjwix3v" path="res://Ball2.tscn" id="7_ef5lw"]
@@ -12,547 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://vfwuffu7xfp1" path="res://Resources/Textures/EB_MediumPurpleWoodPlanksTexture_a1.png" id="9_pl0og"]
 [ext_resource type="PackedScene" uid="uid://c54lx2rcg7udm" path="res://Scenes/Entities/water2D.tscn" id="9_w50ga"]
 [ext_resource type="Texture2D" uid="uid://bqkyx5irlol2o" path="res://Resources/Textures/Sprites/HandSprouts1_c2.png" id="10_soqci"]
-[ext_resource type="Texture2D" uid="uid://di1gy70yfnx3h" path="res://Resources/Textures/Sprites/Reeds1_c1.png" id="11_7h40v"]
 [ext_resource type="Texture2D" uid="uid://dq66rgog0f8rk" path="res://Resources/Textures/Sprites/HandSprouts1_c1.png" id="11_h8dmb"]
 [ext_resource type="PackedScene" uid="uid://4isin4p7or4b" path="res://Scenes/Entities/grass1.tscn" id="11_pl0og"]
+[ext_resource type="Texture2D" uid="uid://colxa7rc48bsb" path="res://Resources/Textures/Sprites/Reeds2_a1.png" id="13_jioky"]
+[ext_resource type="Texture2D" uid="uid://cr84gnmxdj4jc" path="res://Resources/Textures/Sprites/Reeds1_a1.png" id="13_qxfwy"]
+[ext_resource type="PackedScene" uid="uid://b4r1olpwnewxr" path="res://Scenes/Entities/ball_launcher.tscn" id="16_jioky"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_npfnl"]
-expanded_output_ports = [0]
-source = 5
-
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_jdwpr"]
-parameter_name = "Texture2D"
-texture_type = 1
-texture_filter = 1
-texture_repeat = 1
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_hog8f"]
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_vo27t"]
-constant = 1.0
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_0sbyx"]
-constant = 0.5
-
-[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_dgxpp"]
-constant = 0.5
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_76vmv"]
-expanded_output_ports = [0]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_lwrb3"]
-function = 31
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_8jtm6"]
-parameter_name = "sway_speed"
-default_value_enabled = true
-default_value = 1.0
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_cf8dn"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_yhl1a"]
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_g60gh"]
-input_name = "time"
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ljb20"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_54avq"]
-function = 31
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_2chxf"]
-expanded_output_ports = [0]
-input_name = "uv"
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_uianh"]
-input_name = "vertex"
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_wyl50"]
-default_input_values = [0, 0.0, 1, 1.0]
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ngkhi"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(2, 2)]
-expanded_output_ports = [0]
-op_type = 0
-operator = 4
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_tva1y"]
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_lfwyp"]
-input_name = "vertex"
-
-[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_6fiac"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0.25, 0.25)]
-expanded_output_ports = [0]
-op_type = 0
-operator = 4
-
-[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_007x2"]
-expanded_output_ports = [0]
-input_name = "vertex"
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8jr6p"]
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ql1ds"]
-default_input_values = [0, 0.0, 1, 0.25]
-operator = 1
-
-[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_qkheg"]
-op_type = 0
-
-[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_aed24"]
-function = 0
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_sxyla"]
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_cnt14"]
-operator = 2
-
-[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_whbyh"]
-parameter_name = "sway_amount"
-default_value_enabled = true
-default_value = 0.1
-
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8qh6b"]
-operator = 2
-
-[sub_resource type="VisualShader" id="VisualShader_h8dmb"]
-resource_local_to_scene = true
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform float sway_amount = 0.10000000149012;
-uniform float sway_speed = 1.0;
-uniform sampler2D Texture2D : source_color, filter_nearest, repeat_enable;
-
-
-
-void vertex() {
-// Input:10
-	vec2 n_out10p0 = UV;
-	float n_out10p2 = n_out10p0.g;
-
-
-// FloatFunc:11
-	float n_out11p0 = 1.0 - n_out10p2;
-
-
-// FloatParameter:8
-	float n_out8p0 = sway_amount;
-
-
-// Input:23
-	vec2 n_out23p0 = VERTEX;
-
-
-// VectorOp:26
-	vec2 n_in26p1 = vec2(2.00000, 2.00000);
-	vec2 n_out26p0 = mod(n_out23p0, n_in26p1);
-	float n_out26p1 = n_out26p0.r;
-	float n_out26p2 = n_out26p0.g;
-
-
-// FloatOp:27
-	float n_out27p0 = n_out26p1 + n_out26p2;
-
-
-// Input:2
-	float n_out2p0 = TIME;
-
-
-// FloatParameter:12
-	float n_out12p0 = sway_speed;
-
-
-// FloatOp:13
-	float n_out13p0 = n_out2p0 * n_out12p0;
-
-
-// FloatOp:25
-	float n_out25p0 = n_out27p0 + n_out13p0;
-
-
-// FloatFunc:4
-	float n_out4p0 = sin(n_out25p0);
-
-
-// FloatOp:7
-	float n_out7p0 = n_out8p0 * n_out4p0;
-
-
-// FloatOp:9
-	float n_out9p0 = n_out11p0 * n_out7p0;
-
-
-// Input:3
-	vec2 n_out3p0 = VERTEX;
-	float n_out3p1 = n_out3p0.r;
-	float n_out3p2 = n_out3p0.g;
-
-
-// FloatOp:6
-	float n_out6p0 = n_out9p0 + n_out3p1;
-
-
-// Input:22
-	vec2 n_out22p0 = UV;
-	float n_out22p2 = n_out22p0.g;
-
-
-// FloatFunc:21
-	float n_out21p0 = 1.0 - n_out22p2;
-
-
-// Input:28
-	vec2 n_out28p0 = VERTEX;
-
-
-// VectorOp:29
-	vec2 n_in29p1 = vec2(0.25000, 0.25000);
-	vec2 n_out29p0 = mod(n_out28p0, n_in29p1);
-	float n_out29p1 = n_out29p0.r;
-	float n_out29p2 = n_out29p0.g;
-
-
-// FloatOp:30
-	float n_out30p0 = n_out29p1 + n_out29p2;
-
-
-// FloatOp:31
-	float n_in31p1 = 0.25000;
-	float n_out31p0 = n_out30p0 - n_in31p1;
-
-
-// FloatOp:20
-	float n_out20p0 = n_out21p0 * n_out31p0;
-
-
-// FloatOp:19
-	float n_out19p0 = n_out3p2 + n_out20p0;
-
-
-// VectorCompose:32
-	vec2 n_out32p0 = vec2(n_out6p0, n_out19p0);
-
-
-// Output:0
-	VERTEX = n_out32p0;
-
-
-}
-
-void fragment() {
-	vec4 n_out2p0;
-// Texture2D:2
-	n_out2p0 = texture(Texture2D, UV);
-	float n_out2p4 = n_out2p0.a;
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out2p0.xyz);
-	COLOR.a = n_out2p4;
-
-
-}
-"
-graph_offset = Vector2(-1540.29, -80.4559)
-mode = 1
-flags/light_only = false
-nodes/vertex/0/position = Vector2(400, 120)
-nodes/vertex/2/node = SubResource("VisualShaderNodeInput_g60gh")
-nodes/vertex/2/position = Vector2(-2460, 100)
-nodes/vertex/3/node = SubResource("VisualShaderNodeInput_007x2")
-nodes/vertex/3/position = Vector2(-600, 220)
-nodes/vertex/4/node = SubResource("VisualShaderNodeFloatFunc_aed24")
-nodes/vertex/4/position = Vector2(-1180, 80)
-nodes/vertex/6/node = SubResource("VisualShaderNodeFloatOp_sxyla")
-nodes/vertex/6/position = Vector2(-240, 140)
-nodes/vertex/7/node = SubResource("VisualShaderNodeFloatOp_cnt14")
-nodes/vertex/7/position = Vector2(-800, -40)
-nodes/vertex/8/node = SubResource("VisualShaderNodeFloatParameter_whbyh")
-nodes/vertex/8/position = Vector2(-1140, -160)
-nodes/vertex/9/node = SubResource("VisualShaderNodeFloatOp_8qh6b")
-nodes/vertex/9/position = Vector2(-501.251, -100)
-nodes/vertex/10/node = SubResource("VisualShaderNodeInput_76vmv")
-nodes/vertex/10/position = Vector2(-1161.25, -340)
-nodes/vertex/11/node = SubResource("VisualShaderNodeFloatFunc_lwrb3")
-nodes/vertex/11/position = Vector2(-861.251, -280)
-nodes/vertex/12/node = SubResource("VisualShaderNodeFloatParameter_8jtm6")
-nodes/vertex/12/position = Vector2(-2500, 200)
-nodes/vertex/13/node = SubResource("VisualShaderNodeFloatOp_cf8dn")
-nodes/vertex/13/position = Vector2(-2160, 80)
-nodes/vertex/19/node = SubResource("VisualShaderNodeFloatOp_yhl1a")
-nodes/vertex/19/position = Vector2(-240, 420)
-nodes/vertex/20/node = SubResource("VisualShaderNodeFloatOp_ljb20")
-nodes/vertex/20/position = Vector2(-560, 460)
-nodes/vertex/21/node = SubResource("VisualShaderNodeFloatFunc_54avq")
-nodes/vertex/21/position = Vector2(-900, 440)
-nodes/vertex/22/node = SubResource("VisualShaderNodeInput_2chxf")
-nodes/vertex/22/position = Vector2(-1200, 380)
-nodes/vertex/23/node = SubResource("VisualShaderNodeInput_uianh")
-nodes/vertex/23/position = Vector2(-2400, -220)
-nodes/vertex/25/node = SubResource("VisualShaderNodeFloatOp_wyl50")
-nodes/vertex/25/position = Vector2(-1540, 40)
-nodes/vertex/26/node = SubResource("VisualShaderNodeVectorOp_ngkhi")
-nodes/vertex/26/position = Vector2(-2020, -340)
-nodes/vertex/27/node = SubResource("VisualShaderNodeFloatOp_tva1y")
-nodes/vertex/27/position = Vector2(-1800, -280)
-nodes/vertex/28/node = SubResource("VisualShaderNodeInput_lfwyp")
-nodes/vertex/28/position = Vector2(-1660, 600)
-nodes/vertex/29/node = SubResource("VisualShaderNodeVectorOp_6fiac")
-nodes/vertex/29/position = Vector2(-1340, 540)
-nodes/vertex/30/node = SubResource("VisualShaderNodeFloatOp_8jr6p")
-nodes/vertex/30/position = Vector2(-1080, 600)
-nodes/vertex/31/node = SubResource("VisualShaderNodeFloatOp_ql1ds")
-nodes/vertex/31/position = Vector2(-900, 600)
-nodes/vertex/32/node = SubResource("VisualShaderNodeVectorCompose_qkheg")
-nodes/vertex/32/position = Vector2(60, 160)
-nodes/vertex/connections = PackedInt32Array(8, 0, 7, 0, 7, 0, 9, 1, 9, 0, 6, 0, 4, 0, 7, 1, 11, 0, 9, 0, 12, 0, 13, 1, 21, 0, 20, 0, 20, 0, 19, 1, 26, 1, 27, 0, 27, 0, 25, 0, 13, 0, 25, 1, 25, 0, 4, 0, 29, 1, 30, 0, 30, 0, 31, 0, 31, 0, 20, 1, 6, 0, 32, 0, 19, 0, 32, 1, 32, 0, 0, 0, 26, 2, 27, 1, 2, 0, 13, 0, 22, 2, 21, 0, 29, 2, 30, 1, 28, 0, 29, 0, 23, 0, 26, 0, 10, 2, 11, 0, 3, 1, 6, 1, 3, 2, 19, 0)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_npfnl")
-nodes/fragment/2/position = Vector2(-180, 120)
-nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_jdwpr")
-nodes/fragment/3/position = Vector2(-520, 20)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_hog8f")
-nodes/fragment/5/position = Vector2(-120, 380)
-nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_vo27t")
-nodes/fragment/6/position = Vector2(-120, 460)
-nodes/fragment/7/node = SubResource("VisualShaderNodeFloatConstant_0sbyx")
-nodes/fragment/7/position = Vector2(-120, 560)
-nodes/fragment/8/node = SubResource("VisualShaderNodeFloatConstant_dgxpp")
-nodes/fragment/8/position = Vector2(-120, 660)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 0, 0, 2, 4, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxfwy"]
-resource_local_to_scene = true
-shader = SubResource("VisualShader_h8dmb")
-shader_parameter/sway_amount = 0.1
-shader_parameter/sway_speed = 1.0
-shader_parameter/Texture2D = ExtResource("10_soqci")
-
-[sub_resource type="VisualShader" id="VisualShader_7h40v"]
-resource_local_to_scene = true
-code = "shader_type canvas_item;
-render_mode blend_mix;
-
-uniform float sway_amount = 0.10000000149012;
-uniform float sway_speed = 1.0;
-uniform sampler2D Texture2D : source_color, filter_nearest, repeat_enable;
-
-
-
-void vertex() {
-// Input:10
-	vec2 n_out10p0 = UV;
-	float n_out10p2 = n_out10p0.g;
-
-
-// FloatFunc:11
-	float n_out11p0 = 1.0 - n_out10p2;
-
-
-// FloatParameter:8
-	float n_out8p0 = sway_amount;
-
-
-// Input:23
-	vec2 n_out23p0 = VERTEX;
-
-
-// VectorOp:26
-	vec2 n_in26p1 = vec2(2.00000, 2.00000);
-	vec2 n_out26p0 = mod(n_out23p0, n_in26p1);
-	float n_out26p1 = n_out26p0.r;
-	float n_out26p2 = n_out26p0.g;
-
-
-// FloatOp:27
-	float n_out27p0 = n_out26p1 + n_out26p2;
-
-
-// Input:2
-	float n_out2p0 = TIME;
-
-
-// FloatParameter:12
-	float n_out12p0 = sway_speed;
-
-
-// FloatOp:13
-	float n_out13p0 = n_out2p0 * n_out12p0;
-
-
-// FloatOp:25
-	float n_out25p0 = n_out27p0 + n_out13p0;
-
-
-// FloatFunc:4
-	float n_out4p0 = sin(n_out25p0);
-
-
-// FloatOp:7
-	float n_out7p0 = n_out8p0 * n_out4p0;
-
-
-// FloatOp:9
-	float n_out9p0 = n_out11p0 * n_out7p0;
-
-
-// Input:3
-	vec2 n_out3p0 = VERTEX;
-	float n_out3p1 = n_out3p0.r;
-	float n_out3p2 = n_out3p0.g;
-
-
-// FloatOp:6
-	float n_out6p0 = n_out9p0 + n_out3p1;
-
-
-// Input:22
-	vec2 n_out22p0 = UV;
-	float n_out22p2 = n_out22p0.g;
-
-
-// FloatFunc:21
-	float n_out21p0 = 1.0 - n_out22p2;
-
-
-// Input:28
-	vec2 n_out28p0 = VERTEX;
-
-
-// VectorOp:29
-	vec2 n_in29p1 = vec2(0.25000, 0.25000);
-	vec2 n_out29p0 = mod(n_out28p0, n_in29p1);
-	float n_out29p1 = n_out29p0.r;
-	float n_out29p2 = n_out29p0.g;
-
-
-// FloatOp:30
-	float n_out30p0 = n_out29p1 + n_out29p2;
-
-
-// FloatOp:31
-	float n_in31p1 = 0.25000;
-	float n_out31p0 = n_out30p0 - n_in31p1;
-
-
-// FloatOp:20
-	float n_out20p0 = n_out21p0 * n_out31p0;
-
-
-// FloatOp:19
-	float n_out19p0 = n_out3p2 + n_out20p0;
-
-
-// VectorCompose:32
-	vec2 n_out32p0 = vec2(n_out6p0, n_out19p0);
-
-
-// Output:0
-	VERTEX = n_out32p0;
-
-
-}
-
-void fragment() {
-	vec4 n_out2p0;
-// Texture2D:2
-	n_out2p0 = texture(Texture2D, UV);
-	float n_out2p4 = n_out2p0.a;
-
-
-// Output:0
-	COLOR.rgb = vec3(n_out2p0.xyz);
-	COLOR.a = n_out2p4;
-
-
-}
-"
-graph_offset = Vector2(-818.414, -100.721)
-mode = 1
-flags/light_only = false
-nodes/vertex/0/position = Vector2(400, 120)
-nodes/vertex/2/node = SubResource("VisualShaderNodeInput_g60gh")
-nodes/vertex/2/position = Vector2(-2460, 100)
-nodes/vertex/3/node = SubResource("VisualShaderNodeInput_007x2")
-nodes/vertex/3/position = Vector2(-600, 220)
-nodes/vertex/4/node = SubResource("VisualShaderNodeFloatFunc_aed24")
-nodes/vertex/4/position = Vector2(-1180, 80)
-nodes/vertex/6/node = SubResource("VisualShaderNodeFloatOp_sxyla")
-nodes/vertex/6/position = Vector2(-240, 140)
-nodes/vertex/7/node = SubResource("VisualShaderNodeFloatOp_cnt14")
-nodes/vertex/7/position = Vector2(-800, -40)
-nodes/vertex/8/node = SubResource("VisualShaderNodeFloatParameter_whbyh")
-nodes/vertex/8/position = Vector2(-1140, -160)
-nodes/vertex/9/node = SubResource("VisualShaderNodeFloatOp_8qh6b")
-nodes/vertex/9/position = Vector2(-501.251, -100)
-nodes/vertex/10/node = SubResource("VisualShaderNodeInput_76vmv")
-nodes/vertex/10/position = Vector2(-1161.25, -340)
-nodes/vertex/11/node = SubResource("VisualShaderNodeFloatFunc_lwrb3")
-nodes/vertex/11/position = Vector2(-861.251, -280)
-nodes/vertex/12/node = SubResource("VisualShaderNodeFloatParameter_8jtm6")
-nodes/vertex/12/position = Vector2(-2500, 200)
-nodes/vertex/13/node = SubResource("VisualShaderNodeFloatOp_cf8dn")
-nodes/vertex/13/position = Vector2(-2160, 80)
-nodes/vertex/19/node = SubResource("VisualShaderNodeFloatOp_yhl1a")
-nodes/vertex/19/position = Vector2(-240, 420)
-nodes/vertex/20/node = SubResource("VisualShaderNodeFloatOp_ljb20")
-nodes/vertex/20/position = Vector2(-560, 460)
-nodes/vertex/21/node = SubResource("VisualShaderNodeFloatFunc_54avq")
-nodes/vertex/21/position = Vector2(-900, 440)
-nodes/vertex/22/node = SubResource("VisualShaderNodeInput_2chxf")
-nodes/vertex/22/position = Vector2(-1200, 380)
-nodes/vertex/23/node = SubResource("VisualShaderNodeInput_uianh")
-nodes/vertex/23/position = Vector2(-2340, -200)
-nodes/vertex/25/node = SubResource("VisualShaderNodeFloatOp_wyl50")
-nodes/vertex/25/position = Vector2(-1540, 40)
-nodes/vertex/26/node = SubResource("VisualShaderNodeVectorOp_ngkhi")
-nodes/vertex/26/position = Vector2(-2020, -340)
-nodes/vertex/27/node = SubResource("VisualShaderNodeFloatOp_tva1y")
-nodes/vertex/27/position = Vector2(-1800, -280)
-nodes/vertex/28/node = SubResource("VisualShaderNodeInput_lfwyp")
-nodes/vertex/28/position = Vector2(-1660, 600)
-nodes/vertex/29/node = SubResource("VisualShaderNodeVectorOp_6fiac")
-nodes/vertex/29/position = Vector2(-1340, 540)
-nodes/vertex/30/node = SubResource("VisualShaderNodeFloatOp_8jr6p")
-nodes/vertex/30/position = Vector2(-1080, 600)
-nodes/vertex/31/node = SubResource("VisualShaderNodeFloatOp_ql1ds")
-nodes/vertex/31/position = Vector2(-900, 600)
-nodes/vertex/32/node = SubResource("VisualShaderNodeVectorCompose_qkheg")
-nodes/vertex/32/position = Vector2(60, 160)
-nodes/vertex/connections = PackedInt32Array(8, 0, 7, 0, 7, 0, 9, 1, 9, 0, 6, 0, 4, 0, 7, 1, 11, 0, 9, 0, 12, 0, 13, 1, 21, 0, 20, 0, 20, 0, 19, 1, 26, 1, 27, 0, 27, 0, 25, 0, 13, 0, 25, 1, 25, 0, 4, 0, 29, 1, 30, 0, 30, 0, 31, 0, 31, 0, 20, 1, 6, 0, 32, 0, 19, 0, 32, 1, 32, 0, 0, 0, 26, 2, 27, 1, 2, 0, 13, 0, 22, 2, 21, 0, 29, 2, 30, 1, 28, 0, 29, 0, 23, 0, 26, 0, 10, 2, 11, 0, 3, 1, 6, 1, 3, 2, 19, 0)
-nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_npfnl")
-nodes/fragment/2/position = Vector2(-180, 120)
-nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_jdwpr")
-nodes/fragment/3/position = Vector2(-520, 20)
-nodes/fragment/5/node = SubResource("VisualShaderNodeFloatConstant_hog8f")
-nodes/fragment/5/position = Vector2(-120, 380)
-nodes/fragment/6/node = SubResource("VisualShaderNodeFloatConstant_vo27t")
-nodes/fragment/6/position = Vector2(-120, 460)
-nodes/fragment/7/node = SubResource("VisualShaderNodeFloatConstant_0sbyx")
-nodes/fragment/7/position = Vector2(-120, 560)
-nodes/fragment/8/node = SubResource("VisualShaderNodeFloatConstant_dgxpp")
-nodes/fragment/8/position = Vector2(-120, 660)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 2, 0, 0, 0, 2, 4, 0, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jioky"]
-resource_local_to_scene = true
-shader = SubResource("VisualShader_7h40v")
-shader_parameter/sway_amount = 0.1
-shader_parameter/sway_speed = 1.0
-shader_parameter/Texture2D = ExtResource("11_7h40v")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7h40v"]
-resource_local_to_scene = true
-shader = SubResource("VisualShader_h8dmb")
-shader_parameter/sway_amount = 0.1
-shader_parameter/sway_speed = 1.0
-shader_parameter/Texture2D = ExtResource("11_h8dmb")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjxb5"]
 size = Vector2(42.6666, 2.66632)
@@ -586,8 +53,8 @@ color = Color(0.708712, 0.634212, 0.534457, 1)
 [node name="MeshInstance2D-BG" type="MeshInstance2D" parent="."]
 modulate = Color(0.941176, 0.898039, 0.796078, 1)
 light_mask = 16
-position = Vector2(478, 712)
-scale = Vector2(1860, 1424)
+position = Vector2(478, 603)
+scale = Vector2(1860, 1642)
 mesh = SubResource("QuadMesh_w50ga")
 metadata/_edit_lock_ = true
 
@@ -607,9 +74,15 @@ mesh = SubResource("QuadMesh_w50ga")
 [node name="GameLogic" parent="." node_paths=PackedStringArray("cur_camera") instance=ExtResource("7_5de3p")]
 cur_camera = NodePath("../Camera2D")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 482)
+limit_top = 0
+limit_smoothed = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
 [node name="Water2d" parent="." instance=ExtResource("9_w50ga")]
 position = Vector2(-480, 144)
-draw_water_overlay = true
 surface_color = Color(0.832174, 0.743568, 0.634347, 1)
 water_color = Color(0.386454, 0.303655, 0.232853, 0.613)
 deep_water_color = Color(0.258092, 0.247623, 0.177002, 1)
@@ -620,7 +93,6 @@ polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1280, 0, 1280)
 
 [node name="Water2d2" parent="." instance=ExtResource("9_w50ga")]
 position = Vector2(-480, 1344)
-draw_water_overlay = true
 surface_color = Color(0.832, 0.744, 0.634, 0)
 water_color = Color(0.289431, 0.276601, 0.199582, 1)
 deep_water_color = Color(0.112462, 0.166072, 0.134514, 1)
@@ -629,19 +101,30 @@ deep_water_color = Color(0.112462, 0.166072, 0.134514, 1)
 visible = false
 polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1280, 0, 1280)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 482)
-limit_top = 0
-limit_smoothed = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-
 [node name="UI_game" parent="." instance=ExtResource("2_a4gs4")]
 
 [node name="Entities" type="Node2D" parent="."]
 
+[node name="DeathVolume" parent="Entities" instance=ExtResource("5_qxfwy")]
+position = Vector2(455, 1348)
+
+[node name="CollisionShape2D" parent="Entities/DeathVolume" index="0"]
+position = Vector2(3, 72.5)
+
+[node name="BallLauncher" parent="Entities" instance=ExtResource("16_jioky")]
+position = Vector2(887, 105)
+
+[node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
+position = Vector2(439, 26)
+
 [node name="FlipperL" parent="Entities" instance=ExtResource("6_bnqav")]
 position = Vector2(276, 288)
+resting_rotation = 315.0
+max_rotation = 400.0
+isLeftPaddle = true
+
+[node name="FlipperL4" parent="Entities" instance=ExtResource("6_bnqav")]
+position = Vector2(756, 1093)
 resting_rotation = 315.0
 max_rotation = 400.0
 isLeftPaddle = true
@@ -688,9 +171,6 @@ position = Vector2(637, 873)
 [node name="Bumper4" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(480, 256)
 
-[node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
-position = Vector2(439, 26)
-
 [node name="Collectable" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(308, 808)
 point_value = 20
@@ -698,30 +178,26 @@ point_value = 20
 [node name="Detail" type="Node2D" parent="."]
 
 [node name="Grass4" parent="Detail" instance=ExtResource("11_pl0og")]
-position = Vector2(556, 726)
+position = Vector2(556, 720)
 rotation = 3.14159
 scale = Vector2(0.99998, -1)
-
-[node name="MeshInstance2D" parent="Detail/Grass4" index="0"]
-material = SubResource("ShaderMaterial_qxfwy")
+tex = ExtResource("10_soqci")
+meshOffset = Vector2(-6.855, -98.135)
+meshScale = Vector2(132.02, 207.465)
 
 [node name="Grass1" parent="Detail" instance=ExtResource("11_pl0og")]
-position = Vector2(534, 726)
+position = Vector2(521, 728)
+tex = ExtResource("13_jioky")
 
 [node name="Grass3" parent="Detail" instance=ExtResource("11_pl0og")]
-position = Vector2(534, 726)
-
-[node name="MeshInstance2D" parent="Detail/Grass3" index="0"]
-material = SubResource("ShaderMaterial_jioky")
-position = Vector2(-458, 161)
-rotation = -6.28318
-scale = Vector2(57.5403, 115.022)
+position = Vector2(92, 825)
+rotation = 3.14159
+tex = ExtResource("13_qxfwy")
+meshScale = Vector2(78.82, 128)
 
 [node name="Grass2" parent="Detail" instance=ExtResource("11_pl0og")]
 position = Vector2(233, 943)
-
-[node name="MeshInstance2D" parent="Detail/Grass2" index="0"]
-material = SubResource("ShaderMaterial_7h40v")
+tex = ExtResource("11_h8dmb")
 
 [node name="Geometry" type="Node2D" parent="."]
 position = Vector2(0, 1)
@@ -749,6 +225,20 @@ position = Vector2(0.000183105, 0.902451)
 shape = SubResource("RectangleShape2D_qjxb5")
 
 [node name="MeshInstance2D" parent="Geometry/ObsticleBox11" index="1"]
+position = Vector2(-2.28882e-05, 0.764737)
+scale = Vector2(192, 11.8486)
+mesh = SubResource("QuadMesh_h8dmb")
+texture = ExtResource("9_pl0og")
+
+[node name="ObsticleBox12" parent="Geometry" instance=ExtResource("4_x6hwe")]
+position = Vector2(20, 351)
+rotation = 1.83259
+
+[node name="CollisionShape2D" parent="Geometry/ObsticleBox12" index="0"]
+position = Vector2(0.000183105, 0.902451)
+shape = SubResource("RectangleShape2D_qjxb5")
+
+[node name="MeshInstance2D" parent="Geometry/ObsticleBox12" index="1"]
 position = Vector2(-2.28882e-05, 0.764737)
 scale = Vector2(192, 11.8486)
 mesh = SubResource("QuadMesh_h8dmb")
@@ -825,8 +315,7 @@ polygon = PackedVector2Array(640, 1087, 768, 1087, 704, 1215, 640, 1215)
 
 [editable path="Water2d"]
 [editable path="Water2d2"]
-[editable path="Detail/Grass4"]
-[editable path="Detail/Grass3"]
-[editable path="Detail/Grass2"]
+[editable path="Entities/DeathVolume"]
 [editable path="Geometry/ObsticleBox10"]
 [editable path="Geometry/ObsticleBox11"]
+[editable path="Geometry/ObsticleBox12"]

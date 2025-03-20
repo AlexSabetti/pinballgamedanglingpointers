@@ -1,18 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://4isin4p7or4b"]
+[gd_scene load_steps=7 format=3 uid="uid://4isin4p7or4b"]
 
 [ext_resource type="Shader" uid="uid://b617y5hgv63qg" path="res://Resources/Shaders/GrassShader2D.tres" id="1_7n7tx"]
-[ext_resource type="Texture2D" uid="uid://h5xaii5b01rn" path="res://Resources/Textures/Sprites/Reeds2_b1.png" id="2_7n7tx"]
+[ext_resource type="Script" uid="uid://b00rm0s14ci4b" path="res://Scripts/grass_1.gd" id="1_y41u6"]
+[ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="2_g2b2f"]
+[ext_resource type="Texture2D" uid="uid://colxa7rc48bsb" path="res://Resources/Textures/Sprites/Reeds2_a1.png" id="2_l87j8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g2b2f"]
 resource_local_to_scene = true
 shader = ExtResource("1_7n7tx")
 shader_parameter/sway_amount = 0.1
 shader_parameter/sway_speed = 1.0
-shader_parameter/Texture2D = ExtResource("2_7n7tx")
+shader_parameter/WobbleRate = 3.8
+shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
+shader_parameter/NormalMap = ExtResource("2_g2b2f")
+shader_parameter/UVOffset2 = Vector2(0.32, 0.4)
+shader_parameter/DistortionAmount = 0.003
 
 [sub_resource type="QuadMesh" id="QuadMesh_7n7tx"]
 
-[node name="Grass1" type="Node2D"]
+[node name="Foliage" type="Node2D"]
+script = ExtResource("1_y41u6")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 material = SubResource("ShaderMaterial_g2b2f")
@@ -20,3 +27,4 @@ position = Vector2(0, -64)
 rotation = -3.14159
 scale = Vector2(96, 128)
 mesh = SubResource("QuadMesh_7n7tx")
+texture = ExtResource("2_l87j8")

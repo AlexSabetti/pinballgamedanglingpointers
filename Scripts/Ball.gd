@@ -76,6 +76,8 @@ func _on_body_entered(body: Node) -> void:
 	
 
 func destroy_ball():
+	Global.gameLogic.is_ball_in_play = false
+	print("ball destroyed")
 	# We'll either make this send a signal or have the game logic code check whether or not the ball is considered "recoverable" despite its demise
 	queue_free()
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgvno0pt16qnj"
-path.s3tc="res://.godot/imported/LifeRing_a1.png-10014d0144b77d51417d34c56f54f1b7.s3tc.ctex"
+uid="uid://c5hbnn4w6ke30"
+path.s3tc="res://.godot/imported/7864-normal.jpg-471e3ae05adc770b4e0001961d4d9db4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Resources/Textures/Sprites/LifeRing_a1.png"
-dest_files=["res://.godot/imported/LifeRing_a1.png-10014d0144b77d51417d34c56f54f1b7.s3tc.ctex"]
+source_file="res://Resources/Textures/NormalMaps/7864-normal.jpg"
+dest_files=["res://.godot/imported/7864-normal.jpg-471e3ae05adc770b4e0001961d4d9db4.s3tc.ctex"]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
