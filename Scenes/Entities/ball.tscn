@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ci547dyrld7jq"]
 
 [ext_resource type="PhysicsMaterial" uid="uid://cith272whnw8y" path="res://Resources/Materials/PM_ballPhysics.tres" id="1_bds8w"]
-[ext_resource type="Script" path="res://Scripts/Ball.gd" id="1_bihuk"]
+[ext_resource type="Script" uid="uid://cddjye1eef8nd" path="res://Scripts/Ball.gd" id="1_bihuk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rp2tb"]
 radius = 8.0

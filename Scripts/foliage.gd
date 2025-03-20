@@ -2,10 +2,10 @@
 class_name Foliage
 extends Node2D
 
-@export var tex:Texture2D = load("res://Resources/Textures/Sprites/Reeds2_a1.png"):
+@export var foliage_Texture:Texture2D = load("res://Resources/Textures/Sprites/Reeds2_a1.png"):
 	set(t):
-		tex = t
-		$MeshInstance2D.texture = tex
+		foliage_Texture = t
+		#$MeshInstance2D.texture = foliage_Texture
 @export var meshOffset := Vector2(0.0, -64.0):
 	set(offset):
 		meshOffset = offset
@@ -18,4 +18,5 @@ extends Node2D
 
 @onready var mesh := $MeshInstance2D
 func _ready() -> void:
-	mesh.texture = tex
+	mesh.texture = foliage_Texture
+	pass

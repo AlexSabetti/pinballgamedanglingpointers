@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://4isin4p7or4b"]
 
 [ext_resource type="Shader" uid="uid://b617y5hgv63qg" path="res://Resources/Shaders/GrassShader2D.tres" id="1_7n7tx"]
-[ext_resource type="Script" uid="uid://b00rm0s14ci4b" path="res://Scripts/grass_1.gd" id="1_y41u6"]
+[ext_resource type="Script" uid="uid://b00rm0s14ci4b" path="res://Scripts/foliage.gd" id="1_y41u6"]
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="2_g2b2f"]
 [ext_resource type="Texture2D" uid="uid://colxa7rc48bsb" path="res://Resources/Textures/Sprites/Reeds2_a1.png" id="2_l87j8"]
 
@@ -20,6 +20,7 @@ shader_parameter/DistortionAmount = 0.003
 
 [node name="Foliage" type="Node2D"]
 script = ExtResource("1_y41u6")
+foliage_Texture = ExtResource("2_l87j8")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
 material = SubResource("ShaderMaterial_g2b2f")

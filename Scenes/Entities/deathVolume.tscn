@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bbgyneavdqpqq" path="res://Scripts/death_volume.gd" id="1_nehvg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i0m3i"]
-size = Vector2(2570, 271)
+size = Vector2(179, 1745)
 
 [node name="DeathVolume" type="Area2D"]
 collision_mask = 2
