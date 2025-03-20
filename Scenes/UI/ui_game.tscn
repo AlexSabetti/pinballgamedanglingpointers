@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dptuwkou7rtwb"]
 
-[ext_resource type="Script" path="res://Scripts/ui_game.gd" id="1_l7wrt"]
+[ext_resource type="Script" path="res://Scripts/shopUI.gd" id="1_3byfw"]
 [ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="1_xriyr"]
 
 [node name="UI_game" type="CanvasLayer"]
-script = ExtResource("1_l7wrt")
+script = ExtResource("1_3byfw")
+ball_mass_cost = 100
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -36,11 +37,13 @@ theme_override_constants/separation = 10
 [node name="MassLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/StatBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
 text = "Ball Mass: 10"
 
 [node name="BallLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/StatBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
 text = "Balls Left: 3"
 
 [node name="BallBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
@@ -50,6 +53,7 @@ alignment = 1
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/BallBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
 text = "New Ball"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -66,6 +70,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MassBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
 text = "+ Mass"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -81,6 +86,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/StrafeBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
 text = "+ Horizontal Speed"
 
 [node name="StrafeButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/StrafeBox"]
@@ -88,7 +94,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "100 pts"
 
-[node name="LaunchButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-tooltip_text = "You can launch more than one ball, but you can't control them individually."
-text = "LAUNCH BALL"
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BallBox/BallButton" to="." method="_on_ball_purchase"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MassBox/MassButton" to="." method="_on_mass_purchase"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/StrafeBox/StrafeButton" to="." method="_on_strafe_purchase"]
