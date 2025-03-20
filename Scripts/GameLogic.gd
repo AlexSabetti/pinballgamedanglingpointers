@@ -6,6 +6,8 @@ var signal_manager: SigBus = Manager
 var cur_points = 0
 @export var num_balls: int = 3
 
+@onready var game_ui: shopUI = $GameUI
+
 var current_ball_mass: float = 10.0
 var current_ball_radius: float = 8
 var cur_strafe_mod = 1.0
@@ -40,22 +42,11 @@ func checkInput() -> void:
 		#print("paddle right btn released")
 		signal_manager.emit_signal("right_paddle", false)
 	
-
-# updates the current points by the given amount
-func update_points(points: int):
-	cur_points += points
-
-func redeem_points(points: int):
-	if cur_points >= points:
-		cur_points -= points
-		return true
-	else:
-		return false
-
 func _on_ball_lost():
 	num_balls -= 1
-	if num_balls <= 0:
+	if num_balls <= 0 and shopUI.cur_points < 200:
 		print("Game Over")
+		# end game here
 	else:
 		var main_node = get_tree().get_root().get_node("Main/Balls")
 		var ball_scene = load("res://Scenes/Ball.tscn")
@@ -72,11 +63,6 @@ func _on_mass_update(mass: float):
 func _on_radius_update(radius: float):
 	current_ball_radius = radius
 
-# tries to purchases a ball
-func _on_ball_purchase():
-	if redeem_points(100):
-		num_balls += 1
-		print("ball +1")
-	else:
-		print("Not enough points")
-		# Either put a pop-up or a sound effect
+func launch_ball():
+
+
