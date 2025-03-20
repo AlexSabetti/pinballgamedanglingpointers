@@ -28,6 +28,7 @@ layout_mode = 2
 layout_mode = 2
 theme = ExtResource("1_xriyr")
 text = "Points: 0"
+horizontal_alignment = 1
 
 [node name="StatBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -36,12 +37,17 @@ theme_override_constants/separation = 10
 [node name="MassLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/StatBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 24
 text = "Ball Mass: 10"
 
 [node name="BallLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/StatBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 24
 text = "Balls Left: 3"
+horizontal_alignment = 2
 
 [node name="BallBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -50,8 +56,9 @@ alignment = 1
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/BallBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 24
 text = "New Ball"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BallButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/BallBox"]
@@ -66,8 +73,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MassBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 24
 text = "+ Mass"
-horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MassButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MassBox"]
@@ -81,6 +89,8 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/StrafeBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 24
 text = "+ Horizontal Speed"
 
 [node name="StrafeButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/StrafeBox"]

@@ -11,7 +11,7 @@ var signal_manager: SigBus = Manager
 
 @onready var game_ui: shopUI = $UI_game
 
-var current_ball_mass: float = 3.0
+var current_ball_mass: float = 0.7
 var current_ball_radius: float = 8
 var cur_strafe_mod = 1.5
 
