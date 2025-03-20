@@ -1,6 +1,5 @@
 [gd_scene load_steps=26 format=3 uid="uid://dy2xtfmqqdllt"]
 
-
 [ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://dydf8crpits10" path="res://Scenes/Entities/bumper.tscn" id="3_5de3p"]
@@ -15,9 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://c54lx2rcg7udm" path="res://Scenes/Entities/water2D.tscn" id="9_w50ga"]
 [ext_resource type="Texture2D" uid="uid://bqkyx5irlol2o" path="res://Resources/Textures/Sprites/HandSprouts1_c2.png" id="10_soqci"]
 [ext_resource type="Texture2D" uid="uid://dq66rgog0f8rk" path="res://Resources/Textures/Sprites/HandSprouts1_c1.png" id="11_h8dmb"]
-[ext_resource type="PackedScene" uid="uid://4isin4p7or4b" path="res://Scenes/Entities/grass1.tscn" id="11_pl0og"]
-[ext_resource type="Script" path="res://Scripts/death_volume.gd" id="11_uq5vq"]
-[ext_resource type="Texture2D" uid="uid://colxa7rc48bsb" path="res://Resources/Textures/Sprites/Reeds2_a1.png" id="13_jioky"]
+[ext_resource type="PackedScene" uid="uid://4isin4p7or4b" path="res://Scenes/Entities/foliage.tscn" id="11_pl0og"]
+[ext_resource type="Script" uid="uid://bbgyneavdqpqq" path="res://Scripts/death_volume.gd" id="11_uq5vq"]
 [ext_resource type="Texture2D" uid="uid://cr84gnmxdj4jc" path="res://Resources/Textures/Sprites/Reeds1_a1.png" id="13_qxfwy"]
 [ext_resource type="PackedScene" uid="uid://b4r1olpwnewxr" path="res://Scenes/Entities/ball_launcher.tscn" id="16_jioky"]
 
@@ -111,7 +109,6 @@ polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1280, 0, 1280)
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="DeathVolume" parent="Entities" instance=ExtResource("5_qxfwy")]
-
 position = Vector2(1964, 1351)
 
 [node name="CollisionShape2D" parent="Entities/DeathVolume" index="0"]
@@ -334,8 +331,6 @@ polygon = PackedVector2Array(640, 1087, 768, 1087, 704, 1215, 640, 1215)
 [editable path="Water2d"]
 [editable path="Water2d2"]
 [editable path="Entities/DeathVolume"]
-[editable path="Entities/DeathVolume2"]
-[editable path="Entities/DeathVolume3"]
 [editable path="Geometry/ObsticleBox10"]
 [editable path="Geometry/ObsticleBox11"]
 [editable path="Geometry/ObsticleBox12"]

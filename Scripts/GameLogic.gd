@@ -98,6 +98,3 @@ func _on_mass_update(mass: float):
 # sets the current ball radius to the given value
 func _on_radius_update(radius: float):
 	current_ball_radius = radius
-
-
-

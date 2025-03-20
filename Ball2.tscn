@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://doja10tjwix3v"]
+[gd_scene load_steps=8 format=3 uid="uid://doja10tjwix3v"]
 
 [ext_resource type="Script" uid="uid://cddjye1eef8nd" path="res://Scripts/Ball.gd" id="1_1idr5"]
+[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/SM_Wobble1.tres" id="2_3mkva"]
+[ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="3_88but"]
+[ext_resource type="SpriteFrames" uid="uid://c68etcw1q4yr" path="res://Resources/Textures/Sprites/SpriteFrames/SF_HookBall.tres" id="4_3mkva"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3dv24"]
 radius = 8.0
@@ -8,6 +11,14 @@ radius = 8.0
 [sub_resource type="SphereMesh" id="SphereMesh_syysi"]
 radius = 8.0
 height = 16.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5qrd7"]
+shader = ExtResource("2_3mkva")
+shader_parameter/WobbleRate = 3.8
+shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
+shader_parameter/NormalMap = ExtResource("3_88but")
+shader_parameter/UVOffset2 = Vector2(0.32, 0.4)
+shader_parameter/DistortionAmount = 0.004
 
 [node name="Node2D" type="RigidBody2D"]
 collision_layer = 2
@@ -23,6 +34,13 @@ strafe_mod = 1.5
 shape = SubResource("CircleShape2D_3dv24")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+visible = false
 mesh = SubResource("SphereMesh_syysi")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_5qrd7")
+scale = Vector2(0.085, 0.085)
+sprite_frames = ExtResource("4_3mkva")
+speed_scale = 0.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
