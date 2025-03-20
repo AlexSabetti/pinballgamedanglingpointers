@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://colwigqlnjn"]
+[gd_scene load_steps=13 format=3 uid="uid://colwigqlnjn"]
 
 [ext_resource type="Script" uid="uid://quro5q0yvao" path="res://Systems/SoundManagement/soundManager2D.gd" id="1_uoj5c"]
 [ext_resource type="PackedScene" uid="uid://cjqcu4itr61v" path="res://Systems/SoundManagement/SoundPool2D.tscn" id="2_tu5l5"]
@@ -8,6 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://fwbenjw4e47e" path="res://Resources/Sounds/cbar_hitbod2.wav" id="5_4xbfn"]
 [ext_resource type="AudioStream" uid="uid://ca8dmxppafqfi" path="res://Resources/Sounds/cbar_hitbod3.wav" id="6_bpljn"]
 [ext_resource type="AudioStream" uid="uid://b05pdl4hqosvj" path="res://Resources/Sounds/SplashSFX.wav" id="8_4xbfn"]
+[ext_resource type="AudioStream" uid="uid://bnjl0ubdjbujn" path="res://Resources/Sounds/CartoonSlipSound.wav" id="8_bpljn"]
+[ext_resource type="AudioStream" uid="uid://cjtpdgpiabv8i" path="res://Resources/Sounds/RotaryPhoneTick0.wav" id="10_maoej"]
+[ext_resource type="AudioStream" uid="uid://bnj4cmvh1nwki" path="res://Resources/Sounds/RotaryPhoneTick2.wav" id="11_aba08"]
+[ext_resource type="AudioStream" uid="uid://gtk3thhxl7ym" path="res://Resources/Sounds/RotaryPhoneTick3.wav" id="12_0owne"]
 
 [node name="SoundManager2D" type="Node2D"]
 script = ExtResource("1_uoj5c")
@@ -50,6 +54,14 @@ maxPitch = 1.2
 stream = ExtResource("4_olbb8")
 volume_db = 1.0
 
+[node name="SQ_slip" parent="." instance=ExtResource("3_q1dqv")]
+minPitch = 0.8
+maxPitch = 1.2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SQ_slip"]
+stream = ExtResource("8_bpljn")
+volume_db = 1.0
+
 [node name="SQ_splash" parent="." instance=ExtResource("3_q1dqv")]
 count = 2
 volumeDBModifier = 0.4
@@ -58,4 +70,24 @@ maxPitch = 1.15
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SQ_splash"]
 stream = ExtResource("8_4xbfn")
-volume_db = -8.0
+volume_db = 0.4
+
+[node name="SP_tick" parent="." instance=ExtResource("2_tu5l5")]
+
+[node name="SoundQueue2D" parent="SP_tick" instance=ExtResource("3_q1dqv")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SP_tick/SoundQueue2D"]
+stream = ExtResource("10_maoej")
+volume_db = 1.0
+
+[node name="SoundQueue2D2" parent="SP_tick" instance=ExtResource("3_q1dqv")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SP_tick/SoundQueue2D2"]
+stream = ExtResource("11_aba08")
+volume_db = 1.0
+
+[node name="SoundQueue2D3" parent="SP_tick" instance=ExtResource("3_q1dqv")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SP_tick/SoundQueue2D3"]
+stream = ExtResource("12_0owne")
+volume_db = 1.0

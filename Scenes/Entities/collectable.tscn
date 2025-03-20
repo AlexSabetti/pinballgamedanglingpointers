@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://c31odm5i6n0c6"]
+
+[ext_resource type="Script" uid="uid://hnkfujmqpkui" path="res://Scripts/collectable.gd" id="1_yicvy"]
+[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/SM_Wobble1.tres" id="3_jt01v"]
+[ext_resource type="SpriteFrames" uid="uid://btpgrd6o8qnw5" path="res://Resources/Textures/Sprites/SpriteFrames/SF_greyFish.tres" id="4_nayn7"]
+[ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="4_v3y3w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdtve"]
+radius = 3.78431
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt01v"]
+shader = ExtResource("3_jt01v")
+shader_parameter/WobbleRate = 3.8
+shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
+shader_parameter/NormalMap = ExtResource("4_v3y3w")
+shader_parameter/UVOffset2 = Vector2(0.32, 0.4)
+shader_parameter/DistortionAmount = 0.003
+
+[node name="Collectable" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_yicvy")
+idleSpriteFrames = ExtResource("4_nayn7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3.8147e-06)
+scale = Vector2(4.5, 4.5)
+shape = SubResource("CircleShape2D_vdtve")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jt01v")
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("4_nayn7")
+offset = Vector2(3, -4)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

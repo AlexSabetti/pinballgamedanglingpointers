@@ -28,6 +28,17 @@ func setVolumeDBModifier(vol:float):
 			soundQueue.volumeDBModifier = volumeDBModifier
 		
 
+func setPitch(minP:float, maxP:float):
+	minPitch = minP
+	maxPitch = maxP
+	
+	for soundQueue in sounds:
+		# overrides SoundQueueSettings to match 
+		# those of the soundPool if true.
+		if overrideSoundQueueSettings:
+			soundQueue.minPitch = minPitch
+			soundQueue.maxPitch = maxPitch
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# goes through each child of the soundPool

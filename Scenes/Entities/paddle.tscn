@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cysp5xv0gmlxc"]
+[gd_scene load_steps=6 format=3 uid="uid://cysp5xv0gmlxc"]
 
 [ext_resource type="Script" uid="uid://cdybf1g46omoq" path="res://Scripts/Paddle.gd" id="1_j60bu"]
+[ext_resource type="Texture2D" uid="uid://c0ixnboekkdpe" path="res://Resources/Textures/EB_GreenerWoodTexture_b1.png" id="2_mwvv4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j60bu"]
 size = Vector2(1, 1)
@@ -33,6 +34,7 @@ position = Vector2(32.0025, -0.00276504)
 rotation = -1.5708
 scale = Vector2(15.988, 64)
 mesh = SubResource("QuadMesh_siir1")
+texture = ExtResource("2_mwvv4")
 
 [node name="MeshInstance2D2" type="MeshInstance2D" parent="Origin/RigidBody2D"]
 position = Vector2(1.19209e-07, 2.74181e-06)
