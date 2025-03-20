@@ -11,12 +11,12 @@ var signal_manager: SigBus = Manager
 
 @onready var game_ui: shopUI = $UI_game
 
-var current_ball_mass: float = 10.0
+var current_ball_mass: float = 3.0
 var current_ball_radius: float = 8
-var cur_strafe_mod = 1.0
+var cur_strafe_mod = 1.5
 
 # whether or not there is a ball in play on the board
-var is_ball_in_play:bool = false
+var is_ball_in_play:bool = true
 var is_ball_launch_prep:bool = false
 
 func _ready() -> void:
@@ -98,3 +98,6 @@ func _on_mass_update(mass: float):
 # sets the current ball radius to the given value
 func _on_radius_update(radius: float):
 	current_ball_radius = radius
+
+
+

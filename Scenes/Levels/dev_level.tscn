@@ -1,5 +1,6 @@
 [gd_scene load_steps=26 format=3 uid="uid://dy2xtfmqqdllt"]
 
+
 [ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://dydf8crpits10" path="res://Scenes/Entities/bumper.tscn" id="3_5de3p"]
@@ -14,17 +15,16 @@
 [ext_resource type="PackedScene" uid="uid://c54lx2rcg7udm" path="res://Scenes/Entities/water2D.tscn" id="9_w50ga"]
 [ext_resource type="Texture2D" uid="uid://bqkyx5irlol2o" path="res://Resources/Textures/Sprites/HandSprouts1_c2.png" id="10_soqci"]
 [ext_resource type="Texture2D" uid="uid://dq66rgog0f8rk" path="res://Resources/Textures/Sprites/HandSprouts1_c1.png" id="11_h8dmb"]
-[ext_resource type="PackedScene" uid="uid://4isin4p7or4b" path="res://Scenes/Entities/foliage.tscn" id="11_pl0og"]
+[ext_resource type="PackedScene" uid="uid://4isin4p7or4b" path="res://Scenes/Entities/grass1.tscn" id="11_pl0og"]
+[ext_resource type="Script" path="res://Scripts/death_volume.gd" id="11_uq5vq"]
+[ext_resource type="Texture2D" uid="uid://colxa7rc48bsb" path="res://Resources/Textures/Sprites/Reeds2_a1.png" id="13_jioky"]
 [ext_resource type="Texture2D" uid="uid://cr84gnmxdj4jc" path="res://Resources/Textures/Sprites/Reeds1_a1.png" id="13_qxfwy"]
 [ext_resource type="PackedScene" uid="uid://b4r1olpwnewxr" path="res://Scenes/Entities/ball_launcher.tscn" id="16_jioky"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxfwy"]
-size = Vector2(736, 2021)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1g1s"]
-size = Vector2(880, 669)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gad6j"]
+size = Vector2(20, 82.0422)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjxb5"]
 size = Vector2(42.6666, 2.66632)
@@ -111,24 +111,11 @@ polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1280, 0, 1280)
 [node name="Entities" type="Node2D" parent="."]
 
 [node name="DeathVolume" parent="Entities" instance=ExtResource("5_qxfwy")]
-position = Vector2(-538, 1312)
+
+position = Vector2(1964, 1351)
 
 [node name="CollisionShape2D" parent="Entities/DeathVolume" index="0"]
-position = Vector2(-3.5, -8.5)
-
-[node name="DeathVolume2" parent="Entities" instance=ExtResource("5_qxfwy")]
-position = Vector2(1528, 61)
-
-[node name="CollisionShape2D" parent="Entities/DeathVolume2" index="0"]
-position = Vector2(-160, 733.5)
-shape = SubResource("RectangleShape2D_qxfwy")
-
-[node name="DeathVolume3" parent="Entities" instance=ExtResource("5_qxfwy")]
-position = Vector2(-664, 56)
-
-[node name="CollisionShape2D" parent="Entities/DeathVolume3" index="0"]
-position = Vector2(192, 57.5)
-shape = SubResource("RectangleShape2D_v1g1s")
+position = Vector2(-897, -527)
 
 [node name="BallLauncher" parent="Entities" instance=ExtResource("16_jioky")]
 position = Vector2(887, 105)
@@ -193,6 +180,15 @@ position = Vector2(448, 256)
 [node name="Collectable" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(308, 808)
 point_value = 20
+
+[node name="DeathVolume2" type="Area2D" parent="Entities"]
+position = Vector2(-238, 704)
+script = ExtResource("11_uq5vq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/DeathVolume2"]
+position = Vector2(124, 6)
+scale = Vector2(12, 22.72)
+shape = SubResource("RectangleShape2D_gad6j")
 
 [node name="Detail" type="Node2D" parent="."]
 
