@@ -77,18 +77,19 @@ func redeem_points(points: int):
 	else:
 		return false
 
-func _on_ball_lost():
-	num_balls -= 1
-	if num_balls <= 0:
-		print("Game Over")
-		# end game here
-	else:
-		var main_node = get_tree().get_root().get_node("Main/Balls")
-		var ball_scene = load("res://Scenes/Ball.tscn")
-		var inst = ball_scene.instantiate()
-		inst.load_specifics(current_ball_mass, current_ball_radius, Color.BROWN, cur_strafe_mod)
-		main_node.add_child(inst)
-		inst.launch_downwards(Vector2(0, -100))
+# This isn't really needed anymore
+# func _on_ball_lost():
+# 	num_balls -= 1
+# 	if num_balls <= 0:
+# 		print("Game Over")
+# 		# end game here
+# 	else:
+# 		var main_node = get_tree().get_root().get_node("Main/Balls")
+# 		var ball_scene = load("res://Scenes/Ball.tscn")
+# 		var inst = ball_scene.instantiate()
+# 		inst.load_specifics(current_ball_mass, current_ball_radius, Color.BROWN, cur_strafe_mod)
+# 		main_node.add_child(inst)
+# 		inst.launch_downwards(Vector2(0, -100))
 
 # sets the current ball mass to the given value
 func _on_mass_update(mass: float):

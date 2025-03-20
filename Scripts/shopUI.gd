@@ -1,14 +1,14 @@
 class_name shopUI
-extends Control
+extends CanvasLayer
 
 var signal_manager: SigBus = Manager
 
-@onready var ball_mass_label: Label = $MarginContainer/VBoxContainer/StatBox/MassLabel
-@onready var points_label: Label = $MarginContainer/VBoxContainer/StatBox/PointLabel
-@onready var balls_left_label: Label = $MarginContainer/VBoxContainer/StatBox/BallLabel
-@onready var new_ball_button: Button = $MarginContainer/VBoxContainer/BallBox/BallButton
-@onready var mass_button: Button = $MarginContainer/VBoxContainer/MassBox/MassButton
-@onready var strafe_button: Button = $MarginContainer/VBoxContainer/StrafeBox/StrafeButton
+@onready var ball_mass_label: Label = $MarginContainer/MarginContainer/VBoxContainer/StatBox/MassLabel
+@onready var points_label: Label = $MarginContainer/MarginContainer/VBoxContainer/ScoreLabel
+@onready var balls_left_label: Label = $MarginContainer/MarginContainer/VBoxContainer/StatBox/BallLabel
+@onready var new_ball_button: Button = $MarginContainer/MarginContainer/VBoxContainer/BallBox/BallButton
+@onready var mass_button: Button = $MarginContainer/MarginContainer/VBoxContainer/MassBox/MassButton
+@onready var strafe_button: Button = $MarginContainer/MarginContainer/VBoxContainer/StrafeBox/StrafeButton
 
 @export var ball_mass_cost: int = 1000
 @export var ball_cost: int = 200
@@ -23,6 +23,14 @@ var signal_manager: SigBus = Manager
 
 
 var cur_points = 0
+func _ready():
+	print("Shop UI Ready!")
+	signal_manager.connect("add_points", update_points)
+	ball_mass_label.text = "Ball Mass: " + str(Global.gameLogic.current_ball_mass)
+	mass_button.text = str(ball_mass_cost) + " pts"
+	strafe_button.text = str(strafe_cost) + " pts"
+	
+
 
 func redeem_points(points: int):
 	if cur_points >= points:
@@ -64,12 +72,7 @@ func _on_strafe_purchase():
 		print("Not enough points")
 		# Either put a pop-up or a sound effect
 
-func _on_launch_ball():
-	if Global.gameLogic.num_balls > 0:
-		Global.gameLogic.num_balls -= 1
-		balls_left_label.text = "Balls Left: " + str(Global.gameLogic.num_balls)
-		print("Ball launched")
-		Global.gameLogic.launch_ball()
-	else:
-		print("No balls left")
-		# Either put a pop-up or a sound effect
+func update_points(points: int):
+	print("Points: " + str(points))
+	cur_points += points
+	points_label.text = "Points: " + str(cur_points)

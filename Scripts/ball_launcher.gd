@@ -49,7 +49,10 @@ func finish_ball_launch() -> void:
 	var launch_velocity = Vector2.RIGHT.rotated(deg_to_rad(launch_angle)) * launch_power * 6
 	
 	# instantiates new ball in current scene and moves it to proper starting point
-	var ball = ballScene.instantiate()
+	var ball: Ball = ballScene.instantiate()
+	ball.load_specifics(Global.gameLogic.current_ball_mass, Global.gameLogic.current_ball_radius, Global.gameLogic.cur_strafe_mod)
+	Global.gameLogic.num_balls -= 1
+	signal_manager.emit_signal("update_stats")
 	add_sibling(ball)
 	ball.position = position + ballStartOffset
 	

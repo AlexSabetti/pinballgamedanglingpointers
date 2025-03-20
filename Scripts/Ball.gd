@@ -18,7 +18,8 @@ var density: float
 
 var cur_water_level: float
 
-var strafe_mod: float = 1.0
+@export var strafe_mod: float = 1.0
+var signal_manager: SigBus = Manager
 
 func _ready():
 	if volume == null or volume == 0:
@@ -68,6 +69,8 @@ func _integrate_forces(state):
 		print("volume: " + str(volume))
 		var buoyant_force =  (Global.water_density *  Global.standard_gravity) - (density * Global.standard_gravity) # aprox_submerged *
 		state.apply_central_force(Vector2(0, buoyant_force))
+		if state.linear_velocity.y < Global.water_density * 1.3 * Global.standard_gravity:
+			state.linear_velocity.y = Global.water_density * 1.3 * Global.standard_gravity
 		print("Buoyant Force: " + str(buoyant_force))
 
 # recieve signal for when something collides with the ball
@@ -76,6 +79,7 @@ func _on_body_entered(body: Node) -> void:
 	if body is Bumper:
 		(body as Bumper).bumper_hit() 
 		print("bumper hit!")
+		signal_manager.emit_signal("add_points", (body as Bumper).point_value)
 	
 	# play sound:
 	var volMod = ( (abs(linear_velocity.x) + abs(linear_velocity.y) ) / 2.0 ) / 20.0
@@ -92,7 +96,7 @@ func destroy_ball():
 	queue_free()
 
 
-func load_specifics(given_mass: float, given_radius: float, given_color: Color, strafe_mod: float):
+func load_specifics(given_mass: float, given_radius: float, strafe_mod: float):
 	if given_mass > 0:
 		self.def_mass = given_mass
 		mass = given_mass
@@ -100,13 +104,12 @@ func load_specifics(given_mass: float, given_radius: float, given_color: Color, 
 	if given_radius > 0:
 		self.def_radius = given_radius
 	
-	if given_color == null:
-		self.color = def_color
-	else:
-		self.color = given_color
 
 	volume = PI * def_radius * def_radius
 	density = def_mass / volume
+
+	col= $CollisionShape2D
+	obj_mesh = $MeshInstance2D
 
 	col.shape.radius = def_radius
 	obj_mesh.mesh.radius = def_radius
