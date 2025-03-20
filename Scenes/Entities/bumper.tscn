@@ -49,7 +49,7 @@ offset_right = 40.0
 offset_bottom = -8.0
 scale = Vector2(1e-05, 1e-05)
 theme = ExtResource("6_txshi")
-theme_override_colors/font_color = Color(0.899779, 0.849829, 0.586366, 1)
+theme_override_colors/font_color = Color(0.955761, 0.863089, 0.794327, 1)
 theme_override_font_sizes/font_size = 16
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
