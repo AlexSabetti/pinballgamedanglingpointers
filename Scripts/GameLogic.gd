@@ -9,7 +9,7 @@ var signal_manager: SigBus = Manager
 @export var cur_points := 0
 @export var num_balls: int = 3
 
-@onready var game_ui: shopUI = $GameUI
+@onready var game_ui: shopUI = $UI_game
 
 var current_ball_mass: float = 10.0
 var current_ball_radius: float = 8
@@ -79,7 +79,7 @@ func redeem_points(points: int):
 
 func _on_ball_lost():
 	num_balls -= 1
-	if num_balls <= 0 and shopUI.cur_points < 200:
+	if num_balls <= 0:
 		print("Game Over")
 		# end game here
 	else:
@@ -97,7 +97,3 @@ func _on_mass_update(mass: float):
 # sets the current ball radius to the given value
 func _on_radius_update(radius: float):
 	current_ball_radius = radius
-
-func launch_ball():
-
-

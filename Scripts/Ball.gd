@@ -18,6 +18,8 @@ var density: float
 
 var cur_water_level: float
 
+var strafe_mod: float = 1.0
+
 func _ready():
 	if volume == null or volume == 0:
 		volume = PI * def_radius * def_radius
@@ -37,7 +39,7 @@ func _physics_process(delta):
 	else:
 		# check left ball control input
 		if Input.is_action_pressed("move_left"):
-			linear_velocity.x += -0.5
+			linear_velocity.x += -0.5 * strafe_mod
 			linear_velocity.x = max(linear_velocity.x, -20) 
 		# else: if Input.is_action_just_released("move_left"):
 		# 	linear_velocity.x += 0.5
@@ -45,9 +47,10 @@ func _physics_process(delta):
 		
 		# check right ball control input
 		if Input.is_action_pressed("move_right"):
-			linear_velocity.x += 0.5
+			linear_velocity.x += 0.5 * strafe_mod
 			linear_velocity.x = min(linear_velocity.x, 20)
-		
+		#if(linear_velocity.y < Global.standard_gravity * 2):
+			#linear_velocity.y = Global.standard_gravity * 2
 	# else: if Input.is_action_just_released("move_right"):
 	# 	signal_manager.emit_signal("move_ball_right", false)
 
@@ -59,9 +62,11 @@ func _integrate_forces(state):
 		var aprox_submerged = global_position.y - cur_water_level
 		if(aprox_submerged < 0):
 			aprox_submerged = 0
+		if(aprox_submerged > 2 * def_radius):
+			aprox_submerged = 2 * def_radius
 		print("submerged by: " + str(aprox_submerged))
 		print("volume: " + str(volume))
-		var buoyant_force =  (Global.water_density * aprox_submerged * Global.standard_gravity)
+		var buoyant_force =  (Global.water_density *  Global.standard_gravity) - (density * Global.standard_gravity) # aprox_submerged *
 		state.apply_central_force(Vector2(0, buoyant_force))
 		print("Buoyant Force: " + str(buoyant_force))
 
@@ -81,7 +86,7 @@ func _on_body_entered(body: Node) -> void:
 	
 
 func destroy_ball():
-	Global.gameLogic.is_ball_in_play = false
+	
 	print("ball destroyed")
 	# We'll either make this send a signal or have the game logic code check whether or not the ball is considered "recoverable" despite its demise
 	queue_free()
@@ -90,6 +95,7 @@ func destroy_ball():
 func load_specifics(given_mass: float, given_radius: float, given_color: Color, strafe_mod: float):
 	if given_mass > 0:
 		self.def_mass = given_mass
+		mass = given_mass
 
 	if given_radius > 0:
 		self.def_radius = given_radius
@@ -105,6 +111,7 @@ func load_specifics(given_mass: float, given_radius: float, given_color: Color, 
 	col.shape.radius = def_radius
 	obj_mesh.mesh.radius = def_radius
 	obj_mesh.mesh.height = def_radius * 2
+	strafe_mod = strafe_mod
 	
 func transfer_out_of_water():
 	in_water = false

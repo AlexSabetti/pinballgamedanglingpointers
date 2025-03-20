@@ -116,6 +116,7 @@ position = Vector2(887, 105)
 
 [node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
 position = Vector2(439, 26)
+def_mass = 0.6
 
 [node name="FlipperL" parent="Entities" instance=ExtResource("6_bnqav")]
 position = Vector2(276, 288)
