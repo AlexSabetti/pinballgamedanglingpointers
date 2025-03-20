@@ -12,3 +12,6 @@ signal finish_ball_launch()
 # For the shop / ui
 signal update_stats()
 signal add_points(points: int)
+
+# endgame sequence
+signal endgame()

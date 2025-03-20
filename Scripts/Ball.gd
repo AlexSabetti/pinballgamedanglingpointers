@@ -40,16 +40,16 @@ func _physics_process(delta):
 	else:
 		# check left ball control input
 		if Input.is_action_pressed("move_left"):
-			linear_velocity.x += -0.5 * strafe_mod
-			linear_velocity.x = max(linear_velocity.x, -20) 
+			linear_velocity.x += -1 * strafe_mod
+			#linear_velocity.x = max(linear_velocity.x, -100) 
 		# else: if Input.is_action_just_released("move_left"):
 		# 	linear_velocity.x += 0.5
 		# 	linear_velocity.x = min(linear_velocity.x, 20)
 		
 		# check right ball control input
 		if Input.is_action_pressed("move_right"):
-			linear_velocity.x += 0.5 * strafe_mod
-			linear_velocity.x = min(linear_velocity.x, 20)
+			linear_velocity.x += 1 * strafe_mod
+			#linear_velocity.x = min(linear_velocity.x, 100)
 		#if(linear_velocity.y < Global.standard_gravity * 2):
 			#linear_velocity.y = Global.standard_gravity * 2
 	# else: if Input.is_action_just_released("move_right"):
@@ -69,8 +69,8 @@ func _integrate_forces(state):
 		print("volume: " + str(volume))
 		var buoyant_force =  (Global.water_density *  Global.standard_gravity) - (density * Global.standard_gravity) # aprox_submerged *
 		state.apply_central_force(Vector2(0, buoyant_force))
-		if state.linear_velocity.y < Global.water_density * 1.3 * Global.standard_gravity:
-			state.linear_velocity.y = Global.water_density * 1.3 * Global.standard_gravity
+		if state.linear_velocity.y < Global.water_density * 0.9 * Global.standard_gravity:
+			state.linear_velocity.y = Global.water_density * 0.9 * Global.standard_gravity
 		print("Buoyant Force: " + str(buoyant_force))
 
 # recieve signal for when something collides with the ball
@@ -92,6 +92,7 @@ func _on_body_entered(body: Node) -> void:
 func destroy_ball():
 	
 	print("ball destroyed")
+	Global.gameLogic.is_ball_in_play = false
 	# We'll either make this send a signal or have the game logic code check whether or not the ball is considered "recoverable" despite its demise
 	queue_free()
 

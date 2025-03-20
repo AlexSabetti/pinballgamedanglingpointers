@@ -1,10 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=29 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://dydf8crpits10" path="res://Scenes/Entities/bumper.tscn" id="3_5de3p"]
+[ext_resource type="Script" path="res://Scripts/camera_endgame.gd" id="3_s552w"]
 [ext_resource type="PackedScene" uid="uid://dt717xlm4kygx" path="res://Scenes/Entities/obsticle_box.tscn" id="4_x6hwe"]
-[ext_resource type="PackedScene" uid="uid://785u5c1jkney" path="res://Scenes/Entities/deathVolume.tscn" id="5_qxfwy"]
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
 [ext_resource type="PackedScene" uid="uid://doja10tjwix3v" path="res://Ball2.tscn" id="7_ef5lw"]
@@ -19,11 +19,12 @@
 [ext_resource type="Texture2D" uid="uid://colxa7rc48bsb" path="res://Resources/Textures/Sprites/Reeds2_a1.png" id="13_jioky"]
 [ext_resource type="Texture2D" uid="uid://cr84gnmxdj4jc" path="res://Resources/Textures/Sprites/Reeds1_a1.png" id="13_qxfwy"]
 [ext_resource type="PackedScene" uid="uid://b4r1olpwnewxr" path="res://Scenes/Entities/ball_launcher.tscn" id="16_jioky"]
+[ext_resource type="Script" path="res://Scripts/endgame_volume.gd" id="21_tx5x5"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gad6j"]
-size = Vector2(20, 82.0422)
+size = Vector2(19.6667, 82.0422)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjxb5"]
 size = Vector2(42.6666, 2.66632)
@@ -38,6 +39,9 @@ polygon = PackedVector2Array(1280, 127, 704, 279, 768, 575, 768, 767, 896, 895, 
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_jioky"]
 polygon = PackedVector2Array(-128, 367, 288, 279, 224, 447, 232, 719, 128, 831, 64.0488, 831, 0, 703, -128, 703)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gci2r"]
+size = Vector2(899, 391)
 
 [node name="Dev_Level" type="Node2D"]
 
@@ -84,6 +88,7 @@ limit_top = 0
 limit_smoothed = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+script = ExtResource("3_s552w")
 
 [node name="Water2d" parent="." instance=ExtResource("9_w50ga")]
 position = Vector2(-480, 144)
@@ -109,18 +114,13 @@ polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 1280, 0, 1280)
 
 [node name="Entities" type="Node2D" parent="."]
 
-[node name="DeathVolume" parent="Entities" instance=ExtResource("5_qxfwy")]
-position = Vector2(1964, 1351)
-
-[node name="CollisionShape2D" parent="Entities/DeathVolume" index="0"]
-position = Vector2(-897, -527)
-
 [node name="BallLauncher" parent="Entities" instance=ExtResource("16_jioky")]
 position = Vector2(887, 105)
 
 [node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
 position = Vector2(439, 26)
-def_mass = 0.6
+linear_damp = 10.0
+def_mass = 3.0
 
 [node name="FlipperL" parent="Entities" instance=ExtResource("6_bnqav")]
 position = Vector2(276, 288)
@@ -185,7 +185,7 @@ position = Vector2(-238, 704)
 script = ExtResource("11_uq5vq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/DeathVolume2"]
-position = Vector2(124, 6)
+position = Vector2(122, 6)
 scale = Vector2(12, 22.72)
 shape = SubResource("RectangleShape2D_gad6j")
 
@@ -327,9 +327,19 @@ color = Color(0.776471, 0.776471, 0.776471, 1)
 texture = ExtResource("9_6nybb")
 polygon = PackedVector2Array(640, 1087, 768, 1087, 704, 1215, 640, 1215)
 
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(474, 1270)
+script = ExtResource("21_tx5x5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-22.5, 185.5)
+shape = SubResource("RectangleShape2D_gci2r")
+
+[connection signal="body_entered" from="Entities/DeathVolume2" to="Entities/DeathVolume2" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
+
 [editable path="Water2d"]
 [editable path="Water2d2"]
-[editable path="Entities/DeathVolume"]
 [editable path="Geometry/ObsticleBox10"]
 [editable path="Geometry/ObsticleBox11"]
 [editable path="Geometry/ObsticleBox12"]
