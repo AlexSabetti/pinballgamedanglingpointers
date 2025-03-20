@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c31odm5i6n0c6"]
+[gd_scene load_steps=8 format=3 uid="uid://c31odm5i6n0c6"]
 
 [ext_resource type="Script" uid="uid://hnkfujmqpkui" path="res://Scripts/collectable.gd" id="1_yicvy"]
 [ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/SM_Wobble1.tres" id="3_jt01v"]
 [ext_resource type="SpriteFrames" uid="uid://btpgrd6o8qnw5" path="res://Resources/Textures/Sprites/SpriteFrames/SF_greyFish.tres" id="4_nayn7"]
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="4_v3y3w"]
+[ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="5_v3y3w"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdtve"]
 radius = 3.78431
@@ -37,5 +38,14 @@ offset = Vector2(3, -4)
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="PointLabel" type="Label" parent="."]
+offset_top = -31.0
+offset_right = 40.0
+offset_bottom = -8.0
+scale = Vector2(1e-05, 1e-05)
+theme = ExtResource("5_v3y3w")
+theme_override_colors/font_color = Color(0.899779, 0.849829, 0.586366, 1)
+theme_override_font_sizes/font_size = 16
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

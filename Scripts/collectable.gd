@@ -10,11 +10,14 @@ var isActive:bool = true
 @onready var Collider:CollisionShape2D = $CollisionShape2D
 @onready var Sprite:AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
+@onready var pointLabel:Label = $PointLabel
 
 # function for when the bumper gets hit
 func collectable_hit() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(0.0, 0.0), 0.2).from(Vector2(1.0,1.0)).set_trans(Tween.TRANS_ELASTIC)
+	pointLabel.text = "+" + str(point_value)
+	tween.parallel().tween_property(pointLabel, "scale",  Vector2(1.0,1.0), 0.2).from(Vector2(0.0,0.0)).set_trans(Tween.TRANS_ELASTIC)
 	print("colected!!")
 	SoundManager2D.PlaySoundQueue2D("SQ_slip")
 	Global.gameLogic.update_points(point_value)
@@ -24,4 +27,5 @@ func collectable_hit() -> void:
 func _on_timer_timeout() -> void:
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1.0, 1.0), 0.2).set_trans(Tween.TRANS_ELASTIC)
+	tween.parallel().tween_property(pointLabel, "scale",  Vector2(0.0,0.0), 0.25).set_trans(Tween.TRANS_BOUNCE)
 	isActive = true

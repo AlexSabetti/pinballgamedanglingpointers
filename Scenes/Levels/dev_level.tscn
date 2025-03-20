@@ -174,6 +174,9 @@ position = Vector2(637, 873)
 [node name="Bumper4" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(448, 256)
 
+[node name="Bumper5" parent="Entities" instance=ExtResource("3_5de3p")]
+position = Vector2(-96, 1184)
+
 [node name="Collectable" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(308, 808)
 point_value = 20
@@ -276,13 +279,13 @@ occluder = SubResource("OccluderPolygon2D_v1g1s")
 [node name="StaticPolygon2D" type="StaticBody2D" parent="Geometry"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D"]
-polygon = PackedVector2Array(1280, 127, 704, 279, 768, 575, 768, 767, 896, 895, 896, 1279, 1280, 1279)
+polygon = PackedVector2Array(1280, 127, 704, 279, 768, 575, 768, 767, 896, 895, 880, 1151, 896, 1279, 896, 1663, 1472, 1663, 1472, 127)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D"]
 texture_repeat = 2
 color = Color(0.776471, 0.776471, 0.776471, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(1280, 127, 704, 279, 768, 575, 768, 767, 896, 895, 896, 1279, 1280, 1279)
+polygon = PackedVector2Array(1280, 127, 704, 279, 768, 575, 768, 767, 896, 895, 880, 1151, 896, 1279, 896, 1663, 1472, 1663, 1472, 127)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Geometry/StaticPolygon2D"]
 visible = false
@@ -292,13 +295,13 @@ occluder_light_mask = 2147483647
 [node name="StaticPolygon2D2" type="StaticBody2D" parent="Geometry"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D2"]
-polygon = PackedVector2Array(-128, 367, 288, 279, 224, 447, 232, 719, 128, 831, 64.0488, 831, 0, 703, -128, 703)
+polygon = PackedVector2Array(-128, 367, 288, 279, 224, 447, 232, 719, 128, 831, 64.0488, 831, 0, 767, -64, 703, -192, 703, -256, 767, -384, 831, -512, 831, -512, 511)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D2"]
 texture_repeat = 2
 color = Color(0.776471, 0.776471, 0.776471, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(-128, 367, 288, 279, 224, 447, 232, 719, 128, 831, 64.0488, 831, 0, 703, -128, 703)
+polygon = PackedVector2Array(-128, 367, 288, 279, 224, 447, 232, 719, 128, 831, 64.0488, 831, 0, 767, -64, 703, -192, 703, -256, 767, -384, 831, -512, 831, -512, 511)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Geometry/StaticPolygon2D2"]
 visible = false
@@ -327,6 +330,17 @@ texture_repeat = 2
 color = Color(0.776471, 0.776471, 0.776471, 1)
 texture = ExtResource("9_6nybb")
 polygon = PackedVector2Array(640, 1087, 768, 1087, 704, 1215, 640, 1215)
+
+[node name="StaticPolygon2D5" type="StaticBody2D" parent="Geometry"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D5"]
+polygon = PackedVector2Array(-512, 1023, -512, 1407, -384, 1407, -320, 1023)
+
+[node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D5"]
+texture_repeat = 2
+color = Color(0.776471, 0.776471, 0.776471, 1)
+texture = ExtResource("9_6nybb")
+polygon = PackedVector2Array(-512, 1023, -512, 1407, -384, 1407, -320, 1023)
 
 [editable path="Water2d"]
 [editable path="Water2d2"]
