@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ckw1orir0tclo" path="res://Scripts/Bumper.gd" id="1_lm8a7"]
 [ext_resource type="SpriteFrames" uid="uid://dvx67jk2jqup4" path="res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_UNPUFFED.tres" id="2_vdtve"]
 [ext_resource type="SpriteFrames" uid="uid://bk8h60wsfarc2" path="res://Resources/Textures/Sprites/SpriteFrames/SF_pufferFish_PUFFED.tres" id="3_b0xc7"]
-[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/SM_Wobble1.tres" id="4_0egux"]
+[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/VS_Wobble1.tres" id="4_0egux"]
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="5_txshi"]
 [ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="6_txshi"]
 
@@ -15,6 +15,7 @@ radius = 3.78431
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jayiq"]
 shader = ExtResource("4_0egux")
+shader_parameter/ColorTint = Color(1, 1, 1, 1)
 shader_parameter/WobbleRate = 3.8
 shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
 shader_parameter/NormalMap = ExtResource("5_txshi")

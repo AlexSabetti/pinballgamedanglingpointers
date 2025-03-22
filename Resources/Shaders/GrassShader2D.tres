@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=58 format=3 uid="uid://b617y5hgv63qg"]
+[gd_resource type="VisualShader" load_steps=59 format=3 uid="uid://b617y5hgv63qg"]
 
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="1_del4c"]
 
@@ -135,7 +135,7 @@ function = 31
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_8jtm6"]
 parameter_name = "sway_speed"
 default_value_enabled = true
-default_value = 1.0
+default_value = 0.5
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_cf8dn"]
 operator = 2
@@ -162,7 +162,7 @@ input_name = "vertex"
 default_input_values = [0, 0.0, 1, 1.0]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_ngkhi"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(2, 2)]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(4, 4)]
 expanded_output_ports = [0]
 op_type = 0
 operator = 4
@@ -191,6 +191,10 @@ operator = 1
 [sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_qkheg"]
 op_type = 0
 
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_del4c"]
+default_input_values = [0, 0.0, 1, 2.0]
+operator = 2
+
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_aed24"]
 function = 0
 
@@ -202,7 +206,7 @@ operator = 2
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_whbyh"]
 parameter_name = "sway_amount"
 default_value_enabled = true
-default_value = 0.1
+default_value = 0.8
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8qh6b"]
 operator = 2
@@ -212,8 +216,8 @@ resource_local_to_scene = true
 code = "shader_type canvas_item;
 render_mode blend_mix;
 
-uniform float sway_amount = 0.10000000149012;
-uniform float sway_speed = 1.0;
+uniform float sway_amount = 0.80000001192093;
+uniform float sway_speed = 0.5;
 uniform float WobbleRate = 3.79999995231628;
 uniform vec2 UVOffset1 = vec2(0.320000, 0.400000);
 uniform sampler2D NormalMap : filter_nearest, repeat_enable;
@@ -241,7 +245,7 @@ void vertex() {
 
 
 // VectorOp:26
-	vec2 n_in26p1 = vec2(2.00000, 2.00000);
+	vec2 n_in26p1 = vec2(4.00000, 4.00000);
 	vec2 n_out26p0 = mod(n_out23p0, n_in26p1);
 	float n_out26p1 = n_out26p0.r;
 	float n_out26p2 = n_out26p0.g;
@@ -263,8 +267,13 @@ void vertex() {
 	float n_out13p0 = n_out2p0 * n_out12p0;
 
 
+// FloatOp:33
+	float n_in33p1 = 2.00000;
+	float n_out33p0 = n_out13p0 * n_in33p1;
+
+
 // FloatOp:25
-	float n_out25p0 = n_out27p0 + n_out13p0;
+	float n_out25p0 = n_out27p0 + n_out33p0;
 
 
 // FloatFunc:4
@@ -452,6 +461,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-2261.27, -218.827)
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(400, 120)
@@ -488,7 +498,7 @@ nodes/vertex/22/position = Vector2(-1200, 380)
 nodes/vertex/23/node = SubResource("VisualShaderNodeInput_uianh")
 nodes/vertex/23/position = Vector2(-2340, -200)
 nodes/vertex/25/node = SubResource("VisualShaderNodeFloatOp_wyl50")
-nodes/vertex/25/position = Vector2(-1540, 40)
+nodes/vertex/25/position = Vector2(-1520, 40)
 nodes/vertex/26/node = SubResource("VisualShaderNodeVectorOp_ngkhi")
 nodes/vertex/26/position = Vector2(-2020, -340)
 nodes/vertex/27/node = SubResource("VisualShaderNodeFloatOp_tva1y")
@@ -503,7 +513,9 @@ nodes/vertex/31/node = SubResource("VisualShaderNodeFloatOp_ql1ds")
 nodes/vertex/31/position = Vector2(-900, 600)
 nodes/vertex/32/node = SubResource("VisualShaderNodeVectorCompose_qkheg")
 nodes/vertex/32/position = Vector2(60, 160)
-nodes/vertex/connections = PackedInt32Array(8, 0, 7, 0, 7, 0, 9, 1, 9, 0, 6, 0, 4, 0, 7, 1, 11, 0, 9, 0, 12, 0, 13, 1, 21, 0, 20, 0, 20, 0, 19, 1, 26, 1, 27, 0, 27, 0, 25, 0, 13, 0, 25, 1, 25, 0, 4, 0, 29, 1, 30, 0, 30, 0, 31, 0, 31, 0, 20, 1, 6, 0, 32, 0, 19, 0, 32, 1, 32, 0, 0, 0, 26, 2, 27, 1, 2, 0, 13, 0, 22, 2, 21, 0, 29, 2, 30, 1, 28, 0, 29, 0, 23, 0, 26, 0, 10, 2, 11, 0, 3, 1, 6, 1, 3, 2, 19, 0)
+nodes/vertex/33/node = SubResource("VisualShaderNodeFloatOp_del4c")
+nodes/vertex/33/position = Vector2(-1820, 80)
+nodes/vertex/connections = PackedInt32Array(8, 0, 7, 0, 7, 0, 9, 1, 9, 0, 6, 0, 4, 0, 7, 1, 11, 0, 9, 0, 12, 0, 13, 1, 21, 0, 20, 0, 20, 0, 19, 1, 26, 1, 27, 0, 29, 1, 30, 0, 30, 0, 31, 0, 31, 0, 20, 1, 6, 0, 32, 0, 19, 0, 32, 1, 32, 0, 0, 0, 26, 2, 27, 1, 2, 0, 13, 0, 22, 2, 21, 0, 29, 2, 30, 1, 28, 0, 29, 0, 23, 0, 26, 0, 10, 2, 11, 0, 3, 1, 6, 1, 3, 2, 19, 0, 13, 0, 33, 0, 33, 0, 25, 1, 25, 0, 4, 0, 27, 0, 25, 0)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_npfnl")
 nodes/fragment/2/position = Vector2(-180, 120)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_jdwpr")

@@ -1,7 +1,10 @@
+@tool
 class_name Collectable
 extends Area2D
 
-@export var idleSpriteFrames:SpriteFrames = load("res://Resources/Textures/Sprites/SpriteFrames/SF_greyFish.tres")
+@export var idleSpriteFrames:SpriteFrames = load("res://Resources/Textures/Sprites/SpriteFrames/SF_greyFish.tres"):
+	set(sp):
+		idleSpriteFrames = sp
 @export var point_value:int = 10
 # whether or not the collectable is able to be collected
 var isActive:bool = true
@@ -11,6 +14,10 @@ var isActive:bool = true
 @onready var Sprite:AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer:Timer = $Timer
 @onready var pointLabel:Label = $PointLabel
+
+func _ready() -> void:
+	Sprite.sprite_frames = idleSpriteFrames
+	
 
 # function for when the bumper gets hit
 func collectable_hit() -> void:

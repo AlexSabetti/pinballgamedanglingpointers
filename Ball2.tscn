@@ -1,9 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://doja10tjwix3v"]
+[gd_scene load_steps=11 format=3 uid="uid://doja10tjwix3v"]
 
 [ext_resource type="Script" uid="uid://cddjye1eef8nd" path="res://Scripts/Ball.gd" id="1_1idr5"]
-[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/SM_Wobble1.tres" id="2_3mkva"]
+[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/VS_Wobble1.tres" id="2_3mkva"]
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="3_88but"]
 [ext_resource type="SpriteFrames" uid="uid://c68etcw1q4yr" path="res://Resources/Textures/Sprites/SpriteFrames/SF_HookBall.tres" id="4_3mkva"]
+[ext_resource type="Material" uid="uid://7f3ychffrmmt" path="res://Resources/Shaders/SM_Wobble.tres" id="5_5qrd7"]
+[ext_resource type="Texture2D" uid="uid://b33547ad7ugj4" path="res://Resources/Textures/Sprites/LeftArrow1_b1.png" id="5_t8orx"]
+[ext_resource type="Texture2D" uid="uid://bd8uthwh4fhp5" path="res://Resources/Textures/Sprites/RightArrow1_b1.png" id="6_5qrd7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3dv24"]
 radius = 8.0
@@ -14,20 +17,21 @@ height = 16.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qrd7"]
 shader = ExtResource("2_3mkva")
+shader_parameter/ColorTint = Color(1, 1, 1, 1)
 shader_parameter/WobbleRate = 3.8
 shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
 shader_parameter/NormalMap = ExtResource("3_88but")
 shader_parameter/UVOffset2 = Vector2(0.32, 0.4)
 shader_parameter/DistortionAmount = 0.004
 
-[node name="Node2D" type="RigidBody2D"]
+[node name="Ball" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 5
 contact_monitor = true
 max_contacts_reported = 5
-linear_damp = 1.0
+linear_damp = 0.3
 script = ExtResource("1_1idr5")
-def_mass = 0.6
+def_mass = 0.7
 strafe_mod = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -42,5 +46,24 @@ material = SubResource("ShaderMaterial_5qrd7")
 scale = Vector2(0.085, 0.085)
 sprite_frames = ExtResource("4_3mkva")
 speed_scale = 0.0
+
+[node name="ArrowAxis" type="Node2D" parent="."]
+top_level = true
+
+[node name="Sprite2D_leftArrow" type="Sprite2D" parent="ArrowAxis"]
+material = ExtResource("5_5qrd7")
+position = Vector2(-11, -2.98023e-07)
+scale = Vector2(0.05, 0.15625)
+texture = ExtResource("5_t8orx")
+
+[node name="Sprite2D_rightArrow" type="Sprite2D" parent="ArrowAxis"]
+material = ExtResource("5_5qrd7")
+position = Vector2(11, -2.98023e-07)
+scale = Vector2(0.05, 0.15625)
+texture = ExtResource("6_5qrd7")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+remote_path = NodePath("../ArrowAxis")
+update_rotation = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -15,4 +15,5 @@ waterSurfaceRef = NodePath("..")
 metadata/_custom_type_script = "uid://vddjttd0f7y"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="WaterArea"]
+visible = false
 polygon = PackedVector2Array(0, 0, 128, 0, 128, 128, 0, 128)

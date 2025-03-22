@@ -2,7 +2,7 @@
 
 [ext_resource type="PhysicsMaterial" uid="uid://cith272whnw8y" path="res://Resources/Materials/PM_ballPhysics.tres" id="1_bds8w"]
 [ext_resource type="Script" uid="uid://cddjye1eef8nd" path="res://Scripts/Ball.gd" id="1_bihuk"]
-[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/SM_Wobble1.tres" id="3_d5ywo"]
+[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/VS_Wobble1.tres" id="3_d5ywo"]
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="4_5hdnl"]
 [ext_resource type="SpriteFrames" uid="uid://c68etcw1q4yr" path="res://Resources/Textures/Sprites/SpriteFrames/SF_HookBall.tres" id="5_d5ywo"]
 
@@ -15,6 +15,7 @@ height = 16.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqbjj"]
 shader = ExtResource("3_d5ywo")
+shader_parameter/ColorTint = Color(1, 1, 1, 1)
 shader_parameter/WobbleRate = 3.8
 shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
 shader_parameter/NormalMap = ExtResource("4_5hdnl")

@@ -86,3 +86,7 @@ return_ball={
 2d_physics/layer_1="World Geometry"
 2d_physics/layer_2="Player Ball"
 2d_physics/layer_3="Paddle"
+
+[rendering]
+
+textures/canvas_textures/default_texture_repeat=1

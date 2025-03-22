@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://c31odm5i6n0c6"]
 
 [ext_resource type="Script" uid="uid://hnkfujmqpkui" path="res://Scripts/collectable.gd" id="1_yicvy"]
-[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/SM_Wobble1.tres" id="3_jt01v"]
+[ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/VS_Wobble1.tres" id="3_jt01v"]
 [ext_resource type="SpriteFrames" uid="uid://btpgrd6o8qnw5" path="res://Resources/Textures/Sprites/SpriteFrames/SF_greyFish.tres" id="4_nayn7"]
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="4_v3y3w"]
 [ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="5_v3y3w"]
@@ -11,6 +11,7 @@ radius = 3.78431
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jt01v"]
 shader = ExtResource("3_jt01v")
+shader_parameter/ColorTint = Color(1, 1, 1, 1)
 shader_parameter/WobbleRate = 3.8
 shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
 shader_parameter/NormalMap = ExtResource("4_v3y3w")

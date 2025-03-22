@@ -14,8 +14,9 @@ func _on_body_entered(body):
 		var ball = body as Ball
 		ball.transfer_into_water(global_position.y + (global_position.y / 2))
 		
-		# play splash sound when entering water
-		SoundManager2D.PlaySoundQueue2D("SQ_splash")
+		# play splash sound when entering water from surface level
+		if waterSurfaceRef and waterSurfaceRef.is_water_surface:
+			SoundManager2D.PlaySoundQueue2D("SQ_splash")
 		
 		# ripples water surface when entering water
 		if waterSurfaceRef != null:

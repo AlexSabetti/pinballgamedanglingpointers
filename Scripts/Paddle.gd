@@ -22,15 +22,24 @@ var signal_manager: SigBus = Manager
 
 @onready var RotationAxis := $Origin/RigidBody2D
 @onready var CollisionShape := $Origin/RigidBody2D/CollisionShape2D
+@onready var defaultPaddlePoly := $Origin/RigidBody2D/DefaultPaddlePoly
+@onready var leftPaddlePoly := $Origin/RigidBody2D/LeftPaddlePoly
+@onready var rightPaddlePoly := $Origin/RigidBody2D/RightPaddlePoly
 
 func _ready() -> void:
 	set_process_input(true)
+	leftPaddlePoly.visible = false
+	rightPaddlePoly.visible = false
 	if isLeftPaddle:
 		signal_manager.connect("left_paddle", _paddle_signal)
 		CollisionShape.rotation_degrees = 180.0
+		defaultPaddlePoly.visible = false
+		leftPaddlePoly.visible = true
 	if isRightPaddle:
 		signal_manager.connect("right_paddle", _paddle_signal)
 		CollisionShape.rotation_degrees = 0.0
+		defaultPaddlePoly.visible = false
+		rightPaddlePoly.visible = true
 	  
 	# set starting position
 	RotationAxis.rotation_degrees = resting_rotation

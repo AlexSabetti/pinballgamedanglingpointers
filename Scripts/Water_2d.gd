@@ -4,6 +4,9 @@
 class_name Water2D
 extends Node2D
 
+@export var has_collision:bool = true
+@export var is_water_surface:bool = true
+
 @export_category("draw settings")
 @export var draw_water:bool = true
 @export var draw_water_overlay:bool = true
@@ -17,6 +20,7 @@ extends Node2D
 @export var surface_color:Color = Color(0.751, 0.777, 0.633, 1.0)
 @export var water_color:Color = Color(0.375, 0.383, 0.299, 0.785)
 @export var deep_water_color:Color = Color(0.332, 0.331, 0.256, 1.0)
+@export var water_texture:Texture2D
 @export var surface_width:float = 5.0 # how thick the surface line should be
 
 @export_category("wave settings")
@@ -45,6 +49,8 @@ var endPoint: Vector2
 
 var delta_time = 0.0
 
+#var polygon2D:Polygon2D
+
 @onready var waterArea = $WaterArea
 @onready var waterPointScene = preload("res://Scenes/Entities/waterPoint2D.tscn")
 
@@ -63,6 +69,18 @@ func _ready() -> void:
 				generate_surface_points()
 				
 				break
+	
+	if has_collision:
+		waterArea.monitoring = true
+		waterArea.monitorable = true
+	else:
+		waterArea.monitoring = false
+		waterArea.monitorable = false
+	
+	#if draw_water:
+		#polygon2D = Polygon2D.new()
+		#polygon2D.set_polygon(PackedVector2Array([]))
+		#add_child(polygon2D)
 
 # generates water points across WaterArea surface
 func generate_surface_points() -> void:
@@ -172,23 +190,33 @@ func _draw() -> void:
 		if draw_water:
 			var surface = [startPoint]
 			var polygon = [startPoint]
+			#polygon2D.set_polygon(PackedVector2Array([startPoint]))
 			var colors = [water_color]
+			var UVs = [startPoint]
 			for i in range(points.size()):
 				#Append points
 				surface.append(points[i].position)
 				polygon.append(points[i].position)
+				UVs.append(points[i].position)
+				#polygon2D.polygon.append(points[i].position)
 				colors.append(water_color)
 			
 			surface.append(endPoint)
 			
 			polygon.append(endPoint)
+			UVs.append(endPoint)
+			#polygon2D.polygon.append(endPoint)
 			colors.append(water_color)
 			polygon.append(collision_polygon.polygon[2])
+			UVs.append(collision_polygon.polygon[2])
+			#polygon2D.polygon.append(collision_polygon.polygon[2])
 			colors.append(deep_water_color)
 			polygon.append(collision_polygon.polygon[3])
+			UVs.append(collision_polygon.polygon[3])
+			#polygon2D.polygon.append(collision_polygon.polygon[3])
 			colors.append(deep_water_color)
 			
-			draw_polygon(polygon, colors)
+			draw_polygon(polygon, colors, UVs, water_texture)
 			draw_polyline(surface, surface_color, surface_width)
 		
 		

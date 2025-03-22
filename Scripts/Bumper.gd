@@ -20,6 +20,7 @@ func _ready() -> void:
 
 # function for when the bumper gets hit
 func bumper_hit() -> void:
+	# makes puffer fish puff up
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1.75,1.75), 0.2).from(Vector2(1.0,1.0)).set_trans(Tween.TRANS_ELASTIC)
 	pointLabel.text = "+" + str(point_value)
@@ -27,6 +28,8 @@ func bumper_hit() -> void:
 	Sprite.sprite_frames = bumpedSpriteFrames
 	puffTimer.start()
 	print("PUFF!")
+	
+	# plays sound
 	SoundManager2D.PlaySoundQueue2D("SQ_boink")
 	Global.gameLogic.update_points(point_value)
 

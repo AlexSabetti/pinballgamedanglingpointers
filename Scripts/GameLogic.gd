@@ -3,30 +3,45 @@ extends Node2D
 
 var signal_manager: SigBus = Manager
 
-@export var cur_camera:Camera2D
-@export var free_cam:bool = false
-
+@export_category("player properties")
 @export var cur_points := 0
 @export var num_balls: int = 3
 
-@onready var game_ui: shopUI = $UI_game
+@export_category("camera properties")
+@export var cur_camera:Camera2D
+@export var cam_follow:bool = true
+@export var cam_follow_speed:float = 2.0
+@export var camera_zoom:float = 0.9
+@export var min_camera_zoom:float = 0.5
+@export var max_camera_zoom:float = 1.5
+var default_cam_position:Vector2 = Vector2(640.0, 482.0)
 
-var current_ball_mass: float = 0.7
-var current_ball_radius: float = 8
-var cur_strafe_mod = 1.5
+@export_category("ball properties")
+@export var current_ball_mass: float = 1.0
+@export var current_ball_radius: float = 8
+@export var cur_strafe_mod = 1.5
 
-# whether or not there is a ball in play on the board
-var is_ball_in_play:bool = true
+@export var is_ball_in_play:bool = true # whether or not there is a ball in play on the board
 var is_ball_launch_prep:bool = false
+
+var cur_ball:Ball # reference to current ball in play that the camera should follow
+
+@onready var game_ui: shopUI = $UI_game
 
 func _ready() -> void:
 	Global.gameLogic = self
 	print("GameLogic Ready!")
 	
+	# set up camera
+	default_cam_position = cur_camera.global_position
+	cur_camera.zoom = Vector2(camera_zoom, camera_zoom)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	checkInput()
+	
+	if cam_follow:
+		camera_follow(delta)
 
 # checks for user input
 func checkInput() -> void:
@@ -62,9 +77,17 @@ func checkInput() -> void:
 			is_ball_launch_prep = false
 			is_ball_in_play = true
 			signal_manager.emit_signal("finish_ball_launch")
-		
-	
-	
+
+# keep ball on screen by moving camera
+func camera_follow(delta: float) -> void:
+	if cur_ball:
+		cur_camera.drag_horizontal_enabled = true
+		cur_camera.drag_vertical_enabled = true
+		cur_camera.global_position = lerp(cur_camera.global_position, cur_ball.global_position, delta * cam_follow_speed)
+	else:
+		cur_camera.global_position = lerp(cur_camera.global_position, default_cam_position, delta * cam_follow_speed * 1.75)
+		cur_camera.drag_horizontal_enabled = false
+		cur_camera.drag_vertical_enabled = false
 
 # updates the current points by the given amount
 func update_points(points: int):

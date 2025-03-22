@@ -9,7 +9,7 @@
 resource_local_to_scene = true
 shader = ExtResource("1_7n7tx")
 shader_parameter/sway_amount = 0.1
-shader_parameter/sway_speed = 1.0
+shader_parameter/sway_speed = 0.5
 shader_parameter/WobbleRate = 3.8
 shader_parameter/UVOffset1 = Vector2(0.32, 0.4)
 shader_parameter/NormalMap = ExtResource("2_g2b2f")
