@@ -12,6 +12,10 @@ signal right_paddle(pressed:bool)
 signal move_ball_left(pressed:bool)
 signal move_ball_right(pressed:bool)
 
+# signal for adding points to current score
+signal add_points(points:int)
+
+
 # signals the game to pause or unpause
 signal pause_game()
 signal unpause_game()  

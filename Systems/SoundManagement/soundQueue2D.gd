@@ -68,3 +68,15 @@ func PlaySound():
 		# ensures field wraps back around to zero if goes over limit
 		next %= audioStreamPlayers.size()
 	
+
+# play sound
+func PlaySoundAt(pos:Vector2):
+	if !audioStreamPlayers[next].playing:
+		audioStreamPlayers[next].volume_db = volumeDBModifier
+		audioStreamPlayers[next].pitch_scale = rng.randf_range(minPitch, maxPitch)
+		audioStreamPlayers[next].position = pos
+		audioStreamPlayers[next].play()
+		next += 1
+		# ensures field wraps back around to zero if goes over limit
+		next %= audioStreamPlayers.size()
+	

@@ -28,8 +28,8 @@ shader_parameter/DistortionAmount = 0.004
 collision_layer = 2
 collision_mask = 5
 contact_monitor = true
-max_contacts_reported = 5
-linear_damp = 0.3
+max_contacts_reported = 8
+linear_damp = 0.4
 script = ExtResource("1_1idr5")
 def_mass = 0.7
 strafe_mod = 1.5
@@ -41,7 +41,9 @@ shape = SubResource("CircleShape2D_3dv24")
 visible = false
 mesh = SubResource("SphereMesh_syysi")
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="SpriteAxis" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAxis"]
 material = SubResource("ShaderMaterial_5qrd7")
 scale = Vector2(0.085, 0.085)
 sprite_frames = ExtResource("4_3mkva")

@@ -35,7 +35,9 @@ position = Vector2(0, -3.8147e-06)
 scale = Vector2(4.5, 4.5)
 shape = SubResource("CircleShape2D_vdtve")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="SpriteAxis" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAxis"]
 material = SubResource("ShaderMaterial_jayiq")
 scale = Vector2(0.15, 0.15)
 sprite_frames = ExtResource("2_vdtve")

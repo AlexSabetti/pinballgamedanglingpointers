@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cysp5xv0gmlxc"]
+[gd_scene load_steps=7 format=3 uid="uid://cysp5xv0gmlxc"]
 
 [ext_resource type="Script" uid="uid://cdybf1g46omoq" path="res://Scripts/Paddle.gd" id="1_j60bu"]
 [ext_resource type="Texture2D" uid="uid://c0ixnboekkdpe" path="res://Resources/Textures/EB_GreenerWoodTexture_b1.png" id="2_mwvv4"]
-[ext_resource type="Script" uid="uid://rimwsdd30id1" path="res://Scripts/PolygonOutline.gd" id="3_d5kx8"]
-[ext_resource type="Material" uid="uid://de1yuqmsp7g5w" path="res://Resources/Shaders/SM_LineWobble.tres" id="4_mki8v"]
-[ext_resource type="Texture2D" uid="uid://d1wa1p4h8wuyk" path="res://Resources/Textures/EB_PurpleWoodTexture_a1.png" id="6_3n2y6"]
+[ext_resource type="Texture2D" uid="uid://dsg5lyuke0yhl" path="res://Resources/Textures/EB_GreyTexture_a1.png" id="3_uj2xe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j60bu"]
 size = Vector2(1, 1)
@@ -47,14 +45,9 @@ scale = Vector2(16.0181, 16)
 mesh = SubResource("SphereMesh_siir1")
 
 [node name="RightPaddlePoly" type="Polygon2D" parent="Origin/RigidBody2D"]
-visible = false
 clip_children = 2
-texture = ExtResource("6_3n2y6")
+texture = ExtResource("3_uj2xe")
 polygon = PackedVector2Array(0, -8, 64, -8, 59, 0, 0, 8, -8, 0)
-script = ExtResource("3_d5kx8")
-outline_color = Color(0.204, 0.078, 0.102, 0.1)
-outline_width = 3.0
-outline_material = ExtResource("4_mki8v")
 
 [node name="Polygon2D" type="Polygon2D" parent="Origin/RigidBody2D/RightPaddlePoly"]
 position = Vector2(0, -14)
@@ -62,14 +55,9 @@ texture = ExtResource("2_mwvv4")
 polygon = PackedVector2Array(0, 10, 62, 10, 64, 6, 0, 6)
 
 [node name="LeftPaddlePoly" type="Polygon2D" parent="Origin/RigidBody2D"]
-visible = false
 clip_children = 2
-texture = ExtResource("6_3n2y6")
+texture = ExtResource("3_uj2xe")
 polygon = PackedVector2Array(0, -8, 59, 0, 64, 8, 0, 8, -8, 0)
-script = ExtResource("3_d5kx8")
-outline_color = Color(0.204, 0.078, 0.102, 0.1)
-outline_width = 3.0
-outline_material = ExtResource("4_mki8v")
 
 [node name="Polygon2D" type="Polygon2D" parent="Origin/RigidBody2D/LeftPaddlePoly"]
 texture = ExtResource("2_mwvv4")

@@ -20,6 +20,8 @@ var signal_manager: SigBus = Manager
 
 @onready var col: CollisionShape2D = $CollisionShape2D
 @onready var obj_mesh: MeshInstance2D = $MeshInstance2D
+@onready var SpriteAxis: Node2D = $SpriteAxis
+@onready var Sprite: AnimatedSprite2D = $SpriteAxis/AnimatedSprite2D
 @onready var leftArrow: Sprite2D = $ArrowAxis/Sprite2D_leftArrow
 @onready var rightArrow: Sprite2D = $ArrowAxis/Sprite2D_rightArrow
 
@@ -31,6 +33,7 @@ func _ready():
 		density = def_mass / volume
 	mass = def_mass
 	
+	# hide directional arrows
 	leftArrow.visible = false
 	rightArrow.visible = false
 	
@@ -38,6 +41,9 @@ func _ready():
 
 func launch_downwards(vel: Vector2):
 	linear_velocity = vel
+
+func add_velocity(vel: Vector2):
+	linear_velocity += vel
 
 func _physics_process(delta):
 	#print("Ball: " + str(global_position))
@@ -86,27 +92,30 @@ func _integrate_forces(state):
 # recieve signal for when something collides with the ball
 func _on_body_entered(body: Node) -> void:
 	# if the ball collides with a bumper
-	if body is Bumper:
+	if body is Bumper and !(body as Bumper).bumperActivated:
 		(body as Bumper).bumper_hit() 
-		print("bumper hit!")
 		signal_manager.emit_signal("add_points", (body as Bumper).point_value)
-		# bounce player away from bouncer at a velocity 1.5 times greater than it's incoming velocity
-		var bounce_dir:Vector2 = (self.global_position - body.global_position).normalized() * abs(self.linear_velocity.length()) * 1.5
-		launch_downwards(bounce_dir)
+		# bounce player away from bouncer
+		var bounce_dir:Vector2 = (self.global_position - body.global_position).normalized() * abs(self.linear_velocity.length()) * 0.5
+		add_velocity(bounce_dir)
 		
+		# makes ball grow after bounce for a little bit (only visually, doesn't affect gameplay)
+		var tween = create_tween()
+		tween.tween_property(SpriteAxis, "scale", Vector2(1.25,1.25), 0.5).from(Vector2(1.0,1.0)).set_trans(Tween.TRANS_BOUNCE)
+		tween.chain().tween_property(SpriteAxis, "scale", Vector2(1.0,1.0), 0.25).set_trans(Tween.TRANS_BACK)
 	
-	# play sound:
+	# play hit sound on impact:
 	var volMod = ( (abs(linear_velocity.x) + abs(linear_velocity.y) ) / 2.0 ) / 20.0
 	volMod = clamp(volMod - 30.0, -50.0, 5.0)
 	print("HIT " + str(body))
 	SoundManager2D.SetSoundPoolVolume("SP_hit", volMod)
-	SoundManager2D.PlaySoundPool2D("SP_hit")
+	SoundManager2D.PlaySoundPool2DAt("SP_hit", position)
 	
 
 func destroy_ball():
-	
-	print("ball destroyed")
+	SoundManager2D.PlaySoundQueue2DAt("SQ_slip", position)
 	Global.gameLogic.is_ball_in_play = false
+	print("ball destroyed")
 	# We'll either make this send a signal or have the game logic code check whether or not the ball is considered "recoverable" despite its demise
 	queue_free()
 

@@ -26,10 +26,13 @@ var is_ball_launch_prep:bool = false
 
 var cur_ball:Ball # reference to current ball in play that the camera should follow
 
-@onready var game_ui: shopUI = $UI_game
+@onready var game_ui:= $UI_game
 
 func _ready() -> void:
 	Global.gameLogic = self
+	
+	signal_manager.connect("add_points", update_points)
+	
 	print("GameLogic Ready!")
 	
 	# set up camera
@@ -92,6 +95,7 @@ func camera_follow(delta: float) -> void:
 # updates the current points by the given amount
 func update_points(points: int):
 	cur_points += points
+	game_ui.updateScore(cur_points)
 
 func redeem_points(points: int):
 	if cur_points >= points:

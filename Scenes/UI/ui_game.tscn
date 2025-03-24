@@ -12,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 910
+theme_override_constants/margin_left = 960
 
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
@@ -57,7 +57,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "New Ball"
 vertical_alignment = 1
 
@@ -74,7 +74,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "+ Mass"
 vertical_alignment = 1
 
@@ -90,7 +90,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 20
 text = "+ Horizontal Speed"
 
 [node name="StrafeButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/StrafeBox"]

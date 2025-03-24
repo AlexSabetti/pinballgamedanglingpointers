@@ -83,3 +83,18 @@ func PlayRandomSound() -> void:
 	lastIdx = idx
 	sounds[idx].PlaySound()
 	
+
+# plays a random sound form the soundPool at given location
+func PlayRandomSoundAt(pos: Vector2) -> void:
+	var idx
+	# do-while loop to avoid the same sound being played twice in a row
+	while true:
+		idx = rng.randi_range(0, sounds.size() - 1)
+		if allowRepeats:
+			break
+		else: if idx != lastIdx:
+			break
+	
+	lastIdx = idx
+	sounds[idx].PlaySoundAt(pos)
+	

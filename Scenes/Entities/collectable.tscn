@@ -6,8 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="4_v3y3w"]
 [ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="5_v3y3w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vdtve"]
-radius = 3.78431
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v3y3w"]
+resource_local_to_scene = true
+radius = 3.0
+height = 10.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jt01v"]
 shader = ExtResource("3_jt01v")
@@ -22,13 +24,20 @@ shader_parameter/DistortionAmount = 0.003
 collision_mask = 2
 script = ExtResource("1_yicvy")
 idleSpriteFrames = ExtResource("4_nayn7")
+flip_sprite_horizontally = null
+respawn_time = null
+collision_capsule_radius = null
+collision_capsule_height = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3.8147e-06)
+rotation = 1.5708
 scale = Vector2(4.5, 4.5)
-shape = SubResource("CircleShape2D_vdtve")
+shape = SubResource("CapsuleShape2D_v3y3w")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="SpriteAxis" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpriteAxis"]
 texture_filter = 1
 texture_repeat = 2
 material = SubResource("ShaderMaterial_jt01v")
@@ -37,7 +46,7 @@ sprite_frames = ExtResource("4_nayn7")
 offset = Vector2(3, -4)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
+wait_time = 5.0
 one_shot = true
 
 [node name="PointLabel" type="Label" parent="."]
@@ -46,7 +55,8 @@ offset_right = 40.0
 offset_bottom = -8.0
 scale = Vector2(1e-05, 1e-05)
 theme = ExtResource("5_v3y3w")
-theme_override_colors/font_color = Color(0.899779, 0.849829, 0.586366, 1)
+theme_override_colors/font_color = Color(0.956863, 0.862745, 0.796078, 1)
 theme_override_font_sizes/font_size = 16
 
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

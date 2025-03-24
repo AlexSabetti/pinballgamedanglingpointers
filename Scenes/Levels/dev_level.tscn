@@ -1,7 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="Shader" uid="uid://dm2og8vefjkqh" path="res://Resources/Shaders/VS_Posterization.tres" id="1_wci8a"]
-[ext_resource type="PackedScene" uid="uid://dptuwkou7rtwb" path="res://Scenes/UI/ui_game.tscn" id="2_a4gs4"]
 [ext_resource type="Texture2D" uid="uid://2ofwf7hehxek" path="res://Resources/Textures/EB_PinkWoodTexture_b1.png" id="2_mgwhd"]
 [ext_resource type="Texture2D" uid="uid://btntiqtwb0eny" path="res://Resources/Textures/PinBallSeaSketch.png" id="2_qjxb5"]
 [ext_resource type="PackedScene" uid="uid://dydf8crpits10" path="res://Scenes/Entities/bumper.tscn" id="3_5de3p"]
@@ -38,10 +37,13 @@ shader_parameter/NumberOfColors = 64.0
 [sub_resource type="QuadMesh" id="QuadMesh_w50ga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qxfwy"]
-size = Vector2(280.5, 951.5)
+size = Vector2(916.25, 919.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrf1"]
-size = Vector2(280.5, 2293)
+size = Vector2(348.25, 1994.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bp8uw"]
+size = Vector2(280.5, 1986.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjxb5"]
 size = Vector2(42.6666, 2.66632)
@@ -192,7 +194,7 @@ texture = ExtResource("2_mgwhd")
 polygon = PackedVector2Array(92, 1840, 59.9218, 1808.21, -2.35547, 1532.08, -92.9963, 1609.08, -52, 1824, -68, 1832, -217.053, 1167.95, -188.268, 1166.09, -104, 1576, -8, 1504, -84.0582, 1161.59, -69.1299, 1151.74)
 
 [node name="BG_Polygon2D" type="Polygon2D" parent="BG_Detail"]
-color = Color(0.677124, 0.589571, 0.633832, 1)
+color = Color(0.678431, 0.588235, 0.635294, 1)
 texture = ExtResource("2_mgwhd")
 polygon = PackedVector2Array(328, 840, 272, 840, 280, 856, 208, 920, 256, 952, 288, 1024, 320, 1256, 328, 1320, 242.953, 1385.04, 256, 1416, 101.92, 1432.19, 64, 1472, -168, 1496, -144, 1512, -344, 1552, -136, 1640, -160, 1648, -72, 1664, 112, 1712, 64, 1744, 232, 1752, 304, 1680, 384, 1792, 440, 2104, 352, 2056, 360, 2040, 312, 2024, 120, 2080, 176, 2096, 128, 2112, -96, 2192, -56, 2216, -176, 2256, 0, 2272, -40, 2320, -88, 2336, 80, 2352, 32, 2440, 56, 2464, -304, 2504, -424, 2560, -472, 2592, -632, 2608, -768, 2752, -768, 2392, -768, 512, -384, 512, 184, 416, 208, 528, 200, 568, 240, 624, 320, 688, 304, 712, 416, 752, 391.004, 781.162, 368, 808)
 
@@ -218,9 +220,11 @@ mesh = SubResource("QuadMesh_w50ga")
 cur_camera = NodePath("../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(640, 482)
+position = Vector2(640, 480)
 zoom = Vector2(0.9, 0.9)
+limit_left = -704
 limit_top = 0
+limit_right = 1792
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -234,7 +238,7 @@ editor_draw_drag_margin = true
 position = Vector2(-704, 144)
 surface_color = Color(0.887286, 0.791569, 0.633137, 1)
 water_color = Color(0.665158, 0.556292, 0.366036, 0.696)
-deep_water_color = Color(0.209259, 0.200349, 0.140294, 1)
+deep_water_color = Color(0.206608, 0.19932, 0.160237, 1)
 
 [node name="CollisionPolygon2D" parent="Water2d/WaterArea" index="0"]
 polygon = PackedVector2Array(0, 0, 2144, 0, 2144, 3376, 0, 3376)
@@ -245,18 +249,22 @@ scale = Vector2(0.114176, 0.114176)
 texture = ExtResource("17_hxoqt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(-60, 716)
+position = Vector2(-60, 720)
 rotation = -2.35619
 scale = Vector2(0.114176, 0.114176)
 texture = ExtResource("17_hxoqt")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
-position = Vector2(-620, 1912)
+position = Vector2(-648, 1920)
 rotation = -0.261799
 scale = Vector2(0.114176, 0.114176)
 texture = ExtResource("17_hxoqt")
 
-[node name="UI_game" parent="." instance=ExtResource("2_a4gs4")]
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(-640, 976)
+rotation = 0.261799
+scale = Vector2(0.114176, 0.114176)
+texture = ExtResource("17_hxoqt")
 
 [node name="Detail" type="Node2D" parent="."]
 
@@ -343,6 +351,12 @@ foliage_Texture = ExtResource("12_5xjb4")
 meshOffset = Vector2(2.63, 69.735)
 meshScale = Vector2(125, 300)
 
+[node name="Grass11" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(184, 344)
+foliage_Texture = ExtResource("13_kaktk")
+meshOffset = Vector2(2.63, -61.79)
+meshScale = Vector2(125, 125)
+
 [node name="SeaWeed6" parent="Detail" instance=ExtResource("11_pl0og")]
 position = Vector2(120, 856)
 foliage_Texture = ExtResource("12_5xjb4")
@@ -380,12 +394,19 @@ position = Vector2(296, 1736)
 scale = Vector2(1.42596, 2.02765)
 foliage_Texture = ExtResource("11_h8dmb")
 
+[node name="Grass12" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(600, 1744)
+rotation = 0.261799
+foliage_Texture = ExtResource("13_kaktk")
+meshOffset = Vector2(2.63, -61.79)
+meshScale = Vector2(125, 125)
+
 [node name="BG_Water2d" parent="." instance=ExtResource("9_w50ga")]
 position = Vector2(-480, 506)
 has_collision = false
 is_water_surface = false
 surface_color = Color(0.643801, 0.542933, 0.414695, 0)
-water_color = Color(0.273537, 0.273503, 0.183767, 0)
+water_color = Color(0.213186, 0.209665, 0.139207, 0)
 deep_water_color = Color(0.157, 0.156, 0.086, 1)
 
 [node name="WaterArea" parent="BG_Water2d" index="0"]
@@ -393,7 +414,7 @@ monitoring = false
 monitorable = false
 
 [node name="CollisionPolygon2D" parent="BG_Water2d/WaterArea" index="0"]
-polygon = PackedVector2Array(-224, -2, 1920, 0, 1920, 3014, -224, 3014)
+polygon = PackedVector2Array(-224, -122, 1920, -122, 1920, 3014, -224, 3014)
 
 [node name="Entities" type="Node2D" parent="."]
 
@@ -401,21 +422,28 @@ polygon = PackedVector2Array(-224, -2, 1920, 0, 1920, 3014, -224, 3014)
 position = Vector2(1048, 657)
 
 [node name="CollisionShape2D" parent="Entities/DeathVolume" index="0"]
-position = Vector2(10.125, 0)
+position = Vector2(260, 0)
 
 [node name="DeathVolume3" parent="Entities" instance=ExtResource("5_qxfwy")]
 position = Vector2(-144, 657)
 
 [node name="CollisionShape2D" parent="Entities/DeathVolume3" index="0"]
-position = Vector2(0, -396.75)
+position = Vector2(-317.875, -412.75)
 shape = SubResource("RectangleShape2D_qxfwy")
 
 [node name="DeathVolume4" parent="Entities" instance=ExtResource("5_qxfwy")]
 position = Vector2(-846, 1760)
 
 [node name="CollisionShape2D" parent="Entities/DeathVolume4" index="0"]
-position = Vector2(0, -210.5)
+position = Vector2(95.875, -66.75)
 shape = SubResource("RectangleShape2D_pjrf1")
+
+[node name="DeathVolume5" parent="Entities" instance=ExtResource("5_qxfwy")]
+position = Vector2(1424, 1720)
+
+[node name="CollisionShape2D" parent="Entities/DeathVolume5" index="0"]
+position = Vector2(128, -80)
+shape = SubResource("RectangleShape2D_bp8uw")
 
 [node name="BallLauncher" parent="Entities" instance=ExtResource("16_jioky")]
 position = Vector2(887, 105)
@@ -454,13 +482,13 @@ max_rotation = 400.0
 isLeftPaddle = true
 
 [node name="FlipperL5" parent="Entities" instance=ExtResource("6_bnqav")]
-position = Vector2(-260, 761)
-resting_rotation = 325.0
-max_rotation = 410.0
+position = Vector2(-236.5, 745.3)
+resting_rotation = 330.0
+max_rotation = 415.0
 isLeftPaddle = true
 
 [node name="FlipperL6" parent="Entities" instance=ExtResource("6_bnqav")]
-position = Vector2(-266, 1365)
+position = Vector2(-274, 1365)
 resting_rotation = 325.0
 max_rotation = 410.0
 isLeftPaddle = true
@@ -502,42 +530,98 @@ max_rotation = 140.0
 isRightPaddle = true
 
 [node name="Bumper" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(348, 640)
-
-[node name="AnimatedSprite2D" parent="Entities/Bumper" index="1"]
-scale = Vector2(-0.15, 0.15)
+position = Vector2(356, 640)
+flip_sprite_horizontally = true
 
 [node name="Bumper2" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(512, 384)
+position = Vector2(512, 416)
 
 [node name="Bumper4" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(608, 609)
+position = Vector2(620, 576)
 
 [node name="Bumper3" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(704, 1024)
 
 [node name="Bumper5" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(-96, 1184)
+position = Vector2(-224, 1024)
+flip_sprite_horizontally = true
 
 [node name="Bumper6" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(-32, 1313)
+position = Vector2(0, 926)
+
+[node name="Bumper8" parent="Entities" instance=ExtResource("3_5de3p")]
+position = Vector2(-128, 1216)
 
 [node name="Bumper7" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(128, 2048)
+flip_sprite_horizontally = true
 
 [node name="Collectable" parent="Entities" instance=ExtResource("8_2yaf2")]
-position = Vector2(288, 896)
+position = Vector2(256, 896)
+flip_sprite_horizontally = true
 point_value = 20
+respawn_time = 5.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 10.0
+
+[node name="Collectable5" parent="Entities" instance=ExtResource("8_2yaf2")]
+position = Vector2(-224, 1472)
+flip_sprite_horizontally = true
+point_value = 20
+respawn_time = 5.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 10.0
+
+[node name="Collectable7" parent="Entities" instance=ExtResource("8_2yaf2")]
+position = Vector2(152, 1420)
+flip_sprite_horizontally = false
+point_value = 20
+respawn_time = 5.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 10.0
+
+[node name="Collectable8" parent="Entities" instance=ExtResource("8_2yaf2")]
+position = Vector2(484, 1185)
+flip_sprite_horizontally = true
+point_value = 20
+respawn_time = 5.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 10.0
+
+[node name="Collectable6" parent="Entities" instance=ExtResource("8_2yaf2")]
+position = Vector2(704, 736)
+flip_sprite_horizontally = false
+point_value = 20
+respawn_time = 5.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 10.0
 
 [node name="Collectable2" parent="Entities" instance=ExtResource("8_2yaf2")]
-position = Vector2(448, 1152)
+position = Vector2(-64, 1088)
 idleSpriteFrames = ExtResource("11_v1g1s")
-point_value = 20
+flip_sprite_horizontally = false
+point_value = 40
+respawn_time = 8.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 15.0
+
+[node name="Collectable4" parent="Entities" instance=ExtResource("8_2yaf2")]
+position = Vector2(896, 1984)
+idleSpriteFrames = ExtResource("11_v1g1s")
+flip_sprite_horizontally = false
+point_value = 40
+respawn_time = 8.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 15.0
 
 [node name="Collectable3" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(60, 1536)
 idleSpriteFrames = ExtResource("11_v1g1s")
-point_value = 20
+flip_sprite_horizontally = true
+point_value = 40
+respawn_time = 8.0
+collision_capsule_radius = 3.0
+collision_capsule_height = 15.0
 
 [node name="Geometry" type="Node2D" parent="."]
 position = Vector2(0, 1)
@@ -607,14 +691,14 @@ position = Vector2(-60, 79)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/Triangle2"]
 position = Vector2(-60, 19)
-polygon = PackedVector2Array(440, 677, 496, 661, 528, 645, 536, 653, 488, 709, 440, 685)
+polygon = PackedVector2Array(440, 677, 496, 661, 528, 645, 536, 653, 488, 709, 432, 685)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/Triangle2"]
 clip_children = 2
 position = Vector2(-60, 19)
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(440, 677, 496, 661, 528, 645, 536, 653, 488, 709, 440, 685)
+polygon = PackedVector2Array(440, 677, 496, 661, 528, 645, 536, 653, 488, 709, 432, 685)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -626,14 +710,14 @@ position = Vector2(196, 95)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/Triangle3"]
 position = Vector2(-60, 19)
-polygon = PackedVector2Array(440.2, 652.7, 456, 645, 504, 653, 496, 701, 480, 701)
+polygon = PackedVector2Array(440.2, 652.7, 456, 645, 480, 653, 504, 653, 496, 701, 480, 701)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/Triangle3"]
 clip_children = 2
 position = Vector2(-60, 19)
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(440.2, 652.7, 456, 645, 504, 653, 496, 701, 480, 701)
+polygon = PackedVector2Array(440.2, 652.7, 456, 645, 480, 653, 504, 653, 496, 701, 480, 701)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -643,14 +727,14 @@ fill_texture = ExtResource("30_pjrf1")
 [node name="StaticPolygon2D" type="StaticBody2D" parent="Geometry"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D"]
-polygon = PackedVector2Array(1280, 127, 704, 279, 768, 575, 768, 735, 896, 895, 880, 1151, 896, 1279, 896, 1407.07, 920, 1471, 896, 1535.13, 896, 1663, 1024, 1791, 1184, 1807, 1272, 1839, 1280, 1855, 1360, 1911, 1344, 1927, 1416, 1975, 1472, 2047, 1472, 127)
+polygon = PackedVector2Array(1280, 127, 704, 279, 704, 287, 744, 399, 760, 471, 768, 575, 768, 743, 840, 807, 872, 855, 896, 935, 880, 1151, 896, 1279, 896, 1407.07, 920, 1471, 896, 1535.13, 896, 1663, 960, 1727, 1016, 1799, 1184, 1807, 1272, 1839, 1280, 1855, 1360, 1911, 1344, 1927, 1416, 1975, 1472, 2047, 1472, 127)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(1280, 127, 704, 279, 768, 575, 768, 735, 896, 895, 880, 1151, 896, 1279, 896, 1407.07, 920, 1471, 896, 1535.13, 896, 1663, 1024, 1791, 1184, 1807, 1272, 1839, 1280, 1855, 1360, 1911, 1344, 1927, 1416, 1975, 1472, 2047, 1472, 127)
+polygon = PackedVector2Array(1280, 127, 704, 279, 704, 287, 744, 399, 760, 471, 768, 575, 768, 743, 840, 807, 872, 855, 896, 935, 880, 1151, 896, 1279, 896, 1407.07, 920, 1471, 896, 1535.13, 896, 1663, 960, 1727, 1016, 1799, 1184, 1807, 1272, 1839, 1280, 1855, 1360, 1911, 1344, 1927, 1416, 1975, 1472, 2047, 1472, 127)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -665,7 +749,7 @@ occluder_light_mask = 2147483647
 [node name="StaticPolygon2D2" type="StaticBody2D" parent="Geometry"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D2"]
-polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 575, 224, 751, 128, 863, 64, 863, 0, 767, -64, 679, -192, 671, -256, 767, -384, 839, -512, 831, -584, 839, -680, 839, -664, 855, -768, 831, -768, 575, -512, 511, -384, 447)
+polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 503, 160, 599, 224, 751, 128, 863, 64, 871, 0, 767, -64, 679, -192, 671, -232, 751, -312, 799, -336, 831, -352, 871, -512, 831, -584, 823, -672, 839, -664, 855, -680, 863, -768, 831, -768, 575, -512, 511, -384, 447)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D2"]
 clip_children = 2
@@ -673,7 +757,7 @@ texture_filter = 1
 texture_repeat = 2
 color = Color(0.508179, 0.412095, 0.492895, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 575, 224, 751, 128, 863, 64, 863, 0, 767, -64, 679, -192, 671, -256, 767, -384, 839, -512, 831, -584, 839, -680, 839, -664, 855, -768, 831, -768, 575, -512, 511, -384, 447)
+polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 503, 160, 599, 224, 751, 128, 863, 64, 871, 0, 767, -64, 679, -192, 671, -232, 751, -312, 799, -336, 831, -352, 871, -512, 831, -584, 823, -672, 839, -664, 855, -680, 863, -768, 831, -768, 575, -512, 511, -384, 447)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -696,7 +780,7 @@ position = Vector2(0, 113)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D3"]
 position = Vector2(0, 111)
-polygon = PackedVector2Array(288, 799, 320, 903, 320, 1031, 240, 1127, 192, 1007, 192, 863, 232, 855, 256, 839, 280, 799)
+polygon = PackedVector2Array(288, 799, 328, 903, 320, 1031, 248, 1119, 232, 1111, 192, 1007, 184, 983, 192, 863, 232, 855, 256, 839, 280, 799)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D3"]
 clip_children = 2
@@ -704,7 +788,7 @@ texture_repeat = 2
 position = Vector2(0, 111)
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(288, 799, 320, 903, 320, 1031, 240, 1127, 192, 1007, 192, 863, 232, 855, 256, 839, 280, 799)
+polygon = PackedVector2Array(288, 799, 328, 903, 320, 1031, 248, 1119, 232, 1111, 192, 1007, 184, 983, 192, 863, 232, 855, 256, 839, 280, 799)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -715,14 +799,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(0, 127)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D4"]
-polygon = PackedVector2Array(640, 1096, 757, 1083, 766, 1093, 704, 1216, 648, 1208)
+polygon = PackedVector2Array(640, 1096, 757, 1083, 766, 1093, 696, 1216, 680, 1216, 656, 1208, 648, 1184)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D4"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(640, 1096, 757, 1083, 766, 1093, 704, 1216, 648, 1208)
+polygon = PackedVector2Array(640, 1096, 757, 1083, 766, 1093, 696, 1216, 680, 1216, 656, 1208, 648, 1184)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -732,14 +816,14 @@ fill_texture = ExtResource("30_pjrf1")
 [node name="StaticPolygon2D5" type="StaticBody2D" parent="Geometry"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D5"]
-polygon = PackedVector2Array(-512, 991, -640, 991, -768, 1023, -768, 1695, -640, 1727, -480, 1599, -320, 1407, -256, 1367, -320, 1319, -344, 1279, -352, 1191, -320, 1023)
+polygon = PackedVector2Array(-512, 991, -640, 991, -768, 1023, -768, 1695, -640, 1727, -480, 1599, -320, 1407, -264, 1367, -264, 1359, -320, 1319, -344, 1279, -352, 1191, -352, 1023)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D5"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(-512, 991, -640, 991, -768, 1023, -768, 1695, -640, 1727, -480, 1599, -320, 1407, -256, 1367, -320, 1319, -344, 1279, -352, 1191, -320, 1023)
+polygon = PackedVector2Array(-512, 991, -640, 991, -768, 1023, -768, 1695, -640, 1727, -480, 1599, -320, 1407, -264, 1367, -264, 1359, -320, 1319, -344, 1279, -352, 1191, -352, 1023)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -750,14 +834,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-16, 111)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D6"]
-polygon = PackedVector2Array(536, 1536, 512, 1536, 320, 1568, 256, 1664, 384, 1792, 384, 1920, 512, 2048, 576, 1896, 704, 1792, 768, 1656, 721.095, 1646.94, 592, 1600)
+polygon = PackedVector2Array(544, 1536, 512, 1536, 320, 1568, 256, 1664, 384, 1792, 384, 1920, 512, 2048, 576, 1896, 704, 1792, 768, 1656, 712, 1656, 648, 1640, 592, 1608)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D6"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(536, 1536, 512, 1536, 320, 1568, 256, 1664, 384, 1792, 384, 1920, 512, 2048, 576, 1896, 704, 1792, 768, 1656, 721.095, 1646.94, 592, 1600)
+polygon = PackedVector2Array(544, 1536, 512, 1536, 320, 1568, 256, 1664, 384, 1792, 384, 1920, 512, 2048, 576, 1896, 704, 1792, 768, 1656, 712, 1656, 648, 1640, 592, 1608)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -768,14 +852,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-16, 95)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D7"]
-polygon = PackedVector2Array(-432, 1744, -496, 1688, -496, 1680, -304, 1656, -240, 1552, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1952, -264, 1864, -344, 1784)
+polygon = PackedVector2Array(-432, 1744, -496, 1688, -496, 1680, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D7"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(-432, 1744, -496, 1688, -496, 1680, -304, 1656, -240, 1552, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1952, -264, 1864, -344, 1784)
+polygon = PackedVector2Array(-432, 1744, -496, 1688, -496, 1680, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -822,14 +906,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-112, 623)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D10"]
-polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1720, 744, 1776, 840, 1808, 856, 1824, 720, 1848, 624, 1880, 592, 1832, 528, 1776)
+polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1728, 744, 1776, 840, 1808, 856, 1824, 720, 1848, 624, 1880, 592, 1832, 528, 1776)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D10"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1720, 744, 1776, 840, 1808, 856, 1824, 720, 1848, 624, 1880, 592, 1832, 528, 1776)
+polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1728, 744, 1776, 840, 1808, 856, 1824, 720, 1848, 624, 1880, 592, 1832, 528, 1776)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -841,7 +925,7 @@ fill_texture = ExtResource("30_pjrf1")
 [editable path="Entities/DeathVolume"]
 [editable path="Entities/DeathVolume3"]
 [editable path="Entities/DeathVolume4"]
-[editable path="Entities/Bumper"]
+[editable path="Entities/DeathVolume5"]
 [editable path="Geometry/ObsticleBox10"]
 [editable path="Geometry/ObsticleBox11"]
 [editable path="Geometry/ObsticleBox12"]
