@@ -10,6 +10,7 @@ extends Polygon2D
 		outline_width = w
 @export var outline_material:Material = load("res://Resources/Shaders/SM_LineWobble.tres")
 @export var fill_texture:Texture2D
+@export var clipChildren:bool = true
 
 func _ready() -> void:
 	var outline = Line2D.new()
@@ -25,4 +26,7 @@ func _ready() -> void:
 		outline.texture = fill_texture
 		outline.texture_mode = Line2D.LINE_TEXTURE_TILE
 	
-	clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
+	if clipChildren:
+		clip_children = CanvasItem.CLIP_CHILDREN_AND_DRAW
+	else:
+		clip_children = CanvasItem.CLIP_CHILDREN_DISABLED
