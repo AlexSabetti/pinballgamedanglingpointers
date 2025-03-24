@@ -62,6 +62,7 @@ texture = ExtResource("2_mwvv4")
 polygon = PackedVector2Array(0, 10, 62, 10, 64, 6, 0, 6)
 
 [node name="LeftPaddlePoly" type="Polygon2D" parent="Origin/RigidBody2D"]
+visible = false
 clip_children = 2
 texture = ExtResource("6_3n2y6")
 polygon = PackedVector2Array(0, -8, 59, 0, 64, 8, 0, 8, -8, 0)

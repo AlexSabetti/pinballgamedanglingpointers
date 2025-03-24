@@ -369,7 +369,6 @@ void vertex() {
 
 }
 "
-graph_offset = Vector2(-821.498, 708.554)
 mode = 1
 flags/light_only = false
 nodes/vertex/0/position = Vector2(560, 380)
