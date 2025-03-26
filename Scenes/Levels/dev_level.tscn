@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=42 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="Shader" uid="uid://dm2og8vefjkqh" path="res://Resources/Shaders/VS_Posterization.tres" id="1_wci8a"]
 [ext_resource type="Texture2D" uid="uid://2ofwf7hehxek" path="res://Resources/Textures/EB_PinkWoodTexture_b1.png" id="2_mgwhd"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://h5xaii5b01rn" path="res://Resources/Textures/Sprites/Reeds2_b1.png" id="13_kaktk"]
 [ext_resource type="Texture2D" uid="uid://cr84gnmxdj4jc" path="res://Resources/Textures/Sprites/Reeds1_a1.png" id="13_qxfwy"]
 [ext_resource type="Texture2D" uid="uid://dnkpvg165c0b7" path="res://Resources/Textures/Sprites/SeaWeeds2_b1.png" id="13_vgw4k"]
+[ext_resource type="Material" uid="uid://7f3ychffrmmt" path="res://Resources/Shaders/SM_Wobble.tres" id="14_pjrf1"]
 [ext_resource type="Texture2D" uid="uid://ba1tbvsj0loda" path="res://Resources/Textures/Sprites/SeaWeeds1_a1.png" id="16_gy3wk"]
 [ext_resource type="PackedScene" uid="uid://b4r1olpwnewxr" path="res://Scenes/Entities/ball_launcher.tscn" id="16_jioky"]
 [ext_resource type="Texture2D" uid="uid://cbxiu77qbhkf8" path="res://Resources/Textures/Sprites/DeathSign_a1.png" id="17_hxoqt"]
@@ -29,6 +30,7 @@
 [ext_resource type="Script" uid="uid://rimwsdd30id1" path="res://Scripts/PolygonOutline.gd" id="20_pjpdp"]
 [ext_resource type="Material" uid="uid://de1yuqmsp7g5w" path="res://Resources/Shaders/SM_LineWobble.tres" id="21_vkjbn"]
 [ext_resource type="Texture2D" uid="uid://cypk54ev7p6xo" path="res://Resources/Textures/Sprites/PencileLine1_c1.png" id="30_pjrf1"]
+[ext_resource type="AudioStream" uid="uid://cdshpcwy5cvum" path="res://Resources/Sounds/UnderwaterAmbience_loop.wav" id="31_bp8uw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gy3wk"]
 shader = ExtResource("1_wci8a")
@@ -40,7 +42,7 @@ shader_parameter/NumberOfColors = 64.0
 size = Vector2(916.25, 919.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrf1"]
-size = Vector2(348.25, 1994.5)
+size = Vector2(260.25, 1994.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp8uw"]
 size = Vector2(280.5, 1986.5)
@@ -244,23 +246,27 @@ deep_water_color = Color(0.206608, 0.19932, 0.160237, 1)
 polygon = PackedVector2Array(0, 0, 2144, 0, 2144, 3376, 0, 3376)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("14_pjrf1")
 position = Vector2(-16, 348)
 scale = Vector2(0.114176, 0.114176)
 texture = ExtResource("17_hxoqt")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
+material = ExtResource("14_pjrf1")
 position = Vector2(-60, 720)
 rotation = -2.35619
 scale = Vector2(0.114176, 0.114176)
 texture = ExtResource("17_hxoqt")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+material = ExtResource("14_pjrf1")
 position = Vector2(-648, 1920)
 rotation = -0.261799
 scale = Vector2(0.114176, 0.114176)
 texture = ExtResource("17_hxoqt")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
+material = ExtResource("14_pjrf1")
 position = Vector2(-640, 976)
 rotation = 0.261799
 scale = Vector2(0.114176, 0.114176)
@@ -435,7 +441,7 @@ shape = SubResource("RectangleShape2D_qxfwy")
 position = Vector2(-846, 1760)
 
 [node name="CollisionShape2D" parent="Entities/DeathVolume4" index="0"]
-position = Vector2(95.875, -66.75)
+position = Vector2(51.875, -66.75)
 shape = SubResource("RectangleShape2D_pjrf1")
 
 [node name="DeathVolume5" parent="Entities" instance=ExtResource("5_qxfwy")]
@@ -537,7 +543,7 @@ flip_sprite_horizontally = true
 position = Vector2(512, 416)
 
 [node name="Bumper4" parent="Entities" instance=ExtResource("3_5de3p")]
-position = Vector2(620, 576)
+position = Vector2(624, 560)
 
 [node name="Bumper3" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(704, 1024)
@@ -556,62 +562,44 @@ position = Vector2(-128, 1216)
 position = Vector2(128, 2048)
 flip_sprite_horizontally = true
 
+[node name="Bumper9" parent="Entities" instance=ExtResource("3_5de3p")]
+position = Vector2(736, 2208)
+
 [node name="Collectable" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(256, 896)
 flip_sprite_horizontally = true
 point_value = 20
-respawn_time = 5.0
-collision_capsule_radius = 3.0
-collision_capsule_height = 10.0
 
 [node name="Collectable5" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(-224, 1472)
 flip_sprite_horizontally = true
 point_value = 20
-respawn_time = 5.0
-collision_capsule_radius = 3.0
-collision_capsule_height = 10.0
 
 [node name="Collectable7" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(152, 1420)
-flip_sprite_horizontally = false
 point_value = 20
-respawn_time = 5.0
-collision_capsule_radius = 3.0
-collision_capsule_height = 10.0
 
 [node name="Collectable8" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(484, 1185)
 flip_sprite_horizontally = true
 point_value = 20
-respawn_time = 5.0
-collision_capsule_radius = 3.0
-collision_capsule_height = 10.0
 
 [node name="Collectable6" parent="Entities" instance=ExtResource("8_2yaf2")]
-position = Vector2(704, 736)
-flip_sprite_horizontally = false
+position = Vector2(708, 720)
 point_value = 20
-respawn_time = 5.0
-collision_capsule_radius = 3.0
-collision_capsule_height = 10.0
 
 [node name="Collectable2" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(-64, 1088)
 idleSpriteFrames = ExtResource("11_v1g1s")
-flip_sprite_horizontally = false
 point_value = 40
 respawn_time = 8.0
-collision_capsule_radius = 3.0
 collision_capsule_height = 15.0
 
 [node name="Collectable4" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(896, 1984)
 idleSpriteFrames = ExtResource("11_v1g1s")
-flip_sprite_horizontally = false
 point_value = 40
 respawn_time = 8.0
-collision_capsule_radius = 3.0
 collision_capsule_height = 15.0
 
 [node name="Collectable3" parent="Entities" instance=ExtResource("8_2yaf2")]
@@ -620,7 +608,14 @@ idleSpriteFrames = ExtResource("11_v1g1s")
 flip_sprite_horizontally = true
 point_value = 40
 respawn_time = 8.0
-collision_capsule_radius = 3.0
+collision_capsule_height = 15.0
+
+[node name="Collectable9" parent="Entities" instance=ExtResource("8_2yaf2")]
+position = Vector2(-540, 1728)
+idleSpriteFrames = ExtResource("11_v1g1s")
+flip_sprite_horizontally = true
+point_value = 40
+respawn_time = 8.0
 collision_capsule_height = 15.0
 
 [node name="Geometry" type="Node2D" parent="."]
@@ -749,7 +744,7 @@ occluder_light_mask = 2147483647
 [node name="StaticPolygon2D2" type="StaticBody2D" parent="Geometry"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D2"]
-polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 503, 160, 599, 224, 751, 128, 863, 64, 871, 0, 767, -64, 679, -192, 671, -232, 751, -312, 799, -336, 831, -352, 871, -512, 831, -584, 823, -672, 839, -664, 855, -680, 863, -768, 831, -768, 575, -512, 511, -384, 447)
+polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 503, 160, 599, 224, 751, 128, 863, 64, 871, 0, 767, -64, 679, -192, 671, -232, 751, -312, 799, -336, 831, -352, 871, -512, 831, -584, 823, -672, 815, -664, 855, -680, 863, -768, 831, -768, 575, -512, 511, -384, 447)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D2"]
 clip_children = 2
@@ -757,7 +752,7 @@ texture_filter = 1
 texture_repeat = 2
 color = Color(0.508179, 0.412095, 0.492895, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 503, 160, 599, 224, 751, 128, 863, 64, 871, 0, 767, -64, 679, -192, 671, -232, 751, -312, 799, -336, 831, -352, 871, -512, 831, -584, 823, -672, 839, -664, 855, -680, 863, -768, 831, -768, 575, -512, 511, -384, 447)
+polygon = PackedVector2Array(-136, 399, 37.2097, 357.301, 232, 327, 240, 335, 176, 431, 160, 503, 160, 599, 224, 751, 128, 863, 64, 871, 0, 767, -64, 679, -192, 671, -232, 751, -312, 799, -336, 831, -352, 871, -512, 831, -584, 823, -672, 815, -664, 855, -680, 863, -768, 831, -768, 575, -512, 511, -384, 447)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -852,14 +847,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-16, 95)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D7"]
-polygon = PackedVector2Array(-432, 1744, -496, 1688, -496, 1680, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
+polygon = PackedVector2Array(-432, 1744, -480, 1696, -488, 1672, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D7"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(-432, 1744, -496, 1688, -496, 1680, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
+polygon = PackedVector2Array(-432, 1744, -480, 1696, -488, 1672, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -919,6 +914,13 @@ outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
 outline_material = ExtResource("21_vkjbn")
 fill_texture = ExtResource("30_pjrf1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(512, 2560)
+stream = ExtResource("31_bp8uw")
+volume_db = -10.0
+autoplay = true
+panning_strength = 0.5
 
 [editable path="Water2d"]
 [editable path="BG_Water2d"]

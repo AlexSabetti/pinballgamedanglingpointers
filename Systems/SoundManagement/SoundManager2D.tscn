@@ -71,7 +71,7 @@ maxPitch = 1.2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="SQ_slip"]
 stream = ExtResource("8_bpljn")
-volume_db = 0.5
+volume_db = 1.0
 
 [node name="SQ_splash" parent="." instance=ExtResource("3_q1dqv")]
 count = 2

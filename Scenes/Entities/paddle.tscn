@@ -45,7 +45,9 @@ scale = Vector2(16.0181, 16)
 mesh = SubResource("SphereMesh_siir1")
 
 [node name="RightPaddlePoly" type="Polygon2D" parent="Origin/RigidBody2D"]
+visible = false
 clip_children = 2
+color = Color(0.881937, 0.881937, 0.881937, 1)
 texture = ExtResource("3_uj2xe")
 polygon = PackedVector2Array(0, -8, 64, -8, 59, 0, 0, 8, -8, 0)
 
@@ -55,7 +57,9 @@ texture = ExtResource("2_mwvv4")
 polygon = PackedVector2Array(0, 10, 62, 10, 64, 6, 0, 6)
 
 [node name="LeftPaddlePoly" type="Polygon2D" parent="Origin/RigidBody2D"]
+visible = false
 clip_children = 2
+color = Color(0.882353, 0.882353, 0.882353, 1)
 texture = ExtResource("3_uj2xe")
 polygon = PackedVector2Array(0, -8, 59, 0, 64, 8, 0, 8, -8, 0)
 
