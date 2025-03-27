@@ -13,7 +13,7 @@ var signal_manager: SigBus = Manager
 
 @export var ball_mass_cost: int = 30
 @export var ball_cost: int = 100
-@export var strafe_cost: int = 200
+@export var strafe_cost: int = 100
 
 @export var ball_strafe_increase: float = 0.1
 @export var mass_increase: float = 0.1
@@ -26,7 +26,7 @@ var signal_manager: SigBus = Manager
 var cur_points = 0
 func _ready():
 	print("Shop UI Ready!")
-	signal_manager.connect("add_points", update_points)
+	
 	ball_mass_label.text = "Ball Mass: " + str(get_parent().current_ball_mass)
 	mass_button.text = str(ball_mass_cost) + " pts"
 	strafe_button.text = str(strafe_cost) + " pts"
@@ -72,7 +72,7 @@ func _on_mass_purchase():
 		# Either put a pop-up or a sound effect
 
 func _on_strafe_purchase():
-	if redeem_points(ball_mass_cost):
+	if redeem_points(strafe_cost):
 		Global.gameLogic.cur_strafe_mod += ball_strafe_increase
 		strafe_cost = int(strafe_cost * ball_strafe_increase_percentage)
 		strafe_button.text = str(int(strafe_cost)) + " pts"
@@ -82,7 +82,7 @@ func _on_strafe_purchase():
 
 func update_points(points: int):
 	print("Points: " + str(points))
-	cur_points += points
+	cur_points = points
 	points_label.text = "Points: " + str(cur_points)
 
 func update_balls():

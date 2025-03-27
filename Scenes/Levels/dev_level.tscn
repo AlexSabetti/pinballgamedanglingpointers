@@ -217,9 +217,9 @@ polygon = PackedVector2Array(576, 768, 624, 824, 672, 848, 728, 888, 736, 928, 7
 [node name="RichTextLabel" type="RichTextLabel" parent="BG_Detail"]
 z_index = 1
 offset_left = -200.0
-offset_top = 3008.0
+offset_top = 3215.0
 offset_right = 1000.0
-offset_bottom = 3108.0
+offset_bottom = 3489.0
 theme = ExtResource("10_qukmc")
 text = "P I N B A L L
 By Colin and Alex"

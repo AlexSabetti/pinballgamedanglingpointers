@@ -61,8 +61,9 @@ func _physics_process(delta):
 	#print("Ball: " + str(global_position))
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity * delta
-		linear_velocity.y = max(linear_velocity.y, -300)
+		linear_velocity.y = max(linear_velocity.y, 300)
 	else:
+		
 		# check left ball control input
 		if Input.is_action_just_pressed("move_left"):	# shows directional indicator on initial press
 			linear_velocity.x += -1 * strafe_mod
@@ -84,16 +85,22 @@ func _physics_process(delta):
 			rightArrow.visible = false
 
 		if Input.is_action_pressed("move_up") and in_water:
+			self.gravity_scale = 0.25
 			add_upwards_force = true
 		else:
 			add_upwards_force = false
+			self.gravity_scale = 1
+		
 
 
 func _integrate_forces(state):
 	if in_water:
+		
 		#print("y pos: " + str(global_position.y))
 		#print(minf((global_position.y + def_radius) - cur_water_level, 2 * def_radius))
+		
 		aprox_submerged = max((global_position.y - cur_water_level) / 700, 0.001)
+		print("aprox submerged: " + str(aprox_submerged))
 		# if(aprox_submerged < 0):
 		# 	aprox_submerged = 0
 		# if(aprox_submerged > 2 * def_radius):
@@ -103,10 +110,12 @@ func _integrate_forces(state):
 		var buoyant_force = 0
 		if add_upwards_force:
 			print(linear_velocity.y)
-			buoyant_force = (Global.water_density * Global.standard_gravity + (Global.water_density * Global.standard_gravity * aprox_submerged)) # aprox_submerged *
+			buoyant_force = (Global.water_density * Global.standard_gravity + (Global.water_density * Global.standard_gravity * aprox_submerged)) - (density * Global.standard_gravity) # aprox_submerged *
+			state.apply_central_force(Vector2(0, buoyant_force))
+			linear_velocity.y = max(linear_velocity.y, -200);
 		else:
 			buoyant_force =  (Global.water_density * Global.standard_gravity + (Global.water_density * Global.standard_gravity * aprox_submerged)) - (density * Global.standard_gravity) # aprox_submerged *
-		state.apply_central_force(Vector2(0, buoyant_force))
+			state.apply_central_force(Vector2(0, buoyant_force))
 		# if state.linear_velocity.y < Global.water_density * 0.9 * Global.standard_gravity:
 		# 	state.linear_velocity.y = Global.water_density * 0.9 * Global.standard_gravity
 		#print("Buoyant Force: " + str(buoyant_force))
