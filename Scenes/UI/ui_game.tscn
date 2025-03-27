@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dptuwkou7rtwb"]
 
-[ext_resource type="Script" path="res://Scripts/ui_game.gd" id="1_l7wrt"]
+[ext_resource type="Script" path="res://Scripts/shopUI.gd" id="1_sfe2u"]
 [ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="1_xriyr"]
 
 [node name="UI_game" type="CanvasLayer"]
-script = ExtResource("1_l7wrt")
+script = ExtResource("1_sfe2u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
@@ -98,7 +98,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "100 pts"
 
-[node name="LaunchButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-tooltip_text = "You can launch more than one ball, but you can't control them individually."
-text = "LAUNCH BALL"
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BallBox/BallButton" to="." method="_on_ball_purchase"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MassBox/MassButton" to="." method="_on_mass_purchase"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/StrafeBox/StrafeButton" to="." method="_on_strafe_purchase"]

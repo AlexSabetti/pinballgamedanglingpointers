@@ -95,7 +95,7 @@ func camera_follow(delta: float) -> void:
 # updates the current points by the given amount
 func update_points(points: int):
 	cur_points += points
-	game_ui.updateScore(cur_points)
+	game_ui.update_points(cur_points)
 
 func redeem_points(points: int):
 	if cur_points >= points:
@@ -125,3 +125,9 @@ func _on_mass_update(mass: float):
 # sets the current ball radius to the given value
 func _on_radius_update(radius: float):
 	current_ball_radius = radius
+func subtract_ball():
+	num_balls -= 1
+	game_ui.update_balls()
+	if num_balls <= 0:
+		print("Game Over")
+		# end game here

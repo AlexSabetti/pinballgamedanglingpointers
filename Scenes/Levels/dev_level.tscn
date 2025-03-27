@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=44 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="Shader" uid="uid://dm2og8vefjkqh" path="res://Resources/Shaders/VS_Posterization.tres" id="1_wci8a"]
 [ext_resource type="Texture2D" uid="uid://2ofwf7hehxek" path="res://Resources/Textures/EB_PinkWoodTexture_b1.png" id="2_mgwhd"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://m0unqf15gm4v" path="res://Resources/Textures/Sprites/SeaWeeds1_c1.png" id="18_36ln1"]
 [ext_resource type="Script" path="res://Scripts/PolygonOutline.gd" id="20_pjpdp"]
 [ext_resource type="Material" uid="uid://de1yuqmsp7g5w" path="res://Resources/Shaders/SM_LineWobble.tres" id="21_vkjbn"]
+[ext_resource type="Script" path="res://Scripts/collection_volume.gd" id="25_7f2vq"]
 [ext_resource type="Texture2D" uid="uid://cypk54ev7p6xo" path="res://Resources/Textures/Sprites/PencileLine1_c1.png" id="30_pjrf1"]
 [ext_resource type="AudioStream" uid="uid://cdshpcwy5cvum" path="res://Resources/Sounds/UnderwaterAmbience_loop.wav" id="31_bp8uw"]
 
@@ -46,6 +47,9 @@ size = Vector2(260.25, 1994.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bp8uw"]
 size = Vector2(280.5, 1986.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlkm0"]
+size = Vector2(46, 137)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjxb5"]
 size = Vector2(42.6666, 2.66632)
@@ -618,6 +622,14 @@ point_value = 40
 respawn_time = 8.0
 collision_capsule_height = 15.0
 
+[node name="collection_volume" type="Area2D" parent="Entities"]
+position = Vector2(810, 149)
+script = ExtResource("25_7f2vq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/collection_volume"]
+position = Vector2(75, 48.5)
+shape = SubResource("RectangleShape2D_nlkm0")
+
 [node name="Geometry" type="Node2D" parent="."]
 position = Vector2(0, 1)
 
@@ -921,6 +933,8 @@ stream = ExtResource("31_bp8uw")
 volume_db = -10.0
 autoplay = true
 panning_strength = 0.5
+
+[connection signal="body_entered" from="Entities/collection_volume" to="Entities/collection_volume" method="_on_body_entered"]
 
 [editable path="Water2d"]
 [editable path="BG_Water2d"]

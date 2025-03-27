@@ -49,7 +49,7 @@ func _physics_process(delta):
 	#print("Ball: " + str(global_position))
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity * delta
-		linear_velocity.y = max(linear_velocity.y, -30)
+		linear_velocity.y = max(linear_velocity.y, -300)
 	else:
 		# check left ball control input
 		if Input.is_action_just_pressed("move_left"):	# shows directional indicator on initial press
@@ -76,17 +76,17 @@ func _integrate_forces(state):
 	if in_water:
 		#print("y pos: " + str(global_position.y))
 		#print(minf((global_position.y + def_radius) - cur_water_level, 2 * def_radius))
-		var aprox_submerged = global_position.y - cur_water_level
-		if(aprox_submerged < 0):
-			aprox_submerged = 0
-		if(aprox_submerged > 2 * def_radius):
-			aprox_submerged = 2 * def_radius
+		var aprox_submerged = max((global_position.y - cur_water_level) / 700, 0.001)
+		# if(aprox_submerged < 0):
+		# 	aprox_submerged = 0
+		# if(aprox_submerged > 2 * def_radius):
+		# 	aprox_submerged = 2 * def_radius
 		#print("submerged by: " + str(aprox_submerged))
 		#print("volume: " + str(volume))
-		var buoyant_force =  (Global.water_density *  Global.standard_gravity) - (density * Global.standard_gravity) # aprox_submerged *
+		var buoyant_force =  (Global.water_density * Global.standard_gravity + (Global.water_density * Global.standard_gravity * aprox_submerged)) - (density * Global.standard_gravity) # aprox_submerged *
 		state.apply_central_force(Vector2(0, buoyant_force))
-		if state.linear_velocity.y < Global.water_density * 0.9 * Global.standard_gravity:
-			state.linear_velocity.y = Global.water_density * 0.9 * Global.standard_gravity
+		# if state.linear_velocity.y < Global.water_density * 0.9 * Global.standard_gravity:
+		# 	state.linear_velocity.y = Global.water_density * 0.9 * Global.standard_gravity
 		#print("Buoyant Force: " + str(buoyant_force))
 
 # recieve signal for when something collides with the ball
@@ -115,6 +115,7 @@ func _on_body_entered(body: Node) -> void:
 func destroy_ball():
 	SoundManager2D.PlaySoundQueue2DAt("SQ_slip", position)
 	Global.gameLogic.is_ball_in_play = false
+	
 	print("ball destroyed")
 	# We'll either make this send a signal or have the game logic code check whether or not the ball is considered "recoverable" despite its demise
 	queue_free()

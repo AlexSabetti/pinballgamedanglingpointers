@@ -51,7 +51,7 @@ func finish_ball_launch() -> void:
 	# instantiates new ball in current scene and moves it to proper starting point
 	var ball: Ball = ballScene.instantiate()
 	ball.load_specifics(Global.gameLogic.current_ball_mass, Global.gameLogic.current_ball_radius, Global.gameLogic.cur_strafe_mod)
-	Global.gameLogic.num_balls -= 1
+	Global.gameLogic.subtract_ball()
 	signal_manager.emit_signal("update_stats")
 	add_sibling(ball)
 	ball.position = position + ballStartOffset
