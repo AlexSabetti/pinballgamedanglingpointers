@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://785u5c1jkney" path="res://Scenes/Entities/deathVolume.tscn" id="5_qxfwy"]
 [ext_resource type="PackedScene" uid="uid://cysp5xv0gmlxc" path="res://Scenes/Entities/paddle.tscn" id="6_bnqav"]
 [ext_resource type="PackedScene" uid="uid://bkjlpphibbfog" path="res://Scenes/Entities/gameLogic.tscn" id="7_5de3p"]
-[ext_resource type="PackedScene" uid="uid://doja10tjwix3v" path="res://Ball2.tscn" id="7_ef5lw"]
 [ext_resource type="PackedScene" uid="uid://c31odm5i6n0c6" path="res://Scenes/Entities/collectable.tscn" id="8_2yaf2"]
 [ext_resource type="Texture2D" uid="uid://dsg5lyuke0yhl" path="res://Resources/Textures/EB_GreyTexture_a1.png" id="9_6nybb"]
 [ext_resource type="Texture2D" uid="uid://vfwuffu7xfp1" path="res://Resources/Textures/EB_MediumPurpleWoodPlanksTexture_a1.png" id="9_pl0og"]
@@ -271,6 +270,7 @@ zoom = Vector2(0.9, 0.9)
 limit_left = -704
 limit_top = 0
 limit_right = 1792
+limit_bottom = 3700
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -544,9 +544,6 @@ shape = SubResource("RectangleShape2D_ptf8d")
 [node name="BallLauncher" parent="Entities" instance=ExtResource("16_jioky")]
 position = Vector2(887, 105)
 
-[node name="Ball" parent="Entities" instance=ExtResource("7_ef5lw")]
-position = Vector2(0, 29)
-
 [node name="FlipperL" parent="Entities" instance=ExtResource("6_bnqav")]
 position = Vector2(228, 340)
 resting_rotation = 315.0
@@ -667,6 +664,7 @@ point_value = 90
 position = Vector2(640, 1472)
 point_value = 90
 
+
 [node name="Bumper5" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(-224, 1024)
 flip_sprite_horizontally = true
@@ -679,6 +677,7 @@ point_value = 90
 [node name="Bumper8" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(-128, 1216)
 point_value = 90
+
 
 [node name="Bumper7" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(128, 2048)
@@ -727,7 +726,7 @@ point_value = 60
 
 [node name="Collectable6" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(708, 720)
-point_value = 20
+point_value = 100
 
 [node name="Collectable2" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(-64, 1088)
@@ -1135,6 +1134,7 @@ max_distance = 2500.0
 panning_strength = 0.5
 
 [connection signal="body_entered" from="Entities/collection_volume" to="Entities/collection_volume" method="_on_body_entered"]
+[connection signal="body_entered" from="Entities/Area2D" to="Entities/Area2D" method="_on_body_entered"]
 
 [editable path="Water2d"]
 [editable path="BG_Water2d"]

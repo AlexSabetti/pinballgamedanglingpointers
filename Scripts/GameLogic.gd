@@ -21,7 +21,7 @@ var default_cam_position:Vector2 = Vector2(640.0, 482.0)
 @export var current_ball_radius: float = 8
 @export var cur_strafe_mod = 1.5
 
-@export var is_ball_in_play:bool = true # whether or not there is a ball in play on the board
+@export var is_ball_in_play:bool = false # whether or not there is a ball in play on the board
 var is_ball_launch_prep:bool = false
 
 var cur_ball:Ball # reference to current ball in play that the camera should follow
@@ -136,4 +136,4 @@ func subtract_ball():
 func add_ball():
 	num_balls += 1
 	game_ui.update_balls()
-	
+
