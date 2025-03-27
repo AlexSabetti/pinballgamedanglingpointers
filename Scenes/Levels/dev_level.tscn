@@ -206,6 +206,12 @@ rotation = 3.14159
 meshOffset = Vector2(0, -33.995)
 meshScale = Vector2(102.415, 45.17)
 
+[node name="Grass12" parent="BG_Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(1080, 2480)
+rotation = 2.87979
+meshOffset = Vector2(0, -33.995)
+meshScale = Vector2(102.415, 45.17)
+
 [node name="Grass7" parent="BG_Detail" instance=ExtResource("11_pl0og")]
 position = Vector2(-16, 1788)
 scale = Vector2(1.81706, 2.48206)
@@ -243,6 +249,7 @@ offset_top = 3215.0
 offset_right = 1000.0
 offset_bottom = 3489.0
 theme = ExtResource("10_qukmc")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 text = "P I N B A L L
 By Colin and Alex"
 fit_content = true
@@ -373,6 +380,12 @@ foliage_Texture = ExtResource("17_qsi1y")
 meshOffset = Vector2(2.63, -164.645)
 meshScale = Vector2(151, 350)
 
+[node name="SeaWeed16" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(679, 2424)
+foliage_Texture = ExtResource("17_qsi1y")
+meshOffset = Vector2(2.63, -164.645)
+meshScale = Vector2(151, 350)
+
 [node name="SeaWeed3" parent="Detail" instance=ExtResource("11_pl0og")]
 position = Vector2(676, 1760)
 foliage_Texture = ExtResource("18_36ln1")
@@ -409,8 +422,20 @@ foliage_Texture = ExtResource("12_5xjb4")
 meshOffset = Vector2(2.63, 69.735)
 meshScale = Vector2(125, 300)
 
+[node name="SeaWeed18" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(460, 2440)
+foliage_Texture = ExtResource("12_5xjb4")
+meshOffset = Vector2(2.63, 69.735)
+meshScale = Vector2(125, 300)
+
 [node name="SeaWeed13" parent="Detail" instance=ExtResource("11_pl0og")]
-position = Vector2(676, 1904)
+position = Vector2(564, 1992)
+foliage_Texture = ExtResource("12_5xjb4")
+meshOffset = Vector2(2.63, 69.735)
+meshScale = Vector2(125, 300)
+
+[node name="SeaWeed17" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(1256, 1664)
 foliage_Texture = ExtResource("12_5xjb4")
 meshOffset = Vector2(2.63, 69.735)
 meshScale = Vector2(125, 300)
@@ -476,6 +501,13 @@ position = Vector2(296, 1736)
 scale = Vector2(1.42596, 2.02765)
 foliage_Texture = ExtResource("11_h8dmb")
 
+[node name="Grass14" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(-100, 2392)
+scale = Vector2(1.42596, 2.02765)
+foliage_Texture = ExtResource("11_h8dmb")
+meshOffset = Vector2(0, -58.665)
+meshScale = Vector2(96, 106.09)
+
 [node name="Grass12" parent="Detail" instance=ExtResource("11_pl0og")]
 position = Vector2(600, 1744)
 rotation = 0.261799
@@ -483,9 +515,41 @@ foliage_Texture = ExtResource("13_kaktk")
 meshOffset = Vector2(2.63, -61.79)
 meshScale = Vector2(125, 125)
 
+[node name="Grass15" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(-64, 2368)
+foliage_Texture = ExtResource("13_kaktk")
+meshOffset = Vector2(2.63, -61.79)
+meshScale = Vector2(125, 125)
+
+[node name="Grass18" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(1096, 2384)
+foliage_Texture = ExtResource("13_kaktk")
+meshOffset = Vector2(2.63, -61.79)
+meshScale = Vector2(125, 125)
+
+[node name="Grass16" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(628, 2408)
+rotation = 0.261799
+foliage_Texture = ExtResource("13_kaktk")
+meshOffset = Vector2(2.63, -61.79)
+meshScale = Vector2(125, 125)
+
+[node name="Grass17" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(-572, 1952)
+foliage_Texture = ExtResource("13_kaktk")
+meshOffset = Vector2(2.63, -61.79)
+meshScale = Vector2(125, 125)
+
 [node name="Grass13" parent="Detail" instance=ExtResource("11_pl0og")]
 position = Vector2(1064, 1048)
 rotation = -0.261799
+foliage_Texture = ExtResource("13_kaktk")
+meshOffset = Vector2(2.63, -61.79)
+meshScale = Vector2(125, 125)
+
+[node name="Grass19" parent="Detail" instance=ExtResource("11_pl0og")]
+position = Vector2(912, 1312)
+rotation = 1.83259
 foliage_Texture = ExtResource("13_kaktk")
 meshOffset = Vector2(2.63, -61.79)
 meshScale = Vector2(125, 125)
@@ -690,6 +754,10 @@ point_value = 270
 position = Vector2(800, 2208)
 point_value = 270
 
+[node name="Bumper14" parent="Entities" instance=ExtResource("3_5de3p")]
+position = Vector2(1344, 2240)
+point_value = 270
+
 [node name="Bumper11" parent="Entities" instance=ExtResource("3_5de3p")]
 position = Vector2(1152, 1984)
 point_value = 270
@@ -749,7 +817,7 @@ respawn_time = 8.0
 collision_capsule_height = 15.0
 
 [node name="Collectable10" parent="Entities" instance=ExtResource("8_2yaf2")]
-position = Vector2(1155, 2232)
+position = Vector2(1120, 2208)
 idleSpriteFrames = ExtResource("11_v1g1s")
 flip_sprite_horizontally = true
 point_value = 360
@@ -1019,14 +1087,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-16, 111)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D6"]
-polygon = PackedVector2Array(544, 1536, 512, 1536, 320, 1568, 256, 1664, 384, 1792, 384, 1920, 512, 2032, 576, 1896, 704, 1792, 768, 1656, 712, 1656, 648, 1640, 592, 1608)
+polygon = PackedVector2Array(544, 1536, 512, 1536, 320, 1568, 256, 1664, 352, 1760, 376, 1800, 384, 1856, 384, 1920, 512, 2032, 576, 1896, 704, 1792, 768, 1656, 712, 1656, 648, 1640, 592, 1608)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D6"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(544, 1536, 512, 1536, 320, 1568, 256, 1664, 384, 1792, 384, 1920, 512, 2032, 576, 1896, 704, 1792, 768, 1656, 712, 1656, 648, 1640, 592, 1608)
+polygon = PackedVector2Array(544, 1536, 512, 1536, 320, 1568, 256, 1664, 352, 1760, 376, 1800, 384, 1856, 384, 1920, 512, 2032, 576, 1896, 704, 1792, 768, 1656, 712, 1656, 648, 1640, 592, 1608)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -1037,14 +1105,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-16, 95)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D7"]
-polygon = PackedVector2Array(-432, 1744, -480, 1696, -488, 1672, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
+polygon = PackedVector2Array(-432, 1744, -480, 1696, -488, 1672, -368, 1632, -360, 1600, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -192, 1936, -264, 1864, -344, 1784)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D7"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(-432, 1744, -480, 1696, -488, 1672, -368, 1632, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -264, 1864, -344, 1784)
+polygon = PackedVector2Array(-432, 1744, -480, 1696, -488, 1672, -368, 1632, -360, 1600, -240, 1528, -144, 1608, 16, 1680, 16, 1704, -48, 1760, -112, 1824, -176, 1944, -192, 1936, -264, 1864, -344, 1784)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -1091,14 +1159,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-112, 623)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D10"]
-polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1728, 744, 1776, 832, 1800, 840, 1808, 800, 1840, 720, 1848, 624, 1880, 592, 1832, 528, 1784)
+polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1728, 744, 1776, 832, 1800, 840, 1808, 800, 1840, 720, 1848, 624, 1880, 600, 1880, 584, 1840)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D10"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1728, 744, 1776, 832, 1800, 840, 1808, 800, 1840, 720, 1848, 624, 1880, 592, 1832, 528, 1784)
+polygon = PackedVector2Array(496, 1752, 544, 1720, 712, 1728, 744, 1776, 832, 1800, 840, 1808, 800, 1840, 720, 1848, 624, 1880, 600, 1880, 584, 1840)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
@@ -1109,14 +1177,14 @@ fill_texture = ExtResource("30_pjrf1")
 position = Vector2(-112, 623)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Geometry/StaticPolygon2D11"]
-polygon = PackedVector2Array(1328, 1832, 1448, 1808, 1264, 1744, 1160, 1752, 1096, 1840)
+polygon = PackedVector2Array(1328, 1832, 1448, 1808, 1264, 1744, 1160, 1752, 1096, 1840, 1104, 1856)
 
 [node name="Polygon2D" type="Polygon2D" parent="Geometry/StaticPolygon2D11"]
 clip_children = 2
 texture_repeat = 2
 color = Color(0.509804, 0.411765, 0.494118, 1)
 texture = ExtResource("9_6nybb")
-polygon = PackedVector2Array(1328, 1832, 1448, 1808, 1264, 1744, 1160, 1752, 1096, 1840)
+polygon = PackedVector2Array(1328, 1832, 1448, 1808, 1264, 1744, 1160, 1752, 1096, 1840, 1104, 1856)
 script = ExtResource("20_pjpdp")
 outline_color = Color(1, 1, 1, 1)
 outline_width = 32.0
