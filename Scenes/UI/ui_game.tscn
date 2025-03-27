@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dptuwkou7rtwb"]
 
-[ext_resource type="Script" uid="uid://bsa1a2whccynt" path="res://Scripts/ui_game.gd" id="1_l7wrt"]
+[ext_resource type="Script" path="res://Scripts/ui_game.gd" id="1_l7wrt"]
 [ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="1_xriyr"]
 
 [node name="UI_game" type="CanvasLayer"]

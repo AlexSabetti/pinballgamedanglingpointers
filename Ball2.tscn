@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://doja10tjwix3v"]
 
-[ext_resource type="Script" uid="uid://cddjye1eef8nd" path="res://Scripts/Ball.gd" id="1_1idr5"]
+[ext_resource type="Script" path="res://Scripts/Ball.gd" id="1_1idr5"]
 [ext_resource type="Shader" uid="uid://dijotpds2iucp" path="res://Resources/Shaders/VS_Wobble1.tres" id="2_3mkva"]
 [ext_resource type="Texture2D" uid="uid://c5hbnn4w6ke30" path="res://Resources/Textures/NormalMaps/7864-normal.jpg" id="3_88but"]
 [ext_resource type="SpriteFrames" uid="uid://c68etcw1q4yr" path="res://Resources/Textures/Sprites/SpriteFrames/SF_HookBall.tres" id="4_3mkva"]

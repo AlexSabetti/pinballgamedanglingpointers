@@ -5,4 +5,6 @@ extends Area2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if isActive and body is Ball:
+		Global.gameLogic.cam_follow = false
 		(body as Ball).destroy_ball()
+		Global.gameLogic.cam_follow = true

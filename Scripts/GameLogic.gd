@@ -83,7 +83,7 @@ func checkInput() -> void:
 
 # keep ball on screen by moving camera
 func camera_follow(delta: float) -> void:
-	if cur_ball:
+	if cur_ball != null:
 		cur_camera.drag_horizontal_enabled = true
 		cur_camera.drag_vertical_enabled = true
 		cur_camera.global_position = lerp(cur_camera.global_position, cur_ball.global_position, delta * cam_follow_speed)
