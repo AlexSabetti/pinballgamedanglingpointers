@@ -60,7 +60,7 @@ func _process(_delta: float) -> void:
 func _physics_process(delta):
 	#print("Ball: " + str(global_position))
 	if endgame_sinking:
-		linear_velocity.y -=  Global.standard_gravity * delta
+		linear_velocity.y -=  Global.standard_gravity
 		linear_velocity.y = max(linear_velocity.y, 300)
 	else:
 		
