@@ -138,4 +138,3 @@ func check_game_over():
 func add_ball():
 	num_balls += 1
 	game_ui.update_balls()
-
