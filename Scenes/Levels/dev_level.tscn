@@ -777,6 +777,10 @@ position = Vector2(-224, 1472)
 flip_sprite_horizontally = true
 point_value = 60
 
+[node name="Collectable13" parent="Entities" instance=ExtResource("8_2yaf2")]
+position = Vector2(396, 2240)
+point_value = 60
+
 [node name="Collectable7" parent="Entities" instance=ExtResource("8_2yaf2")]
 position = Vector2(152, 1420)
 point_value = 60
