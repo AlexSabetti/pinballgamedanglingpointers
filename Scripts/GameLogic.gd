@@ -136,4 +136,3 @@ func subtract_ball():
 func add_ball():
 	num_balls += 1
 	game_ui.update_balls()
-
