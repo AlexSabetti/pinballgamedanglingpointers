@@ -146,7 +146,7 @@ func _on_body_entered(body: Node) -> void:
 func destroy_ball():
 	SoundManager2D.PlaySoundQueue2DAt("SQ_slip", position)
 	Global.gameLogic.is_ball_in_play = false
-	
+	Global.gameLogic.check_game_over()
 	print("ball destroyed")
 	# We'll either make this send a signal or have the game logic code check whether or not the ball is considered "recoverable" despite its demise
 	queue_free()

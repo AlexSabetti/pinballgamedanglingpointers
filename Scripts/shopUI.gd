@@ -10,6 +10,8 @@ var signal_manager: SigBus = Manager
 @onready var mass_button: Button = $MarginContainer/MarginContainer/VBoxContainer/MassBox/MassButton
 @onready var strafe_button: Button = $MarginContainer/MarginContainer/VBoxContainer/StrafeBox/StrafeButton
 @onready var depth_meter: Label = $ColorRect/MarginContainer/Label
+@onready var fail_text: Label = $MarginContainer/MarginContainer/VBoxContainer/GameOver
+@onready var restart_button: Button = $MarginContainer/MarginContainer/VBoxContainer/RestartButton
 
 @export var ball_mass_cost: int = 30
 @export var ball_cost: int = 100
@@ -30,6 +32,9 @@ func _ready():
 	ball_mass_label.text = "Ball Mass: " + str(get_parent().current_ball_mass)
 	mass_button.text = str(ball_mass_cost) + " pts"
 	strafe_button.text = str(strafe_cost) + " pts"
+	restart_button.disabled = true
+	restart_button.visible = false
+	
 	
 
 func _process(_delta: float) -> void:
@@ -90,4 +95,13 @@ func update_balls():
 
 
 func _on_destroy_button_pressed() -> void:
-	Global.gameLogic.cur_ball.destroy_ball()
+	if Global.gameLogic.cur_ball != null:
+		Global.gameLogic.cur_ball.destroy_ball()
+
+func game_over():
+	fail_text.visible = true
+	restart_button.visible = true
+	restart_button.disabled = false
+
+func _on_restart_button():
+	get_tree().reload_current_scene()

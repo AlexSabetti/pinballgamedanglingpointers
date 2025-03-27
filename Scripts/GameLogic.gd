@@ -129,9 +129,11 @@ func _on_radius_update(radius: float):
 func subtract_ball():
 	num_balls -= 1
 	game_ui.update_balls()
-	if num_balls <= 0:
-		print("Game Over")
 		# end game here
+
+func check_game_over():
+	if num_balls <= 0 && game_ui.ball_cost > game_ui.cur_points:
+		game_ui.game_over()
 
 func add_ball():
 	num_balls += 1
