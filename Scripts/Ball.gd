@@ -1,7 +1,11 @@
 class_name Ball
 extends RigidBody2D
 
-@export var def_mass: float = 10
+@export var def_mass: float = 10:
+	set(given_mass):
+		if given_mass > 0:
+			def_mass = given_mass
+			mass = given_mass
 @export var def_radius: float = 8
 
 @export var def_color: Color
@@ -14,6 +18,10 @@ var volume: float
 var density: float
 
 var cur_water_level: float
+
+var depth_value: int = 0
+
+var max_depth: int = 100
 
 @export var strafe_mod: float = 1.0
 var signal_manager: SigBus = Manager
@@ -44,6 +52,9 @@ func launch_downwards(vel: Vector2):
 
 func add_velocity(vel: Vector2):
 	linear_velocity += vel
+
+func _process(_delta: float) -> void:
+	depth_value = roundi((position.y - 142)/8)
 
 func _physics_process(delta):
 	#print("Ball: " + str(global_position))
@@ -140,7 +151,9 @@ func load_specifics(given_mass: float, given_radius: float, strafe_modifier: flo
 	obj_mesh.mesh.radius = def_radius
 	obj_mesh.mesh.height = def_radius * 2
 	strafe_mod = strafe_modifier
-	
+
+
+
 func transfer_out_of_water():
 	in_water = false
 	print("out of water")

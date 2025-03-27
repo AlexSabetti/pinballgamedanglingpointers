@@ -9,6 +9,7 @@ var signal_manager: SigBus = Manager
 @onready var new_ball_button: Button = $MarginContainer/MarginContainer/VBoxContainer/BallBox/BallButton
 @onready var mass_button: Button = $MarginContainer/MarginContainer/VBoxContainer/MassBox/MassButton
 @onready var strafe_button: Button = $MarginContainer/MarginContainer/VBoxContainer/StrafeBox/StrafeButton
+@onready var depth_meter: Label = $ColorRect/MarginContainer/Label
 
 @export var ball_mass_cost: int = 30
 @export var ball_cost: int = 100
@@ -31,7 +32,13 @@ func _ready():
 	strafe_button.text = str(strafe_cost) + " pts"
 	
 
-
+func _process(_delta: float) -> void:
+	if Global.gameLogic.cur_ball != null:
+		depth_meter.text = "Depth: " + str(Global.gameLogic.cur_ball.depth_value)
+	else:
+		depth_meter.text = "Depth: "
+	
+	
 func redeem_points(points: int):
 	if cur_points >= points:
 		cur_points -= points
@@ -80,3 +87,7 @@ func update_points(points: int):
 
 func update_balls():
 	balls_left_label.text = "Balls Left: " + str(Global.gameLogic.num_balls)
+
+
+func _on_destroy_button_pressed() -> void:
+	Global.gameLogic.cur_ball.destroy_ball()

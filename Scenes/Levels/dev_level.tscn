@@ -27,9 +27,9 @@
 [ext_resource type="Texture2D" uid="uid://cbxiu77qbhkf8" path="res://Resources/Textures/Sprites/DeathSign_a1.png" id="17_hxoqt"]
 [ext_resource type="Texture2D" uid="uid://crmopntevhtbf" path="res://Resources/Textures/Sprites/SeaWeeds1_b1.png" id="17_qsi1y"]
 [ext_resource type="Texture2D" uid="uid://m0unqf15gm4v" path="res://Resources/Textures/Sprites/SeaWeeds1_c1.png" id="18_36ln1"]
-[ext_resource type="Script" path="res://Scripts/PolygonOutline.gd" id="20_pjpdp"]
+[ext_resource type="Script" uid="uid://rimwsdd30id1" path="res://Scripts/PolygonOutline.gd" id="20_pjpdp"]
 [ext_resource type="Material" uid="uid://de1yuqmsp7g5w" path="res://Resources/Shaders/SM_LineWobble.tres" id="21_vkjbn"]
-[ext_resource type="Script" path="res://Scripts/collection_volume.gd" id="25_7f2vq"]
+[ext_resource type="Script" uid="uid://cd15c55hqbroa" path="res://Scripts/collection_volume.gd" id="25_7f2vq"]
 [ext_resource type="Texture2D" uid="uid://cypk54ev7p6xo" path="res://Resources/Textures/Sprites/PencileLine1_c1.png" id="30_pjrf1"]
 [ext_resource type="AudioStream" uid="uid://cdshpcwy5cvum" path="res://Resources/Sounds/UnderwaterAmbience_loop.wav" id="31_bp8uw"]
 
