@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://dy2xtfmqqdllt"]
+[gd_scene load_steps=47 format=3 uid="uid://dy2xtfmqqdllt"]
 
 [ext_resource type="Shader" uid="uid://dm2og8vefjkqh" path="res://Resources/Shaders/VS_Posterization.tres" id="1_wci8a"]
 [ext_resource type="Texture2D" uid="uid://2ofwf7hehxek" path="res://Resources/Textures/EB_PinkWoodTexture_b1.png" id="2_mgwhd"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dsg5lyuke0yhl" path="res://Resources/Textures/EB_GreyTexture_a1.png" id="9_6nybb"]
 [ext_resource type="Texture2D" uid="uid://vfwuffu7xfp1" path="res://Resources/Textures/EB_MediumPurpleWoodPlanksTexture_a1.png" id="9_pl0og"]
 [ext_resource type="PackedScene" uid="uid://c54lx2rcg7udm" path="res://Scenes/Entities/water2D.tscn" id="9_w50ga"]
+[ext_resource type="Theme" uid="uid://cfr4cfecy82wt" path="res://Resources/Themes/Theme_genText.tres" id="10_qukmc"]
 [ext_resource type="Texture2D" uid="uid://bqkyx5irlol2o" path="res://Resources/Textures/Sprites/HandSprouts1_c2.png" id="10_soqci"]
 [ext_resource type="Texture2D" uid="uid://dq66rgog0f8rk" path="res://Resources/Textures/Sprites/HandSprouts1_c1.png" id="11_h8dmb"]
 [ext_resource type="PackedScene" uid="uid://4isin4p7or4b" path="res://Scenes/Entities/foliage.tscn" id="11_pl0og"]
@@ -27,9 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://cbxiu77qbhkf8" path="res://Resources/Textures/Sprites/DeathSign_a1.png" id="17_hxoqt"]
 [ext_resource type="Texture2D" uid="uid://crmopntevhtbf" path="res://Resources/Textures/Sprites/SeaWeeds1_b1.png" id="17_qsi1y"]
 [ext_resource type="Texture2D" uid="uid://m0unqf15gm4v" path="res://Resources/Textures/Sprites/SeaWeeds1_c1.png" id="18_36ln1"]
-[ext_resource type="Script" uid="uid://rimwsdd30id1" path="res://Scripts/PolygonOutline.gd" id="20_pjpdp"]
+[ext_resource type="Script" path="res://Scripts/PolygonOutline.gd" id="20_pjpdp"]
 [ext_resource type="Material" uid="uid://de1yuqmsp7g5w" path="res://Resources/Shaders/SM_LineWobble.tres" id="21_vkjbn"]
-[ext_resource type="Script" uid="uid://cd15c55hqbroa" path="res://Scripts/collection_volume.gd" id="25_7f2vq"]
+[ext_resource type="Script" path="res://Scripts/collection_volume.gd" id="25_7f2vq"]
+[ext_resource type="Script" path="res://Scripts/endgame_volume.gd" id="27_7vkfa"]
 [ext_resource type="Texture2D" uid="uid://cypk54ev7p6xo" path="res://Resources/Textures/Sprites/PencileLine1_c1.png" id="30_pjrf1"]
 [ext_resource type="AudioStream" uid="uid://cdshpcwy5cvum" path="res://Resources/Sounds/UnderwaterAmbience_loop.wav" id="31_bp8uw"]
 
@@ -50,6 +52,9 @@ size = Vector2(280.5, 1986.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlkm0"]
 size = Vector2(46, 137)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xprvf"]
+size = Vector2(2111, 80)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjxb5"]
 size = Vector2(42.6666, 2.66632)
@@ -208,6 +213,18 @@ polygon = PackedVector2Array(328, 840, 272, 840, 280, 856, 208, 920, 256, 952, 2
 color = Color(0.678431, 0.588235, 0.635294, 1)
 texture = ExtResource("2_mgwhd")
 polygon = PackedVector2Array(576, 768, 624, 824, 672, 848, 728, 888, 736, 928, 776, 960, 832, 1056, 800, 1080, 856, 1104, 768, 1192, 624, 1216, 600, 1304, 600, 1344, 680, 1376, 632, 1392, 680.906, 1500.68, 656, 1536, 840, 1632, 736, 1632, 912, 1704, 752, 1696, 744, 1728, 544, 1696, 512, 1984, 496, 2160, 472, 2176, 512, 2264, 568, 2280, 464, 2304, 512, 2328, 360, 2336, 368, 2360, 424, 2480, 456, 2504, 416, 2520, 384, 2568, 224, 2600, 240, 2608, 312, 2616, 520, 2616, 456, 2656, 768, 2696, 1088, 2496, 1272, 2456, 1048, 2368, 1024, 2304, 712, 2152, 840, 2176, 752, 2088, 816, 2056, 664, 1944, 696, 1928, 1088, 2024, 976, 1944, 1472, 2048, 1472, 1664, 1024, 1664, 1024, 544, 768, 576, 704, 704)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BG_Detail"]
+z_index = 1
+offset_left = -200.0
+offset_top = 3008.0
+offset_right = 1000.0
+offset_bottom = 3108.0
+theme = ExtResource("10_qukmc")
+text = "P I N B A L L
+By Colin and Alex"
+fit_content = true
+horizontal_alignment = 1
 
 [node name="BG2" type="Sprite2D" parent="."]
 visible = false
@@ -624,11 +641,21 @@ collision_capsule_height = 15.0
 
 [node name="collection_volume" type="Area2D" parent="Entities"]
 position = Vector2(810, 149)
+collision_mask = 2
 script = ExtResource("25_7f2vq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/collection_volume"]
 position = Vector2(75, 48.5)
 shape = SubResource("RectangleShape2D_nlkm0")
+
+[node name="Area2D" type="Area2D" parent="Entities"]
+position = Vector2(263, 2784)
+collision_mask = 2
+script = ExtResource("27_7vkfa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Entities/Area2D"]
+position = Vector2(133, -110)
+shape = SubResource("RectangleShape2D_xprvf")
 
 [node name="Geometry" type="Node2D" parent="."]
 position = Vector2(0, 1)

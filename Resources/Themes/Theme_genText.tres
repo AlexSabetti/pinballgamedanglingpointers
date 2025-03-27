@@ -3,6 +3,7 @@
 [ext_resource type="FontFile" uid="uid://cit61e4n1rx24" path="res://Resources/Themes/Fonts/Quenda-Medium.otf" id="1_nftgk"]
 
 [resource]
+default_font_size = 100
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 32

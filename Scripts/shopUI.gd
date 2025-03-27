@@ -75,7 +75,7 @@ func _on_strafe_purchase():
 	if redeem_points(ball_mass_cost):
 		Global.gameLogic.cur_strafe_mod += ball_strafe_increase
 		strafe_cost = int(strafe_cost * ball_strafe_increase_percentage)
-		strafe_button.text = str(int(strafe_cost * ball_strafe_increase_percentage)) + " pts"
+		strafe_button.text = str(int(strafe_cost)) + " pts"
 	else:
 		print("Not enough points")
 		# Either put a pop-up or a sound effect

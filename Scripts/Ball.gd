@@ -32,7 +32,8 @@ var signal_manager: SigBus = Manager
 @onready var Sprite: AnimatedSprite2D = $SpriteAxis/AnimatedSprite2D
 @onready var leftArrow: Sprite2D = $ArrowAxis/Sprite2D_leftArrow
 @onready var rightArrow: Sprite2D = $ArrowAxis/Sprite2D_rightArrow
-
+var aprox_submerged = 0
+var add_upwards_force = false
 func _ready():
 	if volume == null or volume == 0:
 		volume = PI * def_radius * def_radius
@@ -82,19 +83,29 @@ func _physics_process(delta):
 			# hides directional indicator on button release
 			rightArrow.visible = false
 
+		if Input.is_action_pressed("move_up") and in_water:
+			add_upwards_force = true
+		else:
+			add_upwards_force = false
+
 
 func _integrate_forces(state):
 	if in_water:
 		#print("y pos: " + str(global_position.y))
 		#print(minf((global_position.y + def_radius) - cur_water_level, 2 * def_radius))
-		var aprox_submerged = max((global_position.y - cur_water_level) / 700, 0.001)
+		aprox_submerged = max((global_position.y - cur_water_level) / 700, 0.001)
 		# if(aprox_submerged < 0):
 		# 	aprox_submerged = 0
 		# if(aprox_submerged > 2 * def_radius):
 		# 	aprox_submerged = 2 * def_radius
 		#print("submerged by: " + str(aprox_submerged))
 		#print("volume: " + str(volume))
-		var buoyant_force =  (Global.water_density * Global.standard_gravity + (Global.water_density * Global.standard_gravity * aprox_submerged)) - (density * Global.standard_gravity) # aprox_submerged *
+		var buoyant_force = 0
+		if add_upwards_force:
+			print(linear_velocity.y)
+			buoyant_force = (Global.water_density * Global.standard_gravity + (Global.water_density * Global.standard_gravity * aprox_submerged)) # aprox_submerged *
+		else:
+			buoyant_force =  (Global.water_density * Global.standard_gravity + (Global.water_density * Global.standard_gravity * aprox_submerged)) - (density * Global.standard_gravity) # aprox_submerged *
 		state.apply_central_force(Vector2(0, buoyant_force))
 		# if state.linear_velocity.y < Global.water_density * 0.9 * Global.standard_gravity:
 		# 	state.linear_velocity.y = Global.water_density * 0.9 * Global.standard_gravity
