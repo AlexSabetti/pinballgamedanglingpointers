@@ -20,6 +20,9 @@ color = Color(0.911222, 0.874539, 0.851146, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
@@ -28,6 +31,7 @@ theme_override_constants/separation = 10
 [node name="ScoreLabel" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 40
 text = "Points: 0"
 horizontal_alignment = 1
 
@@ -57,6 +61,21 @@ theme_override_font_sizes/font_size = 24
 text = "Balls Left: 3"
 horizontal_alignment = 2
 
+[node name="divider" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xriyr")
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_font_sizes/font_size = 24
+text = "---------------------"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xriyr")
+text = "Shop:"
+horizontal_alignment = 1
+
 [node name="BallBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -66,7 +85,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "New Ball"
+text = "    + Ball"
 vertical_alignment = 1
 
 [node name="BallButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/BallBox"]
@@ -74,6 +93,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.65
 focus_mode = 0
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 20
 text = "200 pts"
 
 [node name="MassBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
@@ -84,13 +105,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "+ Mass"
+text = "    + Mass"
 vertical_alignment = 1
 
 [node name="MassButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MassBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 21
 text = "1000 pts"
 
 [node name="StrafeBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
@@ -101,12 +124,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "+ Horizontal Speed"
+text = "    + Strafe Speed"
 
 [node name="StrafeButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/StrafeBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 20
 text = "100 pts"
 
 [node name="DestroyBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
@@ -117,7 +142,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "DESTROY BALL"
+text = "  DESTROY BALL"
 
 [node name="DestroyButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/DestroyBox"]
 layout_mode = 2
@@ -130,6 +155,15 @@ visible = false
 layout_mode = 2
 focus_mode = 0
 text = "Restart?"
+
+[node name="divider2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xriyr")
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_font_sizes/font_size = 24
+text = "---------------------"
+horizontal_alignment = 1
 
 [node name="Controls" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -161,19 +195,35 @@ theme_override_font_sizes/font_size = 20
 text = "Spacebar -> trigger all paddles"
 horizontal_alignment = 1
 
+[node name="Label5" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/Controls"]
+layout_mode = 2
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 20
+text = "[Hold] Left Mouse -> launch ball"
+horizontal_alignment = 1
+
+[node name="divider3" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xriyr")
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_font_sizes/font_size = 24
+text = "---------------------"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_xriyr")
-text = "Instructions:"
+text = "Tips:"
 horizontal_alignment = 1
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_xriyr")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "Collect fish to gain points!"
 horizontal_alignment = 1
 
@@ -189,15 +239,15 @@ layout_mode = 2
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
 text = "Move your ball to the 
-dock to get it back"
+dock to get it back."
 horizontal_alignment = 1
 
 [node name="Label5" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_xriyr")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 20
 text = "Upgrades are only 
-applied to the next ball"
+applied to the next ball."
 horizontal_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]

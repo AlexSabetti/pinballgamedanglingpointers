@@ -15,6 +15,8 @@ var signal_manager: SigBus = Manager
 @export var min_camera_zoom:float = 0.5
 @export var max_camera_zoom:float = 1.5
 var default_cam_position:Vector2 = Vector2(640.0, 482.0)
+@export var endGameText:Node2D
+#var is_in_end_game:bool = false
 
 @export_category("ball properties")
 @export var current_ball_mass: float = 1.0
@@ -32,6 +34,8 @@ func _ready() -> void:
 	Global.gameLogic = self
 	
 	signal_manager.connect("add_points", update_points)
+	
+	#signal_manager.connect("endgame", end_game)
 	
 	print("GameLogic Ready!")
 	
@@ -86,7 +90,12 @@ func camera_follow(delta: float) -> void:
 	if cur_ball != null:
 		cur_camera.drag_horizontal_enabled = true
 		cur_camera.drag_vertical_enabled = true
-		cur_camera.global_position = lerp(cur_camera.global_position, cur_ball.global_position, delta * cam_follow_speed)
+		if cur_ball.endgame_sinking:
+			cur_camera.global_position = lerp(cur_camera.global_position, Vector2(default_cam_position.x, cur_ball.global_position.y), delta * cam_follow_speed)
+			endGameText.position.x = cur_camera.position.x
+		else:
+
+			cur_camera.global_position = lerp(cur_camera.global_position, cur_ball.global_position, delta * cam_follow_speed)
 	else:
 		cur_camera.global_position = lerp(cur_camera.global_position, default_cam_position, delta * cam_follow_speed * 1.75)
 		cur_camera.drag_horizontal_enabled = false
@@ -138,3 +147,6 @@ func check_game_over():
 func add_ball():
 	num_balls += 1
 	game_ui.update_balls()
+	
+#func end_game():
+	#is_in_end_game = true

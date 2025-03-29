@@ -61,7 +61,7 @@ func _physics_process(delta):
 	#print("Ball: " + str(global_position))
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity
-		linear_velocity.y = max(linear_velocity.y, 300)
+		linear_velocity.y = min(linear_velocity.y, 120.0)
 	else:
 		
 		# check left ball control input
@@ -100,7 +100,7 @@ func _integrate_forces(state):
 		#print(minf((global_position.y + def_radius) - cur_water_level, 2 * def_radius))
 		
 		aprox_submerged = max((global_position.y - cur_water_level) / 700, 0.001)
-		print("aprox submerged: " + str(aprox_submerged))
+		#print("aprox submerged: " + str(aprox_submerged))
 		# if(aprox_submerged < 0):
 		# 	aprox_submerged = 0
 		# if(aprox_submerged > 2 * def_radius):
@@ -138,7 +138,7 @@ func _on_body_entered(body: Node) -> void:
 	# play hit sound on impact:
 	var volMod = ( (abs(linear_velocity.x) + abs(linear_velocity.y) ) / 2.0 ) / 20.0
 	volMod = clamp(volMod - 30.0, -50.0, 5.0)
-	print("HIT " + str(body))
+	#print("HIT " + str(body))
 	SoundManager2D.SetSoundPoolVolume("SP_hit", volMod)
 	SoundManager2D.PlaySoundPool2DAt("SP_hit", position)
 	

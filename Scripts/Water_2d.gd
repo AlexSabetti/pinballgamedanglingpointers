@@ -21,6 +21,7 @@ extends Node2D
 @export var water_color:Color = Color(0.375, 0.383, 0.299, 0.785)
 @export var deep_water_color:Color = Color(0.332, 0.331, 0.256, 1.0)
 @export var water_texture:Texture2D
+@export var water_shader:ShaderMaterial
 @export var surface_width:float = 5.0 # how thick the surface line should be
 
 @export_category("wave settings")
@@ -53,6 +54,8 @@ var delta_time = 0.0
 
 @onready var waterArea = $WaterArea
 @onready var waterPointScene = preload("res://Scenes/Entities/waterPoint2D.tscn")
+@onready var waterBodyPoly = $WaterBody
+@onready var waterSurfacePoly = $WaterSurface
 
 func _ready() -> void:
 	# begins assigning variables and finding the collision polygon to base point positions off of
@@ -77,6 +80,7 @@ func _ready() -> void:
 		waterArea.monitoring = false
 		waterArea.monitorable = false
 	
+	waterBodyPoly.material = water_shader
 	#if draw_water:
 		#polygon2D = Polygon2D.new()
 		#polygon2D.set_polygon(PackedVector2Array([]))
@@ -215,9 +219,14 @@ func _draw() -> void:
 			UVs.append(collision_polygon.polygon[3])
 			#polygon2D.polygon.append(collision_polygon.polygon[3])
 			colors.append(deep_water_color)
-			
-			draw_polygon(polygon, colors, UVs, water_texture)
-			draw_polyline(surface, surface_color, surface_width)
+			waterBodyPoly.polygon = polygon
+			waterBodyPoly.uv = UVs
+			waterBodyPoly.vertex_colors = colors
+			#draw_polygon(polygon, colors, UVs, water_texture)
+			waterSurfacePoly.points = surface
+			waterSurfacePoly.default_color = surface_color
+			waterSurfacePoly.width = surface_width
+			#draw_polyline(surface, surface_color, surface_width)
 		
 		
 		if draw_points:

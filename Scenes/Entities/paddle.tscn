@@ -24,6 +24,7 @@ freeze = true
 freeze_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Origin/RigidBody2D"]
+visible = false
 position = Vector2(32, 0)
 scale = Vector2(64, 16)
 shape = SubResource("RectangleShape2D_j60bu")

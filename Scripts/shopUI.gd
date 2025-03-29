@@ -20,8 +20,8 @@ var signal_manager: SigBus = Manager
 @export var ball_strafe_increase: float = 0.1
 @export var mass_increase: float = 0.1
 
-@export var ball_mass_cost_increase_percentage: float = 1.5
-@export var ball_cost_increase_percentage: float = 1.2
+@export var ball_mass_cost_increase_percentage: float = 1.25
+@export var ball_cost_increase_percentage: float = 1.15
 @export var ball_strafe_increase_percentage: float = 1.1
 
 
