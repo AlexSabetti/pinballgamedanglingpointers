@@ -61,7 +61,7 @@ func _physics_process(delta):
 	#print("Ball: " + str(global_position))
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity
-		linear_velocity.y = min(linear_velocity.y, 120.0)
+		linear_velocity.y = 125.0
 	else:
 		
 		# check left ball control input
