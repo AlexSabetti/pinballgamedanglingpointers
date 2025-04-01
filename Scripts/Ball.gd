@@ -57,7 +57,7 @@ func add_velocity(vel: Vector2):
 func _process(_delta: float) -> void:
 	depth_value = roundi((position.y - 142)/8)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	#print("Ball: " + str(global_position))
 	if endgame_sinking:
 		linear_velocity.y -=  Global.standard_gravity

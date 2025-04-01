@@ -24,6 +24,8 @@ func _on_body_entered(body):
 			# add force to water surface
 			waterSurfaceRef.apply_force(ball.global_position, 128 * Vector2.DOWN, ball.def_radius * 4)
 		
+		if Global.underWaterAmbi:
+			Global.underWaterAmbi.toggle(true)
 	
 
 func _on_body_exited(body):
@@ -37,3 +39,6 @@ func _on_body_exited(body):
 			#print("splash!")
 			# add force to water surface
 			waterSurfaceRef.apply_force(ball.global_position, 64 * Vector2.UP, ball.def_radius * 4)
+		
+		if Global.underWaterAmbi:
+			Global.underWaterAmbi.toggle(false)

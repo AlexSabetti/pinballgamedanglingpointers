@@ -86,7 +86,6 @@ size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
 text = "    + Ball"
-vertical_alignment = 1
 
 [node name="BallButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/BallBox"]
 layout_mode = 2
@@ -106,7 +105,6 @@ size_flags_horizontal = 3
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
 text = "    + Mass"
-vertical_alignment = 1
 
 [node name="MassButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/MassBox"]
 layout_mode = 2
@@ -133,22 +131,6 @@ focus_mode = 0
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
 text = "100 pts"
-
-[node name="DestroyBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/DestroyBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_xriyr")
-theme_override_font_sizes/font_size = 20
-text = "  DESTROY BALL"
-
-[node name="DestroyButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/DestroyBox"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-text = ":("
 
 [node name="RestartButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
 visible = false
@@ -224,31 +206,52 @@ horizontal_alignment = 1
 layout_mode = 2
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "Collect fish to gain points!"
-horizontal_alignment = 1
+text = "   1. Collect fish to gain points!"
 
 [node name="Label2" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "Use points to upgrade your ball!"
-horizontal_alignment = 1
+text = "   2. Upgrade your ball with points!"
 
 [node name="Label4" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "Move your ball to the 
-dock to get it back."
-horizontal_alignment = 1
+text = "   3. Move your ball to the 
+       dock to get it back."
 
 [node name="Label5" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_xriyr")
 theme_override_font_sizes/font_size = 20
-text = "Upgrades are only 
-applied to the next ball."
+text = "   4. Upgrades are only 
+       applied to the next ball."
+
+[node name="divider4" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_xriyr")
+theme_override_constants/line_spacing = 0
+theme_override_constants/paragraph_spacing = 0
+theme_override_font_sizes/font_size = 24
+text = "---------------------"
 horizontal_alignment = 1
+
+[node name="DestroyBox" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/DestroyBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_xriyr")
+theme_override_font_sizes/font_size = 20
+text = "If you get stuck:"
+
+[node name="DestroyButton" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer/DestroyBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+text = "Destory Ball :("
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 139.0
@@ -273,5 +276,5 @@ text = "Depth: 0"
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BallBox/BallButton" to="." method="_on_ball_purchase"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/MassBox/MassButton" to="." method="_on_mass_purchase"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/StrafeBox/StrafeButton" to="." method="_on_strafe_purchase"]
-[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/DestroyBox/DestroyButton" to="." method="_on_destroy_button_pressed"]
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/DestroyBox/DestroyButton" to="." method="_on_destroy_button_pressed"]
